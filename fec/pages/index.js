@@ -2,9 +2,11 @@ import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import Description from "../components/Description";
+import Map from "../components/Map";
 import React, { Component } from "react";
 
-export default class App extends Component() {
+
+export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -31,6 +33,7 @@ export default class App extends Component() {
         </Head>
 
         <Description property={this.state.property} />
+        <Map property={this.state.property} />
 
         <main className={styles.main}>
           <h1 className={styles.title}>
