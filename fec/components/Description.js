@@ -28,3 +28,5 @@ const Description = ({ property }) => {
     </div>
   );
 };
+
+export default Description;
