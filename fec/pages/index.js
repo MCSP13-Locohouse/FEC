@@ -4,7 +4,7 @@ import styles from "../styles/Home.module.css";
 import Description from "../components/Description";
 import React, { Component } from "react";
 
-export default class App extends Component() {
+export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
