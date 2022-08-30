@@ -30,7 +30,7 @@ export default class App extends Component() {
           <link rel="icon" href="/favicon.ico" />
         </Head>
 
-        <Description property={props.property} />
+        <Description property={this.state.property} />
 
         <main className={styles.main}>
           <h1 className={styles.title}>
