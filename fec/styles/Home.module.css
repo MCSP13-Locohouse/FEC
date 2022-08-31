@@ -127,3 +127,13 @@
     filter: invert(1);
   }
 }
+
+#reservations-box {
+  position: absolute; 
+  float: right; 
+  width: 300px;
+  border: 15px solid green;
+  padding: 50px;
+  margin: 20px;
+  text-align: right;
+}

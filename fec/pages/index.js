@@ -2,9 +2,10 @@ import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import Description from "../components/Description";
+import Reservations from "../components/Reservations";
 import React, { Component } from "react";
 
-export default class App extends Component() {
+export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -31,6 +32,7 @@ export default class App extends Component() {
         </Head>
 
         <Description property={this.state.property} />
+        <Reservations />
 
         <main className={styles.main}>
           <h1 className={styles.title}>
