@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 
-const Description = ({ property }) => {
+const Description = ({ property, handleProperty }) => {
   return (
     <div className="description">
+      <button onClick={handleProperty}>Test fetch</button>
       <h3 id="property-title">
         {property.title} hosted by {property.host}
       </h3>
