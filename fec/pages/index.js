@@ -4,7 +4,7 @@ import Description from "../components/Description";
 import Reservations from "../components/Reservations";
 import Map, { StaticGoogleMap, Marker, Path } from "../components/Map";
 import React, { Component } from "react";
-import Calendar from "./components/Calendar";
+import Calendar from "../components/Calendar";
 
 export default class App extends Component {
   constructor(props) {
@@ -32,7 +32,7 @@ export default class App extends Component {
 
         <Reservations />
 
-        {/* <Calendar /> */}
+        <Calendar />
       </div>
     );
   }
