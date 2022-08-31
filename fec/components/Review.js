@@ -17,7 +17,7 @@ const Reviews = (props) => {
 ])
 
 return (
-    <div className="reviews" style={{border: "1px solid black", height: "50vh", width: "60vw", display: "flex", justifySelf: "center"}}>
+    <div className="reviews" style={{border: "1px solid black", height: "50vh", width: "75vw", display: "flex", justifySelf: "center"}}>
 
     </div>
 )
