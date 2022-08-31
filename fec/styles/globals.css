@@ -1,0 +1,11 @@
+.search_banner {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .search_bannerBtn {
+    background-color: white;
+    font-weight: 900 ;
+    text-transform: inherit ;
+    color: #ff7779 
+  }
