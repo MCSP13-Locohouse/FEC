@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 // import { Button } from "@material-ui/core";
-import Search from "../../components/Search";
+import Search from "./Search";
 
 function Calendar() {
   const [showSearch, setShowSearch] = useState(false);
