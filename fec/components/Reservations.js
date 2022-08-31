@@ -5,33 +5,42 @@ import styles from "../styles/Home.module.css";
 const Reservations = ({ property }) => {
     return (
       <> 
-        <span id="{property-price}">
-        price per night
+        <span className={styles.price}>
+        price per night 
         </span>
-        <span>stars</span>
+        <span className="stars">stars</span>
         <br></br>
-        <input></input>
-        <input></input>
+        <form className={styles.form}>
+        <input className={styles.check_in}
+          type="text"
+          placeholder="check-in YYYMMDD"
+        />{" "}
+        <input 
+        className= {styles.check_out}
+        type="text"
+        placeholder="check-out YYYMMDD"
+      />{" "}
         <br></br>
-        <input></input>
+        <input />
         <br></br>
-        <button>Reserve</button>
+        <button className={styles.reserve_button}>Reserve</button>
         <p>You won`t be charged yet</p>
-        <span>price X 2 nights</span>
+        </form>
+        <span className={styles.leftrespan}>price X 2 nights</span>
         <span></span>
-        <span>price x 2</span>
+        <span className={styles.rightrespan}>price x 2</span>
         <br></br>
-        <span>Cleaning Fee</span>
+        <span className={styles.leftrespan}>Cleaning Fee</span>
         <span></span>
-        <span>60</span>
+        <span className={styles.rightrespan}>60</span>
         <br></br>
-        <span>Service Fee</span>
+        <span className={styles.leftrespan}>Service Fee</span>
         <span></span>
-        <span>41</span>
+        <span className={styles.rightrespan}>41</span>
         <br></br>
-        <span>Total Before Taxes</span>
+        <span className={styles.leftrespan}>Total Before Taxes</span>
         <span></span>
-        <span>price+cleaning+service</span> 
+        <span className={styles.rightrespan}>price+cleaning+service</span> 
       </>
     );
   };
