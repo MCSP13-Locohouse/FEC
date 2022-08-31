@@ -10,11 +10,10 @@
     "lint": "next lint"
   },
   "dependencies": {
-
+   
     "axios": "^0.27.2",
     "cors": "^2.8.5",
     "express": "^4.18.1",
-    "next": "12.2.5",
     "nodemon": "^2.0.19",
 
     "fs": "^0.0.1-security",
@@ -22,8 +21,8 @@
     "postgres": "^3.2.4",
     "psql": "^0.0.1",
 
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
     "react-static-google-map": "^0.9.0"
   },
   "devDependencies": {

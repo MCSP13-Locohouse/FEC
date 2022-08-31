@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Button } from "@material-ui/core";
 
 function Calendar() {
   const [showSearch, setShowSearch] = useState(false);
@@ -6,14 +7,14 @@ function Calendar() {
   return (
     <div className="calendar">
       <div className="search_banner">
-        <button
+        <Button
           className="search_bannerBtn"
-          // variant="outlined"
+          variant="outlined"
           onClick={() => setShowSearch(!showSearch)}
         >
           Search Dates
-        </button>
-        {showSearch && <h1>SHOW DATE PICKER</h1>}
+        </Button>
+        {showSearch && <Search />}
       </div>
     </div>
   );
