@@ -4,7 +4,7 @@ import styles from "../styles/Home.module.css";
 
 const Reservations = ({ property }) => {
     return (
-      <> 
+      <div className={styles.reservations_box}> 
         <span className={styles.price}>
         price per night 
         </span>
@@ -36,7 +36,7 @@ const Reservations = ({ property }) => {
         <br></br>
         <span className={styles.leftrespan}>Total Before Taxes</span>
         <span className={styles.rightrespan}>price+cleaning+service</span> 
-      </>
+      </div>
     );
   };
 
