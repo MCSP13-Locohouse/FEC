@@ -13,7 +13,7 @@ function Calendar() {
           // variant="outlined"
           onClick={() => setShowSearch(!showSearch)}
         >
-          Search Dates
+          Show Dates
         </button>
         {showSearch && <Search />}
       </div>
