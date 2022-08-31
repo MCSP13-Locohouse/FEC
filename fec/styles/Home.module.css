@@ -128,8 +128,8 @@
   }
 }
 
-#reservations-box {
-  position: absolute; 
+.reservations_box {
+  border: 5px solid black;
   float: right; 
   width: 300px;
   border: 15px solid green;

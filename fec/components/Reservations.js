@@ -1,7 +1,10 @@
 import React from "react";
+import styles from "../styles/Home.module.css";
+
+
 const Reservations = ({ property }) => {
     return (
-      <div className="Reservation"> 
+      <> 
         <span id="{property-price}">
         price per night
         </span>
@@ -11,7 +14,8 @@ const Reservations = ({ property }) => {
         <input></input>
         <br></br>
         <input></input>
-        <button></button>Reserve
+        <br></br>
+        <button>Reserve</button>
         <p>You won`t be charged yet</p>
         <span>price X 2 nights</span>
         <span></span>
@@ -28,7 +32,7 @@ const Reservations = ({ property }) => {
         <span>Total Before Taxes</span>
         <span></span>
         <span>price+cleaning+service</span> 
-      </div>
+      </>
     );
   };
 
