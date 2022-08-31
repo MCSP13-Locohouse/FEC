@@ -1,9 +1,10 @@
 import React, {useState} from "react";
+import axios from "axios"
 
-
+const customersData = ({customers}) => {
+    console.log(customers)
+}
 const Reviews = (props) => {
-    // axios
-    //     .get("127.0.0.1:3000/api/")
     const [userName, setUserName] = useState([])
     const [propName, setPropName] = useState([])
     const [rating, setRating] = useState([1, 2, 3, 4, 5])
@@ -21,6 +22,21 @@ return (
 
     </div>
 )
+}
+
+export const getCustomers = async () => {
+    try {
+        const data = await axios
+        .get("locahost:3000/api/customers")
+        return {
+            props: {
+                customers: data.data,
+            }
+        }
+    } catch (error) {
+        console.error(message.error)
+    }
+    
 }
 
 export default Reviews;
