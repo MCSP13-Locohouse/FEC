@@ -7,9 +7,12 @@ import {
 } from 'react-static-google-map';
 
 
+
 const Map = ({ property }) => {
+
+
     return (
-        <div className="description">
+        <div className="map">
             <StaticGoogleMap size="300x300" className="img-fluid" apiKey="AIzaSyBh2f-Z7UY4_KKSNdxZf0feK5Z3nf8d1So">
                 {console.log('map.js', process)}
                 <Marker location="6.4488387,3.5496361" color="blue" label="P" />
