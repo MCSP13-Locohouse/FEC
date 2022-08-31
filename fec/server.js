@@ -27,9 +27,9 @@ app.prepare()
             return handle(req, res)
         })
 
-        server.listen(3000, (err) => {
+        server.listen(PORT, (err) => {
             if (err) throw err
-            console.log('> Express Server listening on http://localhost:3000')
+            console.log(`> Express Server listening on ${PORT}`)
         })
     })
     .catch((ex) => {
