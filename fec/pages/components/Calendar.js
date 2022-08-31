@@ -10,7 +10,7 @@ function Calendar() {
       <div className="search_banner">
         <button
           className="search_bannerBtn"
-          variant="outlined"
+          // variant="outlined"
           onClick={() => setShowSearch(!showSearch)}
         >
           Search Dates
