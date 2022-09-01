@@ -37,8 +37,4 @@ yarn-error.log*
 next-env.d.ts
 
 ./server.js
-<<<<<<< HEAD
-
-=======
->>>>>>> 395b9844dcf980d67d89b9cdfe8cd093bc657f79
 .env
