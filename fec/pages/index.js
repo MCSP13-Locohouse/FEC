@@ -1,25 +1,31 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
+
 import Description from "../components/Description";
 import Reservations from "../components/Reservations";
 import Map from "../components/Map";
+import Calendar from "../components/Calendar";
+
 import React, { Component } from "react";
 import axios from "axios";
-import Calendar from "../components/Calendar";
 
 export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       property: {
-        id: -1,
+        prop_id: -1,
         title: "",
-        host: "",
+        price: "",
         specs: "",
         about: "",
-        space: "",
+        prop_space: "",
         guest: "",
         other: "",
+        number_street: "",
+        US_state: "",
+        zip: "",
+        host: "",
         amenities: [],
       },
     };
@@ -29,22 +35,20 @@ export default class App extends Component {
   handleProperty() {
     axios.get("/api/properties").then((response) => {
       console.log("Response.data.properties: ", response.data.properties);
+      this.setState((prevState) => ({
+        property: response.data.properties[0],
+      }));
     });
   }
 
   render() {
     return (
       <div className={styles.container}>
-        <Description property={this.state.property} />
-
         <Head>
           <title>Create Next App</title>
         </Head>
 
-        <Description
-          property={this.state.property}
-          handleProperty={this.handleProperty}
-        />
+        <Description property={this.state.property} handleProperty={this.handleProperty} />
 
         <Map property={this.state.property} />
 
