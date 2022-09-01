@@ -1,6 +1,11 @@
 import { useEffect, useRef } from 'react';
 import { Wrapper, Status } from "@googlemaps/react-wrapper";
 import { Loader } from "@googlemaps/js-api-loader"
+import {
+    StaticGoogleMap,
+    Marker,
+    Path,
+} from 'react-static-google-map';
 
 
 
@@ -11,7 +16,7 @@ const render = (status) => {
         case Status.FAILURE:
             return <div>FAILURE!</div>;
         case Status.SUCCESS:
-            return <Map />;
+            return <oldMap />;
     }
 };
 
@@ -86,4 +91,4 @@ const oldMap = ({ property }) => {
     );
 };
 
-export default Map;
+export default oldMap;

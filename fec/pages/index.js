@@ -4,6 +4,7 @@ import styles from "../styles/Home.module.css";
 import Description from "../components/Description";
 import Reservations from "../components/Reservations";
 import MapApp from "../components/Map";
+import testMap from "../components/testmap";
 import React, { Component } from "react";
 
 
@@ -36,6 +37,9 @@ export default class App extends Component {
         <Description property={this.state.property} />
 
         <MapApp property={this.state.property} />
+
+        <h3>My Google Maps Demo</h3>
+        <div id="map"></div>
 
         <Reservations />
 
