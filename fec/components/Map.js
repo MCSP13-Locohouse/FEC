@@ -91,4 +91,4 @@ const oldMap = ({ property }) => {
     );
 };
 
-export default oldMap;
+export default Map;

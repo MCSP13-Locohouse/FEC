@@ -6,6 +6,7 @@ import Reservations from "../components/Reservations";
 import MapApp from "../components/Map";
 import testMap from "../components/testmap";
 import React, { Component } from "react";
+import { Loader } from '@googlemaps/js-api-loader';
 
 
 export default class App extends Component {
