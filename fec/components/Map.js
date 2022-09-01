@@ -20,13 +20,17 @@ const render = (status) => {
     }
 };
 
-const Map = () => {
+const Map = (props) => {
     const googlemap = useRef(null)
 
     const apiKey = process.env.NEXT_PUBLIC_API_KEY;
     console.log('map.js apikey: ', apiKey);
     console.log("getting address");
+    console.log(props.property);
     //insert api call here
+
+
+
 
     useEffect(() => {
         const loader = new Loader({
@@ -38,15 +42,12 @@ const Map = () => {
             .load()
             .then(() => {
                 const google = window.google;
-                console.log(google)
                 map = new google.maps.Map(googlemap.current, {
                     center: { lat: -30.397, lng: 150.644 },
                     zoom: 8,
                 })
-                console.log(map);
             })
         console.log('map.js useEffect');
-
 
     });
 

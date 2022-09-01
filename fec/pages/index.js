@@ -37,9 +37,10 @@ export default class App extends Component {
 
         <Description property={this.state.property} />
 
-        <MapApp property={this.state.property} />
+        <MapApp property={this.props} />
 
         <h3>My Google Maps Demo</h3>
+
         <div id="map"></div>
 
         <Reservations />
@@ -95,4 +96,24 @@ export default class App extends Component {
       </div>
     );
   }
+}
+
+
+export async function getServerSideProps() {
+  // Fetch data from external API
+  const apiKey = process.env.NEXT_PUBLIC_API_KEY;
+  console.log('map.js apikey: ', apiKey);
+  console.log("getting address");
+
+  const res = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=24%20Sussex%20Drive%20Ottawa%20ON&key=${apiKey}`, {
+    mode: 'cors',
+    method: 'get'
+  });
+  let data = await res.json()
+  data = data.results[0];
+  data = data.geometry.location;
+  console.log(data);
+
+  // Pass data to the page via props
+  return { props: { data } }
 }
