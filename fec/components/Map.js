@@ -1,14 +1,56 @@
-import React from "react";
-
-import {
-    StaticGoogleMap,
-    Marker,
-    Path,
-} from 'react-static-google-map';
+import { useEffect, useRef } from 'react';
+import { Wrapper, Status } from "@googlemaps/react-wrapper";
+import { Loader } from "@googlemaps/js-api-loader"
 
 
 
-const Map = ({ property }) => {
+const render = (status) => {
+    switch (status) {
+        case Status.LOADING:
+            return <div>LOADING!</div>;
+        case Status.FAILURE:
+            return <div>FAILURE!</div>;
+        case Status.SUCCESS:
+            return <Map />;
+    }
+};
+
+const Map = () => {
+    const googlemap = useRef(null)
+
+
+    useEffect(() => {
+        const loader = new Loader({
+            apiKey: "AIzaSyBh2f-Z7UY4_KKSNdxZf0feK5Z3nf8d1So",
+            version: "weekly",
+        });
+        let map;
+        loader
+            .load()
+            .then(() => {
+                const google = window.google;
+                console.log(google)
+                map = new google.maps.Map(googlemap.current, {
+                    center: { lat: -34.397, lng: 150.644 },
+                    zoom: 8,
+                })
+                console.log(map);
+            })
+        console.log('map.js useEffect');
+
+
+    });
+
+    return (
+        <div id="map" ref={googlemap} />
+    );
+}
+
+
+
+
+
+const oldMap = ({ property }) => {
 
 
     return (

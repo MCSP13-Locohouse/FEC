@@ -137,3 +137,11 @@
   margin: 20px;
   text-align: right;
 }
+
+#_next {
+  height: 100%;
+}
+
+#map {
+  height: 100%;
+}
