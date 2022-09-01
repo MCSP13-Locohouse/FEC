@@ -16,14 +16,18 @@ export default class App extends Component {
     super(props);
     this.state = {
       property: {
-        id: -1,
+        prop_id: -1,
         title: "",
-        host: "",
+        price: "",
         specs: "",
         about: "",
-        space: "",
+        prop_space: "",
         guest: "",
         other: "",
+        number_street: "",
+        US_state: "",
+        zip: "",
+        host: "",
         amenities: [],
       },
     };
@@ -42,8 +46,6 @@ export default class App extends Component {
   render() {
     return (
       <div className={styles.container}>
-        <Description property={this.state.property} />
-
         <Head>
           <title>Create Next App</title>
         </Head>
