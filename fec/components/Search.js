@@ -9,23 +9,45 @@ import {
 } from "react-date-range";
 
 function Search() {
-  const [startDate, setStartDate] = useState(new Date());
-  const [endDate, setEndDate] = useState(new Date());
+  // const [startDate, setStartDate] = useState(new Date());
+  // const [endDate, setEndDate] = useState(new Date());
 
-  const selectionRange = {
-    startDate: startDate,
-    endDate,
-    key: "selection",
-  };
+  const [date, setDate] = useState([
+    {
+      startDate: new Date(),
+      endDate: new Date(),
+      key: "selection",
+    },
+  ]);
+  // const selectionRange = {
+  //   startDate: startDate,
+  //   endDate,
+  //   key: "selection",
+  // };
 
-  function handleSelect(ranges) {
-    setStartDate(ranges.selection.startDate);
-    setEndDate(ranges.selection.endDate);
-  }
-
+  // function handleSelect(ranges) {
+  //   setStartDate(ranges.selection.startDate);
+  //   setEndDate(ranges.selection.endDate);
+  // }
+  console.log(startDate);
+  console.log(endDate);
   return (
     <div className="search">
-      <DateRangePicker ranges={[selectionRange]} onChange={handleSelect} />
+      <h2>Select checkout date</h2>
+      <h5>Minimum stay: 2 nights</h5>
+      <DateRangePicker
+        onChange={(item) => setDate([item.selection])}
+        moveRangeOnFirstSelection={false}
+        ranges={date}
+        className="date"
+        // ranges={[selectionRange]}
+        // onChange={handleSelect}
+        months={2}
+        showSelectionPreview={true}
+        // moveRangeOnFirstSelection={false}
+        direction={"horizontal"}
+        editableDateInputs={true}
+      />
     </div>
   );
 }

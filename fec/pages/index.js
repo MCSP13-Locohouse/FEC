@@ -30,7 +30,7 @@ export default class App extends Component {
   }
 
   handleProperty() {
-    axios.post("/api/properties").then((response) => {
+    axios.get("/api/properties").then((response) => {
       console.log("Response.data.properties: ", response.data.properties);
     });
   }
@@ -38,8 +38,6 @@ export default class App extends Component {
   render() {
     return (
       <div className={styles.container}>
-        <Description property={this.state.property} />
-
         <Head>
           <title>Create Next App</title>
         </Head>
@@ -53,7 +51,7 @@ export default class App extends Component {
 
         <Reservations />
 
-        <Calendar />
+        {/* <Calendar /> */}
 
         <main className={styles.main}></main>
 

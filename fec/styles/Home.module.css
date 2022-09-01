@@ -99,3 +99,14 @@ float: left;
 
 float: right;
 }
+
+.calendar {
+  float: left;
+  }
+
+.visitDates {
+  min-height: 30px;
+  background-color: white;
+  border: 3px solid  #ff7779
+
+}
