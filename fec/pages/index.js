@@ -26,7 +26,7 @@ export default class App extends Component {
         US_state: "",
         zip: "",
         host: "",
-        amenities: {},
+        amenities: [],
       },
     };
     this.handleProperty = this.handleProperty.bind(this);
