@@ -34,7 +34,10 @@ export default class App extends Component {
 
   handleProperty() {
     axios.get("/api/properties").then((response) => {
-      console.log("Response.data.properties: ", response.data.properties);
+      console.log(
+        "Testing ability to parse response.data.properties[0].amenities: ",
+        response.data.properties[0].amenities
+      );
       this.setState((prevState) => ({
         property: response.data.properties[0],
       }));

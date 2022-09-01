@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 
 const Description = ({ property, handleProperty }) => {
+  // const [amenities] = property;
   return (
     <div className="description">
       <button onClick={handleProperty}>Test fetch</button>
@@ -20,9 +21,10 @@ const Description = ({ property, handleProperty }) => {
       </div>
       {/* <div id="amenities">
         <h2>What this place offers</h2>
+        
         <ul id="amenity-list">
-          {property.amenities.map((amenity) => (
-            <li key={amenity.key}>{amenity}</li>
+          {property.amenities.map((amenityGroup) => (
+            <li key={amenityGroup}>{amenityGroup.amenities}</li>
           ))}
         </ul>
       </div> */}
