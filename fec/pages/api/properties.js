@@ -1,4 +1,5 @@
 import postgres from "postgres";
+import dotenv from "dotenv";
 const sql = postgres(process.env.DB_CONNECTION_URL);
 
 export default async function propertiesHandler(req, res) {
