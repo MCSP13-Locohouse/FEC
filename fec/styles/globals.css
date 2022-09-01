@@ -3,11 +3,11 @@
     flex-direction: column;
   }
   
-  .search_bannerBtn {
-    background-color: white;
+  .search_bannerBtn:hover {
+    background-color: #ff7779 ;
     font-weight: 900 ;
     text-transform: inherit ;
-    color: #ff7779 
+    color: white 
   }
 
   
