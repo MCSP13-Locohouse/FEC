@@ -1,13 +1,11 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
+
 import Description from "../components/Description";
 import Reservations from "../components/Reservations";
-
 import Map, { StaticGoogleMap, Marker, Path } from "../components/Map";
-import React, { Component } from "react";
 import Calendar from "../components/Calendar";
 
-// import Map from "../components/Map";
 import React, { Component } from "react";
 import axios from "axios";
 

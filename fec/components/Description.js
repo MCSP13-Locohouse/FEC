@@ -20,11 +20,11 @@ const Description = ({ property, handleProperty }) => {
       </div>
       <div id="amenities">
         <h2>What this place offers</h2>
-        <ul id="amenity-list">
+        {/* <ul id="amenity-list">
           {property.amenities.map((amenity) => (
             <li key={amenity.key}>{amenity}</li>
           ))}
-        </ul>
+        </ul> */}
       </div>
     </div>
   );
