@@ -30,6 +30,7 @@ const Reservations = () => {
           placeholder="check-out YYYMMDD"
         />{" "}
         <br></br>
+        <div className={styles.spacer}></div>
         <label> Number of Guests</label>
         <select>
           <option value="1"> 1</option>
