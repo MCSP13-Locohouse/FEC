@@ -20,35 +20,37 @@ export default class App extends Component {
         other: "",
         amenities: [],
       },
+      comments: [],
+      stars: "",
+      users: [],
     };
   }
-componentDidMount() {
-  axios
-  .get("/api/properties")
-  .then((res) => {
-    console.log(res.data.properties)
+  componentDidMount() {
+    axios.get("/api/properties").then((res) => {
+      // console.log(res.data.properties);
+    });
 
-  })
+    axios.get("/api/users").then((res) => {
+      console.log(res.data.users)
+      this.setState({users: res.data.users})
+    });
 
-  axios
-  .get("/api/users")
-  .then((res) => {
-    console.log(res.data.users)
-  })
-}
+    axios.get("/api/comments").then((res) => {
+      this.setState({ comments: res.data.comments });
+    });
+  }
+
   //mike needs bind and component did mount? also variations of these?
-
   render() {
     return (
-      <div className={styles.container}>  
-
+      <div className={styles.container}>
         <Description property={this.state.property} />
 
         <Map property={this.state.property} />
 
         <Reservations />
 
-        <Reviews />
+        <Reviews reviews={this.state.comments} users={this.state.users}/>
       </div>
     );
   }

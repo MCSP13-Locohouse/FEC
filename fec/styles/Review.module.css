@@ -1,0 +1,26 @@
+.reviews {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+    width: 60vw;
+} 
+
+.button {
+    width: 210px;
+    height: 50px;
+    background-color: white;
+    border-radius: 10px;
+    border: 1px solid black;
+    transition: transform .05s ease-out;
+    font-weight: bold;
+}
+
+.button:hover {
+    background-color: rgb(243, 243, 243);
+    cursor: pointer;
+    text-align: center;    
+}
+
+.button:active {
+    transform: scale(.96);
+}
