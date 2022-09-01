@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useEffect, useState } from "react";;
 import styles from "../styles/Home.module.css";
+import axios from "axios";
 
-const Reservations = ({ property }) => {
-  return (
+
+
+const Reservations = () => {
+ 
+    return (
     <div className={styles.reservations_box}>
       <span className={styles.price}>price per night</span>
       <span className="stars">stars</span>
@@ -65,6 +69,6 @@ const Reservations = ({ property }) => {
       <span className={styles.rightrespan}><b>price+cleaning+service</b></span>
     </div>
   );
-};
+}
 
 export default Reservations;

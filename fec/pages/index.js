@@ -6,7 +6,7 @@ import Reservations from "../components/Reservations";
 import Map from "../components/Map";
 import Calendar from "../components/Calendar";
 
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import axios from "axios";
 
 export default class App extends Component {
@@ -32,6 +32,8 @@ export default class App extends Component {
     this.handleProperty = this.handleProperty.bind(this);
   }
 
+  
+  
   handleProperty() {
     axios.get("/api/properties").then((response) => {
       console.log("Response.data.properties: ", response.data.properties);
