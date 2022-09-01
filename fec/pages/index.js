@@ -3,7 +3,7 @@ import styles from "../styles/Home.module.css";
 
 import Description from "../components/Description";
 import Reservations from "../components/Reservations";
-import Map, { StaticGoogleMap, Marker, Path } from "../components/Map";
+import Map from "../components/Map";
 import Calendar from "../components/Calendar";
 
 import React, { Component } from "react";
