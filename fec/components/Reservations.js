@@ -35,7 +35,7 @@ const Reservations = ({ property }) => {
           <option value="3"> 3</option>
           <option value="4"> 4</option>
           <option value="5"> 5</option>
-          <option value="more than that"> More than that!</option>
+          <option value="More than that"> More than that!</option>
         </select>
         <hr size="1" width="90%" color="grey"></hr>
         <br></br>
