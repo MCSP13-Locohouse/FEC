@@ -1,6 +1,74 @@
 import React, { useEffect } from "react";
 
 const Description = ({ property, handleProperty }) => {
+  const amenitiesList = {
+    "Scenic Views": ["Mountain view", "Ocean View"],
+    Bathroom: [
+      "bathtub",
+      "Hair dryer",
+      "Cleaning products",
+      "Shampoo",
+      "Conditioner",
+      "Body soap",
+      "Bidet",
+      "Hot water",
+      "Shower gel",
+    ],
+    "Bedroom and Laundry": [
+      "Free washer, In unit",
+      "Free dryer, In unit",
+      "Essentials",
+      "Towels, bed sheets, soap, and toilet paper",
+      "Hangers",
+      "Bed linens",
+      "Extra pillows and blankets",
+      "Iron",
+      "Clothing storage",
+    ],
+    Entertainment: ["TV"],
+    "Heating and Cooling": [
+      "Window AC unit",
+      "Indoor fireplace",
+      "Ceiling fan",
+      "Portable fans",
+      "Central heating",
+    ],
+    "Home Safety": [
+      "Doorbell camera",
+      "Smoke alarm",
+      "Carbon monoxide alarm",
+      "Fire extinguisher",
+      "First aid kit",
+    ],
+    "Internet and Office": ["Wifi", "Dedicated workspace"],
+    "Kitchen and Dining": [
+      "Kitchen",
+      "Refrigerator",
+      "Cooking basics",
+      "Dishes and silverware",
+      "Freezer",
+      "Dishwasher",
+      "Stove",
+      "Oven",
+      "Hot water kettle",
+      "Coffee maker",
+      "Wine glasses",
+      "Toaster",
+      "Baking sheet",
+      "Dining table",
+    ],
+    "Location Features": ["Laundromat nearby"],
+    Outdoor: [
+      "Shared patio or balcony",
+      "Private backyard, fully fenced",
+      "Fire pit",
+      "Outdoor furniture",
+      "Outdoor dining area",
+    ],
+    "Parking and Facilities": ["Free parking on premises", "Free street parking", "Single level home"],
+    Services: ["Breakfast", "Self check-in", "Lockbox"],
+  };
+
   return (
     <div className="description">
       <button onClick={handleProperty}>Test fetch</button>
