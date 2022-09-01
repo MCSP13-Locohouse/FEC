@@ -1,9 +1,13 @@
 import Head from "next/head";
-import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import Description from "../components/Description";
 import Reservations from "../components/Reservations";
-import Map from "../components/Map";
+
+import Map, { StaticGoogleMap, Marker, Path } from "../components/Map";
+import React, { Component } from "react";
+import Calendar from "../components/Calendar";
+
+// import Map from "../components/Map";
 import React, { Component } from "react";
 import axios from "axios";
 
@@ -35,6 +39,8 @@ export default class App extends Component {
   render() {
     return (
       <div className={styles.container}>
+        <Description property={this.state.property} />
+
         <Head>
           <title>Create Next App</title>
         </Head>
@@ -44,6 +50,8 @@ export default class App extends Component {
         <Map property={this.state.property} />
 
         <Reservations />
+
+        <Calendar />
 
         <main className={styles.main}></main>
 
