@@ -4,7 +4,7 @@ import Reservations from "../components/Reservations";
 import Map from "../components/Map";
 import React, { Component } from "react";
 import Reviews from "../components/Review";
-
+import axios from "axios";
 
 export default class App extends Component {
   constructor(props) {
@@ -22,6 +22,21 @@ export default class App extends Component {
       },
     };
   }
+componentDidMount() {
+  axios
+  .get("/api/properties")
+  .then((res) => {
+    console.log(res.data.properties)
+
+  })
+
+  axios
+  .get("/api/users")
+  .then((res) => {
+    console.log(res.data.users)
+  })
+}
+  //mike needs bind and component did mount? also variations of these?
 
   render() {
     return (

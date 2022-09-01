@@ -24,19 +24,4 @@ return (
 )
 }
 
-export const getCustomers = async () => {
-    try {
-        const data = await axios
-        .get("locahost:3000/api/customers")
-        return {
-            props: {
-                customers: data.data,
-            }
-        }
-    } catch (error) {
-        console.error(message.error)
-    }
-    
-}
-
 export default Reviews;
