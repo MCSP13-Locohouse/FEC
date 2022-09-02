@@ -20,11 +20,16 @@ const Description = ({ property, handleProperty }) => {
       </div>
       <div id="amenities">
         <h2>What this place offers</h2>
-        {/* <ul id="amenity-list">
-          {property.amenities.map((amenity) => (
-            <li key={amenity.key}>{amenity}</li>
-          ))}
-        </ul> */}
+        {property.amenities.ameniGroups.map((group) => (
+          <>
+            <h3>{group.title}</h3>
+            {group.values.map((value) => (
+              <ul>
+                <li>{value}</li>
+              </ul>
+            ))}
+          </>
+        ))}
       </div>
     </div>
   );

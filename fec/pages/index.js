@@ -26,17 +26,18 @@ export default class App extends Component {
         US_state: "",
         zip: "",
         host: "",
-        amenities: [],
+        amenities: { ameniGroups: [] },
       },
     };
-    this.handleProperty = this.handleProperty.bind(this);
   }
 
-  
-  
-  handleProperty() {
+  componentDidMount() {
+
     axios.get("/api/properties").then((response) => {
-      console.log("Response.data.properties: ", response.data.properties);
+      console.log(
+        "Testing ability to parse response.data.properties[0].amenities: ",
+        response.data.properties[0].amenities
+      );
       this.setState((prevState) => ({
         property: response.data.properties[0],
       }));
