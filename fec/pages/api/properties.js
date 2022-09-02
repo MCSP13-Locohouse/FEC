@@ -1,6 +1,8 @@
 import postgres from "postgres";
-
 const sql = postgres(`postgres://localhost:5432/samchav`);
+
+// const sql = postgres(process.env.DB_CONNECTION_URL);
+// >>>>>>> 395b9844dcf980d67d89b9cdfe8cd093bc657f79
 
 export default async function propertiesHandler(req, res) {
   if (req.method === "GET") {
