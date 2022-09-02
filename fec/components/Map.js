@@ -6,6 +6,8 @@ import { Loader } from "@googlemaps/js-api-loader"
 const Map = (props) => {
     const googlemap = useRef(null)
     const apiKey = process.env.NEXT_PUBLIC_API_KEY;
+    const lat = props.property.locData.lat;
+    const long = props.property.locData.lng;
     //Will need to get location lat long props 
 
     useEffect(() => {
@@ -19,11 +21,10 @@ const Map = (props) => {
             .then(() => {
                 const google = window.google;
                 map = new google.maps.Map(googlemap.current, {
-                    center: { lat: -30.397, lng: 150.644 },
-                    zoom: 8,
+                    center: { lat: lat, lng: long },
+                    zoom: 15,
                 })
             })
-        console.log('map.js useEffect');
 
     });
 
