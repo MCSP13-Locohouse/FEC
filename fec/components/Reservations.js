@@ -2,12 +2,15 @@ import React, { useState, useEffect } from "react";
 import styles from "../styles/Home.module.css";
 import axios from "axios";
 
-const cleaningFee = parseInt(cleaningFee, 60);
-const serviceFee = parseInt(serviceFee, 41);
+const cleaningFee =  60;
+const serviceFee = 41;
+
 
   
 const Reservations = ({property}) => {
- 
+
+ const resTotal = (property.price) + (cleaningFee) + (serviceFee);
+
     return (
     <div className={styles.reservations_box}>
       <span className={styles.price}>{property.price}</span>
@@ -25,14 +28,14 @@ const Reservations = ({property}) => {
         <input
           required
           className={styles.check_in}
-          type="text"
-          placeholder="check-in YYYMMDD"
+          type="date" name="date" id="dateinput"
+          placeholder="check-in date"
         />{" "}
         <input
           required
           className={styles.check_out}
-          type="text"
-          placeholder="check-out YYYMMDD"
+          type="date" name="date" id="dateinput"
+          placeholder="check-out date"
         />{" "}
         <br></br>
         <div className={styles.spacer}></div>
@@ -70,7 +73,7 @@ const Reservations = ({property}) => {
       <hr size="1" width="90%" color="grey"></hr>
       <div className={styles.spacer}></div>
       <span className={styles.leftrespan}><b>Total Before Taxes</b></span>
-      <span className={styles.rightrespan}><b>{ property.price + serviceFee + cleaningFee }</b></span>
+      <span className={styles.rightrespan}><b>{ resTotal }</b></span>
     </div>
   
   );
