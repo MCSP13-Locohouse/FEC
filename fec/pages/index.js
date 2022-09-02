@@ -29,7 +29,6 @@ export default class App extends Component {
         amenities: { ameniGroups: [] },
       },
     };
-    // this.handleProperty = this.handleProperty.bind(this);
   }
 
   componentDidMount() {
@@ -43,7 +42,6 @@ export default class App extends Component {
       }));
     });
   }
-  // handleProperty()
 
   render() {
     return (
