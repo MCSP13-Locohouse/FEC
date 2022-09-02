@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import styles from "../styles/Home.module.css";
 import axios from "axios";
 
-const cleaningFee = 60;
-const serviceFee = 41;
+const cleaningFee = parseInt(cleaningFee, 60);
+const serviceFee = parseInt(serviceFee, 41);
 
   
 const Reservations = ({property}) => {
@@ -54,7 +54,7 @@ const Reservations = ({property}) => {
       </form>
       <div className={styles.spacer}></div>
       <span className={styles.leftrespan}>price X 2 nights</span>
-      <span className={styles.rightrespan}>{/*properties[0].price * 28 */}</span>
+      <span className={styles.rightrespan}>{property.price * 2}</span>
       <div className={styles.spacer}></div>
       <br></br>
       <div className={styles.spacer}></div>
@@ -70,7 +70,7 @@ const Reservations = ({property}) => {
       <hr size="1" width="90%" color="grey"></hr>
       <div className={styles.spacer}></div>
       <span className={styles.leftrespan}><b>Total Before Taxes</b></span>
-      <span className={styles.rightrespan}><b>{/* + serviceFee + cleaningFee */}</b></span>
+      <span className={styles.rightrespan}><b>{ property.price + serviceFee + cleaningFee }</b></span>
     </div>
   
   );
