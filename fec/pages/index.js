@@ -67,9 +67,8 @@ export default class App extends Component {
 
 
 export async function getServerSideProps() {
-  // Fetch data from external API
+  // Fetch Lat/Long for given address
   const apiKey = process.env.NEXT_PUBLIC_API_KEY;
-  console.log('map.js apikey: ', apiKey);
   console.log("getting address");
 
   const res = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=24%20Sussex%20Drive%20Ottawa%20ON&key=${apiKey}`, {
@@ -78,8 +77,8 @@ export async function getServerSideProps() {
   });
   let data = await res.json()
   data = data.results[0];
-  data = data.geometry.location;
-  console.log(data);
+  //Lat/long for given address:
+  let locData = data.geometry.location;
 
   // Pass data to the page via props
   return { props: { data } }
