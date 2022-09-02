@@ -3,12 +3,7 @@ import { format } from "date-fns";
 import React, { useState } from "react";
 import "react-date-range/dist/styles.css"; // main style file
 import "react-date-range/dist/theme/default.css"; // theme css file
-import {
-  DateRangePicker,
-  DateRange,
-  Calendar,
-  DefinedRange,
-} from "react-date-range";
+import { DateRangePicker, DateRange } from "react-date-range";
 
 const Reservations = ({ property }) => {
   const [date, setDate] = useState([
@@ -30,15 +25,12 @@ const Reservations = ({ property }) => {
           )}
           className={styles.form}
         >
-          <span id={styles.check_in}>
+          <div id={styles.check_in}>
             CHECK-IN
-            <input
-              type="text"
-              placeholder="Input"
-              className="visitDates"
-              value={`${format(date[0].startDate, "MM/dd/yyyy")}`}
-            />
-          </span>
+            <button className="visitDates">
+              {`${format(date[0].startDate, "MM/dd/yyyy")}`}
+            </button>
+          </div>
 
           <span id={styles.check_out}>
             CHECKOUT
@@ -91,6 +83,7 @@ const Reservations = ({ property }) => {
           s
           direction={"horizontal"}
           editableDateInputs={true}
+          minDate={new Date()}
         />
       }
     </div>

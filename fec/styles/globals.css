@@ -13,7 +13,7 @@
 
   .visitDates {
     min-height: 30px;
-    min-width: 280px;
+    min-width: 100px;
     background-color: white;
     border: 1px solid  grey;
     display: flex;
