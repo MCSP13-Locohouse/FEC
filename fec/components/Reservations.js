@@ -5,15 +5,30 @@ import axios from "axios";
 const cleaningFee =  60;
 const serviceFee = 41;
 
-
+function retNights(date1, date2) {
+  return date2 - date1
+}
   
 const Reservations = ({property}) => {
+
+const [state, setState] = useState({
+    chkout: "",
+    chkin: "",
+  })
+
+  const handleChange = e => {
+    setState({
+      ...state,
+      [e.target.chkout]: e.target.value,
+      [e.target.chkin]: e.target.value,
+    })
+  }
 
  const resTotal = (property.price) + (cleaningFee) + (serviceFee);
 
     return (
     <div className={styles.reservations_box}>
-      <span className={styles.price}>{property.price}</span>
+      <span className={styles.price}>${property.price}</span>
       <span className="stars">stars</span>
 
       <br></br>
@@ -28,14 +43,16 @@ const Reservations = ({property}) => {
         <input
           required
           className={styles.check_in}
-          type="date" name="date" id="dateinput"
+          type="date" name="date" id="dateinputin"
           placeholder="check-in date"
+          value={state.chkin} onChange={handleChange}
         />{" "}
         <input
           required
           className={styles.check_out}
-          type="date" name="date" id="dateinput"
+          type="date" name="date" id="dateinputout"
           placeholder="check-out date"
+          value={state.chkout} onChange={handleChange}
         />{" "}
         <br></br>
         <div className={styles.spacer}></div>
@@ -56,7 +73,7 @@ const Reservations = ({property}) => {
         <p>You won`t be charged yet</p>
       </form>
       <div className={styles.spacer}></div>
-      <span className={styles.leftrespan}>price X 2 nights</span>
+      <span className={styles.leftrespan}>price X { /*retNights(state.chkout, state.chkin) */}  nights</span>
       <span className={styles.rightrespan}>{property.price * 2}</span>
       <div className={styles.spacer}></div>
       <br></br>
