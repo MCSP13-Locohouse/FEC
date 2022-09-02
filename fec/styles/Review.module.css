@@ -1,8 +1,11 @@
 .reviews {
-    display: flex;
-    flex-wrap: wrap;
-    margin-bottom: 20px;
-    width: 60vw;
+  width: 50vh;
+  height: 50vh;
+  background: rgba(255, 255, 255, 0.8);
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 } 
 
 .button {

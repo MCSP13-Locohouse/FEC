@@ -41,19 +41,17 @@ export default class App extends Component {
 
   handleProperty() {
     axios.get("/api/properties").then((response) => {
-      console.log("Response.data.properties: ", response.data.properties);
       this.setState((prevState) => ({
         property: response.data.properties[0],
       }));
     });
   }
+
   componentDidMount() {
     axios.get("/api/properties").then((res) => {
-      // console.log(res.data.properties);
     });
 
     axios.get("/api/users").then((res) => {
-      console.log(res.data.users)
       this.setState({users: res.data.users})
     });
 
@@ -77,13 +75,13 @@ export default class App extends Component {
 
         <Reservations />
 
-
         <Reviews reviews={this.state.comments} users={this.state.users}/>
+        
 
         <Calendar />
 
         <main className={styles.main}></main>
-
+        
         <footer className={styles.footer}></footer>
 
       </div>

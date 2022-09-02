@@ -1,8 +1,14 @@
 import React, { useEffect, useState } from "react";
 import styles from "../styles/Review.module.css"
+import ReviewModal from "./ReviewModal";
 const Reviews = (props) => {
-  console.log(props.users, "props.users");
-  //   console.log(props.reviews);
+
+  const [showModal, setShowModal] = useState(false)
+
+  const openModal = () => {
+    setShowModal(prev => !prev)
+  }
+
   return (
     <div
       className="reviews"
@@ -35,7 +41,8 @@ const Reviews = (props) => {
           ))}
         </div>
       </div>
-      <button className={styles.button}>Show all reviews</button>
+      <button className={styles.button} onClick={openModal}>Show all reviews</button>
+      <ReviewModal showModal={showModal} setShowModal={setShowModal} users={props.users} reviews={props.reviews} onClose={() => {setShowModal(false)}}/>
     </div>
   );
 };
