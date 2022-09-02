@@ -35,19 +35,19 @@ function Search() {
     <div className="search">
       <h2>Select checkout date</h2>
       <h5>Minimum stay: 2 nights</h5>
-      <DateRangePicker
-        onChange={(item) => setDate([item.selection])}
-        moveRangeOnFirstSelection={false}
-        ranges={date}
-        className="date"
-        // ranges={[selectionRange]}
-        // onChange={handleSelect}
-        months={2}
-        showSelectionPreview={true}
-        // moveRangeOnFirstSelection={false}
-        direction={"horizontal"}
-        editableDateInputs={true}
-      />
+      {
+        <DateRange
+          onChange={(item) => setDate([item.selection])}
+          moveRangeOnFirstSelection={false}
+          ranges={date}
+          className="calendar"
+          months={2}
+          showSelectionPreview={true}
+          direction={"horizontal"}
+          editableDateInputs={true}
+          minDate={new Date()}
+        />
+      }
     </div>
   );
 }

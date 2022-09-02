@@ -3,9 +3,10 @@ import { format } from "date-fns";
 import React, { useState } from "react";
 import "react-date-range/dist/styles.css"; // main style file
 import "react-date-range/dist/theme/default.css"; // theme css file
-import { DateRangePicker, DateRange } from "react-date-range";
+import { DateRange } from "react-date-range";
 
 const Reservations = ({ property }) => {
+  const [openDate, setOpenDate] = useState(false);
   const [date, setDate] = useState([
     {
       startDate: new Date(),
@@ -28,21 +29,23 @@ const Reservations = ({ property }) => {
         >
           <hr size="1" width="90%" color="grey"></hr>
           <div id={styles.check_in}>
-            CHECK-IN
-            <button className="visitDates">
-              {`${format(date[0].startDate, "MM/dd/yyyy")}`}
-            </button>
+            CHECK-IN & CHECKOUT
+            <span className="visitDates" onClick={() => setOpenDate(!openDate)}>
+              {`${format(date[0].startDate, "MM/dd/yyyy")} to ${format(
+                date[0].endDate,
+                "MM/dd/yyyy"
+              )}`}
+            </span>
+            {openDate && (
+              <DateRange
+                editableDateInputs={true}
+                onChange={(item) => setDate([item.selection])}
+                moveRangeOnFirstSelection={false}
+                ranges={date}
+                className="date"
+              />
+            )}
           </div>
-
-          <span id={styles.check_out}>
-            CHECKOUT
-            <input
-              type="text"
-              placeholder="Input"
-              className="visitDates"
-              value={`${format(date[0].endDate, "MM/dd/yyyy")}`}
-            />
-          </span>
 
           <br></br>
           <label> Number of Guests</label>
@@ -90,7 +93,6 @@ const Reservations = ({ property }) => {
           className="calendar"
           months={2}
           showSelectionPreview={true}
-          s
           direction={"horizontal"}
           editableDateInputs={true}
           minDate={new Date()}
