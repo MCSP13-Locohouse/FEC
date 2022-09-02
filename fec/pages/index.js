@@ -36,8 +36,8 @@ export default class App extends Component {
 
     axios.get("/api/properties").then((response) => {
       console.log(
-        "Testing ability to parse response.data.properties[0].amenities: ",
-        response.data.properties[0].amenities
+        "Testing ability to parse response.data.properties[0] ",
+        response.data.properties[0]
       );
       this.setState((prevState) => ({
         property: response.data.properties[0],
@@ -54,11 +54,10 @@ export default class App extends Component {
 
         <Description property={this.state.property} handleProperty={this.handleProperty} />
 
-        <Reservations />
 
         <Calendar />
 
-        <Map property={this.props} />
+        <Map property={this.props} test={this.state.property} />
 
         <main className={styles.main}></main>
 
@@ -70,10 +69,16 @@ export default class App extends Component {
 
 
 export async function getServerSideProps() {
+
   // Fetch Lat/Long for given address
   const apiKey = process.env.NEXT_PUBLIC_API_KEY;
+  // let address = '';
+  // 
 
-  const res = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=1644+Platte+St,+Denver,+CO+80202&key=${apiKey}`, {
+
+  let address = encodeURIComponent(`1600 pennsylvania ave, washington dc`);
+
+  const res = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=1${address}&key=${apiKey}`, {
     mode: 'cors',
     method: 'get'
   });
@@ -81,7 +86,7 @@ export async function getServerSideProps() {
   data = data.results[0];
   //Lat/long for given address:
   let locData = data.geometry.location;
-
+  console.log(process.env.DB_CONNECTION_URL)
   // Pass data to the page via props
   return { props: { locData } }
 }
