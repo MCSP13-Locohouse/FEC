@@ -2,11 +2,11 @@ import React, { useState } from "react";;
 import styles from "../styles/Home.module.css";
 
 
-const Reservations = () => {
+const Reservations = ({property}) => {
  
     return (
     <div className={styles.reservations_box}>
-      <span className={styles.price}>price per night</span>
+      <span className={styles.price}>{property.price}</span>
       <span className="stars">stars</span>
       <br></br>
       <div className={styles.spacer}></div>

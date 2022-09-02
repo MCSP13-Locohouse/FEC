@@ -55,7 +55,7 @@ export default class App extends Component {
 
         <Map property={this.state.property} />
 
-        <Reservations />
+        <Reservations property={this.state.property}/>
 
         <Calendar />
 
