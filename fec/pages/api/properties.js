@@ -1,5 +1,5 @@
 import postgres from "postgres";
-const sql = postgres(process.env.DB_CONNECTION_URL);
+const sql = postgres(`postgres://localhost:5432/fec_data`);
 
 export default async function propertiesHandler(req, res) {
   if (req.method === "GET") {
