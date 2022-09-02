@@ -2,6 +2,7 @@ import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import Description from "../components/Description";
 import Reservations from "../components/Reservations";
+import { Loader } from '@googlemaps/js-api-loader';
 import Map from "../components/Map";
 import React, { Component } from "react";
 import Reviews from "../components/Review";
@@ -25,16 +26,16 @@ export default class App extends Component {
         US_state: "",
         zip: "",
         host: "",
-        amenities: [],
+        amenities: { ameniGroups: [] },
       },
       comments: [],
       stars: "",
       users: [],
     };
-    this.handleProperty = this.handleProperty.bind(this);
   }
 
-  handleProperty() {
+  componentDidMount() {
+
     axios.get("/api/properties").then((response) => {
       this.setState((prevState) => ({
         property: response.data.properties[0],
@@ -66,13 +67,15 @@ export default class App extends Component {
           handleProperty={this.handleProperty}
         />
 
-        <Map property={this.state.property} />
-
-        <Reservations />
+        <Reservations property={this.state.property}/>
 
         <Reviews reviews={this.state.comments} users={this.state.users} />
 
         <Calendar />
+
+        <Map property={this.props} />
+
+        <Map property={this.props} />
 
         <main className={styles.main}></main>
 
@@ -80,4 +83,22 @@ export default class App extends Component {
       </div>
     );
   }
+}
+
+
+export async function getServerSideProps() {
+  // Fetch Lat/Long for given address
+  const apiKey = process.env.NEXT_PUBLIC_API_KEY;
+
+  const res = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=1644+Platte+St,+Denver,+CO+80202&key=${apiKey}`, {
+    mode: 'cors',
+    method: 'get'
+  });
+  let data = await res.json()
+  data = data.results[0];
+  //Lat/long for given address:
+  let locData = data.geometry.location;
+
+  // Pass data to the page via props
+  return { props: { locData } }
 }

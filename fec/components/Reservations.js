@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState } from "react";;
 import styles from "../styles/Home.module.css";
 
-const Reservations = ({ property }) => {
-  return (
+
+const Reservations = ({property}) => {
+ 
+    return (
     <div className={styles.reservations_box}>
-      <span className={styles.price}>price per night</span>
+      <span className={styles.price}>{property.price}</span>
       <span className="stars">stars</span>
       <br></br>
       <div className={styles.spacer}></div>
@@ -28,6 +30,7 @@ const Reservations = ({ property }) => {
           placeholder="check-out YYYMMDD"
         />{" "}
         <br></br>
+        <div className={styles.spacer}></div>
         <label> Number of Guests</label>
         <select>
           <option value="1"> 1</option>
@@ -65,6 +68,6 @@ const Reservations = ({ property }) => {
       <span className={styles.rightrespan}><b>price+cleaning+service</b></span>
     </div>
   );
-};
+}
 
 export default Reservations;
