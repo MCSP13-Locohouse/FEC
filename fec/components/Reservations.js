@@ -5,40 +5,14 @@ import axios from "axios";
 const cleaningFee = 60;
 const serviceFee = 41;
 
-
-function Reservations(property) {
-  const [properties, getProperties] = useState([]);
-  const [comments, getComments] = useState([]);
-
-  useEffect(() => {
-    fetch("http://localhost:8000/api/properties", {
-      mode: "cors",
-    })
-      .then((response) => response.json())
-      .then((data) => {
-      // console.log(data);
-      getProperties(data);
-      });
-  }, []);
-
-  useEffect(() => {
-    fetch("http://localhost:8000/api/comments", {
-      mode: "cors",
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-        getComments(data);
-      });
-  }, []);
-
-  console.log(properties.properties)
-
-  return (
-      <>
+  
+const Reservations = ({property}) => {
+ 
+    return (
     <div className={styles.reservations_box}>
-      <span className={styles.price}>{/*properties.properties.price*/}</span>
-      <span className="stars">{/*comments[0].stars */}</span>
+      <span className={styles.price}>{property.price}</span>
+      <span className="stars">stars</span>
+
       <br></br>
       <div className={styles.spacer}></div>
       <form
@@ -98,7 +72,7 @@ function Reservations(property) {
       <span className={styles.leftrespan}><b>Total Before Taxes</b></span>
       <span className={styles.rightrespan}><b>{/* + serviceFee + cleaningFee */}</b></span>
     </div>
-    </>
+  
   );
   
 }
