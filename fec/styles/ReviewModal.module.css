@@ -9,9 +9,11 @@
     padding: 50px;
     z-index: 1000;
     width: 55vw;
-    height: 55vh;
+    height: 80vh;
     flex-wrap: wrap;
     border: 1px solid black;
+    /* overflow: scroll; */
+    border-radius: 15px;
 }
 
 .modalOverlay {
@@ -81,7 +83,7 @@
     display: flexbox;
     align-content: flex-start;
     flex-direction: column-reverse;
-    border: 1px solid black;
+    /* border: 1px solid black; */
     height: fit-content;
     flex-wrap: wrap;
 }

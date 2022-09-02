@@ -24,7 +24,7 @@ const ReviewModal = ({ showModal, setShowModal, onClose, users, reviews }) => {
             </div>                                 {/* header div end point */}
             
             
-              <div className={styles.ratings}></div>
+              <div className={styles.ratings}>Overall Reviews Placeholder</div>
               {users.map((item, i) => (
                 <div className={styles.comments} key={i}>
                   {item.name_firstlast}
