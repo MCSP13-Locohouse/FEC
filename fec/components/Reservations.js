@@ -1,9 +1,11 @@
 import styles from "../styles/Home.module.css";
-import { format } from "date-fns";
 import React, { useState } from "react";
+import Calendar from "./Calendar";
+// import Search from "./Search";
 import "react-date-range/dist/styles.css"; // main style file
 import "react-date-range/dist/theme/default.css"; // theme css file
 import { DateRange } from "react-date-range";
+import { format } from "date-fns";
 
 const Reservations = ({ property }) => {
   const [openDate, setOpenDate] = useState(false);
@@ -28,7 +30,9 @@ const Reservations = ({ property }) => {
           className={styles.form}
         >
           <hr size="1" width="90%" color="grey"></hr>
-          <div id={styles.check_in}>
+
+          {/* edited check in and checkout to interact with calendar */}
+          <div id={"check_in"}>
             CHECK-IN & CHECKOUT
             <span className="visitDates" onClick={() => setOpenDate(!openDate)}>
               {`${format(date[0].startDate, "MM/dd/yyyy")} to ${format(
@@ -83,21 +87,23 @@ const Reservations = ({ property }) => {
           <b>price+cleaning+service</b>
         </span>
       </div>
-      <h2>Select checkout date</h2>
-      <h5>Minimum stay: 2 nights</h5>
-      {
-        <DateRange
-          onChange={(item) => setDate([item.selection])}
-          moveRangeOnFirstSelection={false}
-          ranges={date}
-          className="calendar"
-          months={2}
-          showSelectionPreview={true}
-          direction={"horizontal"}
-          editableDateInputs={true}
-          minDate={new Date()}
-        />
-      }
+      <div className="search">
+        <h2>Select checkout date</h2>
+        <h5>Minimum stay: 2 nights</h5>
+        {
+          <DateRange
+            onChange={(item) => setDate([item.selection])}
+            moveRangeOnFirstSelection={false}
+            ranges={date}
+            className="calendar"
+            months={2}
+            showSelectionPreview={true}
+            direction={"horizontal"}
+            editableDateInputs={true}
+            minDate={new Date()}
+          />
+        }
+      </div>
     </div>
   );
 };

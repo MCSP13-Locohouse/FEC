@@ -24,7 +24,7 @@
     /* position: absolute; */
   }
 
-  #styles.check_in{
+  #check_in{
     display: flex;
     justify-content: space-evenly;
   }

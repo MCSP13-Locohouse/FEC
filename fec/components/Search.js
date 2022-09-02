@@ -1,53 +1,38 @@
 import React, { useState } from "react";
-// import "react-date-range/dist/styles.css"; // main style file
-// import "react-date-range/dist/theme/default.css"; // theme css file
-// import {
-//   DateRangePicker,
-//   DateRange,
-//   Calendar,
-//   DefinedRange,
-// } from "react-date-range";
+import "react-date-range/dist/styles.css"; // main style file
+import "react-date-range/dist/theme/default.css"; // theme css file
+import { DateRange } from "react-date-range";
+import { format } from "date-fns";
+// import Calendar, { date } from "./Calendar";
 
-function Search() {
-  // const [startDate, setStartDate] = useState(new Date());
-  // const [endDate, setEndDate] = useState(new Date());
+function Search(props) {
+  // const [openDate, setOpenDate] = useState(false);
+  // const [date, setDate] = useState([
+  //   {
+  //     startDate: new Date(),
+  //     endDate: new Date(),
+  //     key: "selection",
+  //   },
+  // ]);
 
-  const [date, setDate] = useState([
-    {
-      startDate: new Date(),
-      endDate: new Date(),
-      key: "selection",
-    },
-  ]);
-  // const selectionRange = {
-  //   startDate: startDate,
-  //   endDate,
-  //   key: "selection",
-  // };
-
-  // function handleSelect(ranges) {
-  //   setStartDate(ranges.selection.startDate);
-  //   setEndDate(ranges.selection.endDate);
-  // }
-  console.log(startDate);
-  console.log(endDate);
   return (
-    <div className="search">
-      <h2>Select checkout date</h2>
-      <h5>Minimum stay: 2 nights</h5>
-      {
+    <div id={"check_in"}>
+      CHECK-IN & CHECKOUT
+      <span className="visitDates" onClick={() => setOpenDate(!openDate)}>
+        {`${format(date[0].startDate, "MM/dd/yyyy")} to ${format(
+          date[0].endDate,
+          "MM/dd/yyyy"
+        )}`}
+      </span>
+      {openDate && (
         <DateRange
+          editableDateInputs={true}
           onChange={(item) => setDate([item.selection])}
           moveRangeOnFirstSelection={false}
           ranges={date}
-          className="calendar"
-          months={2}
-          showSelectionPreview={true}
-          direction={"horizontal"}
-          editableDateInputs={true}
-          minDate={new Date()}
+          className="date"
         />
-      }
+      )}
     </div>
   );
 }
