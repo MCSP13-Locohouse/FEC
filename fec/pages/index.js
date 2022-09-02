@@ -26,13 +26,13 @@ export default class App extends Component {
         US_state: "",
         zip: "",
         host: "",
-        amenities: [],
+        amenities: { ameniGroups: [] },
       },
     };
-    this.handleProperty = this.handleProperty.bind(this);
+    // this.handleProperty = this.handleProperty.bind(this);
   }
 
-  handleProperty() {
+  componentDidMount() {
     axios.get("/api/properties").then((response) => {
       console.log(
         "Testing ability to parse response.data.properties[0].amenities: ",
@@ -43,6 +43,7 @@ export default class App extends Component {
       }));
     });
   }
+  // handleProperty()
 
   render() {
     return (
