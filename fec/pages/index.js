@@ -3,13 +3,11 @@ import styles from "../styles/Home.module.css";
 
 import Description from "../components/Description";
 import Reservations from "../components/Reservations";
-import testMap from "../components/testmap";
 import React, { Component } from "react";
 import { Loader } from '@googlemaps/js-api-loader';
 import Map from "../components/Map";
 import Calendar from "../components/Calendar";
 
-import React, { Component } from "react";
 import axios from "axios";
 
 export default class App extends Component {
@@ -53,15 +51,11 @@ export default class App extends Component {
 
         <Description property={this.state.property} handleProperty={this.handleProperty} />
 
-        <Map property={this.props} />
-
-        <h3>My Google Maps Demo</h3>
-
-        <div id="map"></div>
-
         <Reservations />
 
         <Calendar />
+
+        <Map property={this.props} />
 
         <main className={styles.main}></main>
 
