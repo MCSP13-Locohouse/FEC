@@ -3,6 +3,7 @@ import styles from "../styles/Home.module.css";
 
 import Description from "../components/Description";
 import Reservations from "../components/Reservations";
+import { Loader } from '@googlemaps/js-api-loader';
 import Map from "../components/Map";
 import Calendar from "../components/Calendar";
 
@@ -53,11 +54,11 @@ export default class App extends Component {
 
         <Description property={this.state.property} handleProperty={this.handleProperty} />
 
-        <Map property={this.state.property} />
-
         <Reservations property={this.state.property}/>
 
         <Calendar />
+
+        <Map property={this.props} />
 
         <main className={styles.main}></main>
 
@@ -65,4 +66,22 @@ export default class App extends Component {
       </div>
     );
   }
+}
+
+
+export async function getServerSideProps() {
+  // Fetch Lat/Long for given address
+  const apiKey = process.env.NEXT_PUBLIC_API_KEY;
+
+  const res = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=1644+Platte+St,+Denver,+CO+80202&key=${apiKey}`, {
+    mode: 'cors',
+    method: 'get'
+  });
+  let data = await res.json()
+  data = data.results[0];
+  //Lat/long for given address:
+  let locData = data.geometry.location;
+
+  // Pass data to the page via props
+  return { props: { locData } }
 }
