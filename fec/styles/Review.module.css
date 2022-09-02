@@ -1,12 +1,12 @@
 .reviews {
-  width: 50vh;
-  height: 50vh;
-  background: rgba(255, 255, 255, 0.8);
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-} 
+    width: 50vh;
+    height: 50vh;
+    background: rgba(255, 255, 255, 0.8);
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 .button {
     width: 210px;
@@ -21,7 +21,7 @@
 .button:hover {
     background-color: rgb(243, 243, 243);
     cursor: pointer;
-    text-align: center;    
+    text-align: center;
 }
 
 .button:active {

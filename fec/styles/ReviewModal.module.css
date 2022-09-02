@@ -39,7 +39,7 @@
     height: 30px;
     /* font-weight: bold; */
     font-size: 1.2rem;
-    font-family:monospace;
+    font-family: monospace;
     background-color: white;
     border-radius: 15px;
     justify-content: center;
@@ -50,8 +50,9 @@
     cursor: pointer;
     background-color: rgba(92, 92, 92, 0.15)
 }
+
 .search {
-    display:flex; 
+    display: flex;
     position: relative;
     bottom: 85%;
     left: 50%;
@@ -70,6 +71,7 @@
     width: 100%;
     height: fit-content;
 }
+
 .ratings {
     margin-top: 15px;
     display: flex;
@@ -87,4 +89,3 @@
     height: fit-content;
     flex-wrap: wrap;
 }
-

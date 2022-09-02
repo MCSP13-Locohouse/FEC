@@ -1,16 +1,11 @@
 import Head from "next/head";
-
 import styles from "../styles/Home.module.css";
-
 import Description from "../components/Description";
 import Reservations from "../components/Reservations";
 import Map from "../components/Map";
-
 import React, { Component } from "react";
 import Reviews from "../components/Review";
-
 import Calendar from "../components/Calendar";
-
 import axios from "axios";
 
 export default class App extends Component {
@@ -48,11 +43,10 @@ export default class App extends Component {
   }
 
   componentDidMount() {
-    axios.get("/api/properties").then((res) => {
-    });
+    axios.get("/api/properties").then((res) => {});
 
     axios.get("/api/users").then((res) => {
-      this.setState({users: res.data.users})
+      this.setState({ users: res.data.users });
     });
 
     axios.get("/api/comments").then((res) => {
@@ -60,7 +54,6 @@ export default class App extends Component {
     });
   }
 
-  //mike needs bind and component did mount? also variations of these?
   render() {
     return (
       <div className={styles.container}>
@@ -68,22 +61,22 @@ export default class App extends Component {
           <title>Create Next App</title>
         </Head>
 
-        <Description property={this.state.property} handleProperty={this.handleProperty} />
-
+        <Description
+          property={this.state.property}
+          handleProperty={this.handleProperty}
+        />
 
         <Map property={this.state.property} />
 
         <Reservations />
 
-        <Reviews reviews={this.state.comments} users={this.state.users}/>
-        
+        <Reviews reviews={this.state.comments} users={this.state.users} />
 
         <Calendar />
 
         <main className={styles.main}></main>
-        
-        <footer className={styles.footer}></footer>
 
+        <footer className={styles.footer}></footer>
       </div>
     );
   }

@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from "react";
-import styles from "../styles/Review.module.css"
+import styles from "../styles/Review.module.css";
 import ReviewModal from "./ReviewModal";
 const Reviews = (props) => {
-
-  const [showModal, setShowModal] = useState(false)
+  const [showModal, setShowModal] = useState(false);
 
   const openModal = () => {
-    setShowModal(prev => !prev)
-  }
+    setShowModal((prev) => !prev);
+  };
 
   return (
     <div
@@ -16,12 +15,10 @@ const Reviews = (props) => {
         display: "flex",
         flexWrap: "wrap",
         marginBottom: "20px",
-        marginTop: "20px"
+        marginTop: "20px",
       }}
     >
-      <div
-        className={styles.reviews}        
-      >
+      <div className={styles.reviews}>
         <div>
           {props.users.map((item, i) => (
             <div key={i}>
@@ -41,8 +38,18 @@ const Reviews = (props) => {
           ))}
         </div>
       </div>
-      <button className={styles.button} onClick={openModal}>Show all reviews</button>
-      <ReviewModal showModal={showModal} setShowModal={setShowModal} users={props.users} reviews={props.reviews} onClose={() => {setShowModal(false)}}/>
+      <button className={styles.button} onClick={openModal}>
+        Show all reviews
+      </button>
+      <ReviewModal
+        showModal={showModal}
+        setShowModal={setShowModal}
+        users={props.users}
+        reviews={props.reviews}
+        onClose={() => {
+          setShowModal(false);
+        }}
+      />
     </div>
   );
 };
