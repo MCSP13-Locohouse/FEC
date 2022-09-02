@@ -3,7 +3,6 @@ import styles from "../styles/Home.module.css";
 
 import Description from "../components/Description";
 import Reservations from "../components/Reservations";
-import React, { Component } from "react";
 import { Loader } from '@googlemaps/js-api-loader';
 import Map from "../components/Map";
 import Calendar from "../components/Calendar";
