@@ -2,12 +2,9 @@ import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import Description from "../components/Description";
 import Reservations from "../components/Reservations";
-
-import Map, { StaticGoogleMap, Marker, Path } from "../components/Map";
-import React, { Component } from "react";
+import Map from "../components/Map";
 import Calendar from "../components/Calendar";
-
-// import Map from "../components/Map";
+import React, { Component } from "react";
 import axios from "axios";
 
 export default class App extends Component {
@@ -15,14 +12,18 @@ export default class App extends Component {
     super(props);
     this.state = {
       property: {
-        id: -1,
+        prop_id: -1,
         title: "",
-        host: "",
+        price: "",
         specs: "",
         about: "",
-        space: "",
+        prop_space: "",
         guest: "",
         other: "",
+        number_street: "",
+        US_state: "",
+        zip: "",
+        host: "",
         amenities: [],
       },
     };
@@ -32,6 +33,9 @@ export default class App extends Component {
   handleProperty() {
     axios.get("/api/properties").then((response) => {
       console.log("Response.data.properties: ", response.data.properties);
+      this.setState((prevState) => ({
+        property: response.data.properties[0],
+      }));
     });
   }
 
