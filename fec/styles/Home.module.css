@@ -49,7 +49,7 @@
 /* Below is for the reservations_box */
 
 .reservations_box {
-  float: right; 
+  float: right;
   border-radius: 12px;
   width: 300px;
   height: 400px;
@@ -62,8 +62,8 @@
 
 .price {
   margin-right: 25px;
-  font-size:  20px;
-  float:left;
+  font-size: 20px;
+  float: left;
 }
 
 .stars {
@@ -83,54 +83,47 @@
 }
 
 .form {
-float: center;
-padding-right: 30px;
+  float: center;
+  padding-right: 30px;
 }
 
 .reserve_button {
-float: center;
-width: 80%;
-height: 50px;
-border-radius: 8px;
-margin-top: 10px;
-background-color: red;
-color: white;
-border-color: red;
+  float: center;
+  width: 80%;
+  height: 50px;
+  border-radius: 8px;
+  margin-top: 10px;
+  background-color: red;
+  color: white;
+  border-color: red;
 }
 
 .leftrespan {
-
-float: left;
+  float: left;
 }
 
 .rightrespan {
-
-float: right;
+  float: right;
 }
-
 
 .calendar {
   float: left;
-  }
+}
 
 .visitDates {
   min-height: 30px;
   background-color: white;
-  border: 3px solid  #ff7779
-
+  border: 3px solid #ff7779;
 }
 
 .guestEntry {
   margin: 1px grey;
-  padding: 10px
+  padding: 10px;
 }
 
 .spacer {
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding-top: 2px;
+  padding-bottom: 2px;
 }
 
-
-
-
-
+/* Above is for the reservations_box */

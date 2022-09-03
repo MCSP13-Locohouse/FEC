@@ -1,30 +1,41 @@
 .search_banner {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .search_bannerBtn:hover {
-    background-color: #ff7779 ;
-    font-weight: 900 ;
-    text-transform: inherit ;
-    color: white; 
-    cursor: pointer;
-  }
+  display: flex;
+  flex-direction: column;
+}
 
-  .visitDates {
-    min-height: 30px;
-    min-width: 100px;
-    background-color: white;
-    border: 1px solid  grey;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    padding: 3px 0px;
-    border-radius: 5px;
-    /* position: absolute; */
-  }
+.search_bannerBtn:hover {
+  background-color: #ff7779;
+  font-weight: 900;
+  text-transform: inherit;
+  color: white;
+  cursor: pointer;
+}
 
-  #check_in{
-    display: flex;
-    justify-content: space-evenly;
-  }
+.visitDates {
+  min-height: 30px;
+  min-width: 100px;
+  background-color: white;
+  border: 1px solid grey;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 3px 0px;
+  border-radius: 5px;
+  /* position: absolute; */
+}
+
+#check_in {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+#_next {
+  height: 100%;
+}
+
+#map {
+  height: 400px;
+  /* The height is 400 pixels */
+  width: 100%;
+  /* The width is the width of the web page */
+}
