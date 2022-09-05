@@ -110,12 +110,6 @@
   float: left;
 }
 
-.visitDates {
-  min-height: 30px;
-  background-color: white;
-  border: 3px solid #ff7779;
-}
-
 .guestEntry {
   margin: 1px grey;
   padding: 10px;

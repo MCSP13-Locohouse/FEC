@@ -3,15 +3,7 @@ import "react-date-range/dist/styles.css"; // main style file
 import "react-date-range/dist/theme/default.css"; // theme css file
 import { DateRange } from "react-date-range";
 
-function Calendar({ props, date, setDate }) {
-  // const [checkDate, setDate] = useState([
-  //   {
-  //     startDate: new Date(),
-  //     endDate: new Date(),
-  //     key: "selection",
-  //   },
-  // ]);
-
+function Calendar({ date, setDate, handleChange }) {
   return (
     <div className="search">
       <h2>Select checkout date</h2>
@@ -27,10 +19,12 @@ function Calendar({ props, date, setDate }) {
           direction={"horizontal"}
           editableDateInputs={true}
           minDate={new Date()}
+          value={date}
         />
       }
     </div>
   );
+  console.log(value);
 }
 
 export default Calendar;

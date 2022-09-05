@@ -13,20 +13,51 @@
 
 .visitDates {
   min-height: 30px;
-  min-width: 100px;
+  min-width: 125px;
+  font-size: 15px;
   background-color: white;
   border: 1px solid grey;
   display: flex;
-  align-items: center;
+  text-align: center;
+  /* align-items: center; */
   justify-content: space-around;
   padding: 3px 0px;
   border-radius: 5px;
   /* position: absolute; */
+  order: 3;
 }
 
 #check_in {
   display: flex;
   justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+#checkin {
+  order: 1;
+  min-height: 18px;
+  min-width: 125px;
+  font-size: 12px;
+}
+
+#checkout {
+  order: 2;
+  min-height: 18px;
+  min-width: 125px;
+  font-size: 12px;
+}
+
+input[name="btn1"] {
+  order: 3;
+}
+
+input[name="btn2"] {
+  order: 4;
+}
+
+.date {
+  order: 5;
+  margin-top: 5px;
 }
 
 #_next {
@@ -38,4 +69,50 @@
   /* The height is 400 pixels */
   width: 100%;
   /* The width is the width of the web page */
+}
+
+header {
+  display: flex;
+  justify-content: space-around;
+  /* z-index: 50;
+  grid-column: 3; */
+  /* position: sticky; */
+  top: 20px;
+  border-bottom-style: 1px solid #ff7779;
+  min-width: 100%;
+}
+
+img {
+  height: 80px;
+  /* object-fit: contain; */
+  display: flex;
+  cursor: pointer;
+}
+
+.middle {
+  margin-top: 22px;
+  height: 30px;
+  width: 300px;
+  border-radius: 9999px;
+  border: 1px solid grey;
+  padding: 8px;
+  box-shadow: 1px 1px 1px grey;
+}
+
+.headerSearch {
+  min-height: 30px;
+  border: none;
+  /* border-radius: 9999px; */
+  margin-top: 0px;
+  background: transparent;
+  outline: none;
+}
+
+.magnify {
+  height: 33px;
+  background-color: white;
+  color: #ff7779;
+  cursor: pointer;
+  float: right;
+  margin-top: 0px;
 }
