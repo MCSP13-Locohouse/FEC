@@ -1,6 +1,12 @@
 import React from "react";
 import Image from "next/image";
-import { MagnifyingGlassCircleIcon } from "@heroicons/react/24/solid";
+import {
+  MagnifyingGlassCircleIcon,
+  GlobeAltIcon,
+  Bars3Icon,
+  UserCircleIcon,
+  UserIcon,
+} from "@heroicons/react/24/solid";
 
 function Header() {
   return (
@@ -20,7 +26,14 @@ function Header() {
         <MagnifyingGlassCircleIcon className="magnify" />
       </div>
 
-      <div></div>
+      <div className="rightSide">
+        <p>Become a host</p>
+        <GlobeAltIcon className="globe" />
+        <div className="smallContainer">
+          <Bars3Icon className="menu" />
+          <UserCircleIcon className="circle" />
+        </div>
+      </div>
     </header>
   );
 }

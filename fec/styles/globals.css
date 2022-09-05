@@ -73,7 +73,7 @@ input[name="btn2"] {
 
 header {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   /* z-index: 50;
   grid-column: 3; */
   /* position: sticky; */
@@ -83,7 +83,9 @@ header {
 }
 
 img {
+  margin-right: 300px;
   height: 80px;
+  width: 150px;
   /* object-fit: contain; */
   display: flex;
   cursor: pointer;
@@ -91,6 +93,7 @@ img {
 
 .middle {
   margin-top: 22px;
+  margin-right: 150px;
   height: 30px;
   width: 300px;
   border-radius: 9999px;
@@ -115,4 +118,49 @@ img {
   cursor: pointer;
   float: right;
   margin-top: 0px;
+}
+
+.rightSide {
+  display: flex;
+  justify-content: end;
+  color: grey;
+  margin-left: 100px;
+}
+
+.globe {
+  height: 20px;
+  margin-top: 35px;
+  margin-left: 10px;
+  background-color: grey;
+  color: white;
+  border-radius: 9999px;
+}
+
+.smallContainer {
+  /* display: flex; */
+  height: 35px;
+  width: 60px;
+  padding-top: 3px;
+  margin-top: 25px;
+  margin-left: 15px;
+  align-items: center;
+  border: 1px solid grey;
+  border-radius: 9999px;
+}
+
+.menu {
+  height: 25px;
+  margin-top: 1px;
+  margin-left: 6px;
+}
+
+.circle {
+  height: 25px;
+  margin-top: 2px;
+}
+
+p {
+  margin-top: 35px;
+  margin-right: 10px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
