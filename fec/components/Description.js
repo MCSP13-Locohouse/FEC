@@ -1,9 +1,17 @@
-import React, { useEffect } from "react";
+import React, { useState } from "react";
+import styles from "../styles/Description.module.css";
 import Amenities from "./Amenities";
+import AmenitiesModal from "./AmenitiesModal";
 
 const Description = ({ property }) => {
+  const [showDModal, setShowDModal] = useState(false);
+
+  const openDModal = () => {
+    setShowDModal((prev) => !prev);
+  };
+
   return (
-    <div className="description">
+    <div className={styles.Description}>
       <h3 id="property-title">
         {property.title} hosted by {property.host || "one of our most trusted hosts"}
       </h3>
@@ -26,6 +34,17 @@ const Description = ({ property }) => {
             <Amenities amenities={property.amenities.ameniGroups[i].values} />
           </div>
         ))}
+        <button className={styles.button} onClick={openDModal}>
+          Show All Amenities
+        </button>
+        <AmenitiesModal
+          showDModal={showDModal}
+          setShowDModal={setShowDModal}
+          amenities={property.amenities.ameniGroups}
+          onClose={() => {
+            setShowDModal(false);
+          }}
+        />
       </div>
     </div>
   );
