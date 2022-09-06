@@ -24,7 +24,7 @@ export default class App extends Component {
         guest: "",
         other: "",
         number_street: "",
-        US_state: "",
+        us_state: "",
         zip: "",
         host: "",
         amenities: { ameniGroups: [] },
@@ -57,7 +57,7 @@ export default class App extends Component {
 
         <Calendar />
 
-        <Map property={this.props} test={this.state.property} />
+        <Map property={this.state.property} />
 
         <main className={styles.main}></main>
 
@@ -68,25 +68,3 @@ export default class App extends Component {
 }
 
 
-export async function getServerSideProps() {
-
-  // Fetch Lat/Long for given address
-  const apiKey = process.env.NEXT_PUBLIC_API_KEY;
-  // let address = '';
-  // 
-
-
-  let address = encodeURIComponent(`1600 pennsylvania ave, washington dc`);
-
-  const res = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=1${address}&key=${apiKey}`, {
-    mode: 'cors',
-    method: 'get'
-  });
-  let data = await res.json()
-  data = data.results[0];
-  //Lat/long for given address:
-  let locData = data.geometry.location;
-  console.log(process.env.DB_CONNECTION_URL)
-  // Pass data to the page via props
-  return { props: { locData } }
-}

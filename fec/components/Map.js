@@ -1,44 +1,32 @@
 import { useEffect, useRef } from 'react';
 import { Wrapper, Status } from "@googlemaps/react-wrapper";
 import { Loader } from "@googlemaps/js-api-loader"
+import axios from "axios";
 
 
-const Map = (props) => {
+export default function Map(props) {
+    let position;
+
     const googlemap = useRef(null)
     const apiKey = process.env.NEXT_PUBLIC_API_KEY;
-    const lat = props.property.locData.lat;
-    const long = props.property.locData.lng;
-    const position = { lat: lat, lng: long }
+
+
+    // const lat = props.property.locData.lat;
+    // const long = props.property.locData.lng;
+    //const position = { lat: 37.090350, lng: -77.969390 };
     //Will need to get location lat long props 
 
     useEffect(() => {
-        const loader = new Loader({
-            apiKey: apiKey,
-            version: "weekly",
-        });
-        let map;
-        loader
-            .load()
-            .then(() => {
-                const google = window.google;
-                map = new google.maps.Map(googlemap.current, {
-                    center: position,
-                    zoom: 15,
-                    styles: style,
-                });
-                const marker = new google.maps.Marker({
-                    position,
-                    map,
-                    label: `Your AirBnB is Here`,
-                })
-            })
+        if (props.property.zip.length > 4) {
+            getLatLong(props, apiKey, googlemap);
+        }
 
     });
 
     return (
         <div id="map" ref={googlemap} />
-    );
-}
+    )
+};
 
 const style = [
     {
@@ -253,4 +241,71 @@ const style = [
 
 
 
-export default Map;
+export async function getLatLong(props, apiKey, googlemap) {
+    let address = encodeURIComponent(props.property.number_street + ', ' + props.property.us_state + " " + props.property.zip);
+    let locData = {};
+
+    const loader = new Loader({
+        apiKey: apiKey,
+        version: "weekly",
+    });
+
+    axios.get(`/api/getLatLong?${address}`).then((response) => {
+        locData = response.data;
+        let map;
+        loader
+            .load()
+            .then(() => {
+                const google = window.google;
+                map = new google.maps.Map(googlemap.current, {
+                    center: locData,
+                    zoom: 15,
+                    styles: style,
+                });
+                // const marker = new google.maps.Marker({
+                //     position: locData,
+                //     map,
+                //     label: `Your AirBnB is Here`,
+                // })
+                setMarkers(map, locData);
+
+            })
+        return locData;
+    }).catch((err) => {
+        console.log(err)
+    });
+    return locData;
+}
+
+function setMarkers(map, locData) {
+    // Adds markers to the map.
+    // Marker sizes are expressed as a Size of X,Y where the origin of the image
+    // (0,0) is located in the top left of the image.
+    // Origins, anchor positions and coordinates of the marker increase in the X
+    // direction to the right and in the Y direction down.
+    const image = {
+        url: "https://upload.wikimedia.org/wikipedia/commons/6/69/Airbnb_Logo_B%C3%A9lo.svg",
+        // This marker is 20 pixels wide by 32 pixels high.
+        size: new google.maps.Size(100, 100),
+        // The origin for this image is (0, 0).
+        origin: new google.maps.Point(0, 0),
+        // The anchor for this image is the base of the flagpole at (0, 32).
+        anchor: new google.maps.Point(0, 32),
+    };
+    // Shapes define the clickable region of the icon. The type defines an HTML
+    // <area> element 'poly' which traces out a polygon as a series of X,Y points.
+    // The final coordinate closes the poly by connecting to the first coordinate.
+    const shape = {
+        coords: [1, 1, 1, 20, 18, 20, 18, 1],
+        type: "poly",
+    }
+
+    new google.maps.Marker({
+        position: locData,
+        map,
+        icon: image,
+        shape: shape,
+        title: `Your AirBnB is Here`,
+        zIndex: 2,
+    });
+}
