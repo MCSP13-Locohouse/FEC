@@ -45,16 +45,13 @@ export default class App extends Component {
     this.handleDates = this.handleDates.bind(this);
   }
 
+
   componentDidMount() {
     axios.get("/api/properties").then((response) => {
       this.setState((prevState) => ({
         property: response.data.properties[0],
       }));
     });
-  }
-
-  componentDidMount() {
-    axios.get("/api/properties").then((res) => {});
 
     axios.get("/api/users").then((res) => {
       this.setState({ users: res.data.users });
