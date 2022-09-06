@@ -6,6 +6,7 @@ import { format } from "date-fns";
 
 function Search({ date, setDate, openDate, setOpenDate, handleChange }) {
   return (
+
     <div id={"check_in"}>
       <div id="checkin">CHECK-IN</div>
       <input
