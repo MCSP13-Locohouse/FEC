@@ -1,7 +1,7 @@
 import postgres from "postgres";
 import dotenv from "dotenv";
 
-const sql = postgres(process.env.NEXT_PUBLIC_DB_CONNECTION_URL);
+const sql = postgres(process.env.DB_CONNECTION_URL);
 
 export default async function propertiesHandler(req, res) {
   if (req.method === "GET") {

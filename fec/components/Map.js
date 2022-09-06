@@ -286,11 +286,11 @@ function setMarkers(map, locData) {
     const image = {
         url: "https://upload.wikimedia.org/wikipedia/commons/6/69/Airbnb_Logo_B%C3%A9lo.svg",
         // This marker is 20 pixels wide by 32 pixels high.
-        size: new google.maps.Size(100, 100),
+        size: new google.maps.Size(100, 210),
         // The origin for this image is (0, 0).
         origin: new google.maps.Point(0, 0),
         // The anchor for this image is the base of the flagpole at (0, 32).
-        anchor: new google.maps.Point(0, 32),
+        anchor: new google.maps.Point(0, 0),
     };
     // Shapes define the clickable region of the icon. The type defines an HTML
     // <area> element 'poly' which traces out a polygon as a series of X,Y points.
@@ -305,7 +305,6 @@ function setMarkers(map, locData) {
         map,
         icon: image,
         shape: shape,
-        title: `Your AirBnB is Here`,
-        zIndex: 2,
+        label: `Your AirBnB is Here`,
     });
 }
