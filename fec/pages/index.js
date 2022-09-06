@@ -2,17 +2,16 @@ import styles from "../styles/Home.module.css";
 import Description from "../components/Description";
 import Reservations from "../components/Reservations";
 
-// import { Loader } from "@googlemaps/js-api-loader";
-// import Map from "../components/Map";
+import { Loader } from "@googlemaps/js-api-loader";
+import Map from "../components/Map";
 
 import React, { Component } from "react";
 import Reviews from "../components/Review";
 import axios from "axios";
 import Header from "../components/Header";
 
-import Map, { StaticGoogleMap, Marker, Path } from "../components/Map";
+// import Map, { StaticGoogleMap, Marker, Path } from "../components/Map";
 import Calendar from "../components/Calendar";
-
 
 export default class App extends Component {
   constructor(props) {
@@ -79,12 +78,9 @@ export default class App extends Component {
   render() {
     return (
       <div className={styles.container}>
-
-        <Head>
+        <Header>
           <title>chairbnb</title>
-        </Head>
-
-        <Description property={this.state.property} />
+        </Header>
 
         <Reservations
           property={this.state.property}
@@ -100,9 +96,7 @@ export default class App extends Component {
 
         {/* <Map property={this.props} /> */}
 
-
         <footer className={styles.footer}></footer>
-
       </div>
     );
   }
