@@ -34,8 +34,8 @@ export default class App extends Component {
     };
   }
 
-  componentDidMount() {
 
+  componentDidMount() {
     axios.get("/api/properties").then((response) => {
       this.setState((prevState) => ({
         property: response.data.properties[0],
