@@ -50,10 +50,6 @@ export default class App extends Component {
         property: response.data.properties[0],
       }));
     });
-  }
-
-  componentDidMount() {
-    axios.get("/api/properties").then((res) => {});
 
     axios.get("/api/users").then((res) => {
       this.setState({ users: res.data.users });
@@ -87,12 +83,8 @@ export default class App extends Component {
         <Head>
           <title>chairbnb</title>
         </Head>
-        <Header />
 
-        <Description
-          property={this.state.property}
-          handleProperty={this.handleProperty}
-        />
+        <Description property={this.state.property} />
 
         <Reservations
           property={this.state.property}
@@ -102,12 +94,11 @@ export default class App extends Component {
 
         {/* <Calendar /> */}
 
-        <Reviews reviews={this.state.comments} users={this.state.users} />
+        <Description property={this.state.property} />
 
-        {/* /* <Map property={this.props} /> */}
+        <Calendar />
 
-        <main className={styles.main}></main>
-
+        {/* <Map property={this.props} /> */}
 
 
         <footer className={styles.footer}></footer>
