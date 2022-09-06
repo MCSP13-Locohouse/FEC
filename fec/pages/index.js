@@ -88,7 +88,7 @@ export default class App extends Component {
           handleDates={this.handleDates}
         />
 
-        <Description property={this.state.property} />
+        <Description property={this.state.property} host={this.state.users} />
 
         <Reviews reviews={this.state.comments} users={this.state.users} />
 

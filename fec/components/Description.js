@@ -4,7 +4,7 @@ import Amenities from "./Amenities";
 import AmenitiesModal from "./AmenitiesModal";
 import AboutModal from "./AboutModal";
 
-const Description = ({ property }) => {
+const Description = ({ property, host }) => {
   const [showDModal, setShowDModal] = useState(false);
   const [showAModal, setShowAModal] = useState(false);
 
@@ -18,12 +18,11 @@ const Description = ({ property }) => {
 
   return (
     <div className={styles.Description}>
-      <h3 id="property-title">
-        {property.title} hosted by {property.host || "one of our most trusted hosts"}
-      </h3>
+      <h2 id="property-title">
+        {property.title} hosted by {host[0].name_firstlast || "one of our most trusted hosts"}
+      </h2>
       <p id="property-specs">{property.specs}</p>
-      <div id="property-description">
-        <h2>About this space</h2>
+      <div className={styles.propDesc}>
         <p id="about">{property.about}</p>
         <h3>The space</h3>
         <p id="space">{property.prop_space}</p>

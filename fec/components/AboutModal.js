@@ -15,7 +15,7 @@ const AboutModal = ({ showAModal, setShowAModal, onClose, property }) => {
               </button>
             </div>
             <div className={styles.about}>
-              <h2>About this space</h2>
+              <h1>About this space</h1>
               <p id="about">{property.about}</p>
               <h3>The space</h3>
               <p id="space">{property.prop_space}</p>
