@@ -11,9 +11,9 @@ const serviceFee = 41;
 
 function retNights(date1, date2) {
   let result = Math.floor((((((date2 - date1)/1000)/60)/60)/24));
-  console.log(date2);
-  console.log(date1);
-  console.log(result)
+  // console.log(date2);
+  // console.log(date1);
+  // console.log(result)
   return result;
 }
 
@@ -27,8 +27,8 @@ const Reservations = ({ property, handleDates }) => {
       key: "selection",
     },
   ]);
-  console.log(date[0].startDate);
-  console.log(date[0].endDate);
+  // console.log(date[0].startDate);
+  // console.log(date[0].endDate);
   const handleChange = (e) => {
     e.preventDefault();
     setDate({
@@ -36,8 +36,8 @@ const Reservations = ({ property, handleDates }) => {
       startDate: e.currentTarget.value,
       endDate: e.currentTarget.value,
     });
-    console.log(date[0].startDate);
-    console.log(e.currentTarget.value);
+    // console.log(date[0].startDate);
+    // console.log(e.currentTarget.value);
   };
   const resTotal = parseInt(property.price* Math.floor(((((((date[0].endDate) - (date[0].startDate))/1000)/60)/60)/24))) + parseInt(cleaningFee) + parseInt(serviceFee);
 

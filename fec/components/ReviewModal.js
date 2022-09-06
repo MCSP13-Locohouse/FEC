@@ -3,7 +3,11 @@ import styles from "../styles/ReviewModal.module.css";
 
 const ReviewModal = ({ showModal, setShowModal, onClose, users, reviews }) => {
   const [modal, setModal] = useState(false);
+  const [reviewAvg, setReviewAvg] = useState([])
   // console.log(users);
+  // reviewBar = (num) => {
+    
+  // }
   return (
     <>
       {showModal ? (

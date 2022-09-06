@@ -2,11 +2,8 @@ import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import Description from "../components/Description";
 import Reservations from "../components/Reservations";
-import Head from "next/head";
-
 // import { Loader } from "@googlemaps/js-api-loader";
 // import Map from "../components/Map";
-
 import React, { Component } from "react";
 import Reviews from "../components/Review";
 import Calendar from "../components/Calendar";
@@ -113,7 +110,7 @@ export default class App extends Component {
           <title>chairbnb</title>
         </Head>
         <Gallery />
-        <Description property={this.state.property} />
+        {/* <Description property={this.state.property} /> */}
 
         <Reservations
           property={this.state.property}
@@ -123,10 +120,10 @@ export default class App extends Component {
 
         {/* <Calendar /> */}
 
-        <Description property={this.state.property} />
+        {/* <Description property={this.state.property} /> */}
 
         <Calendar />
-
+        <Reviews reviews={this.state.comments} users={this.state.users} />
         {/* <Map property={this.props} /> */}
 
 
