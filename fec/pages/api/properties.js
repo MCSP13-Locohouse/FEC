@@ -16,4 +16,3 @@ export default async function propertiesHandler(req, res) {
     res.status(400).json({ msg: "You messed up" });
   }
 }
-

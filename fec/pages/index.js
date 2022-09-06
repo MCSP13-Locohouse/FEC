@@ -88,9 +88,9 @@ export default class App extends Component {
           handleDates={this.handleDates}
         />
 
-        {/* <Calendar /> */}
-
         <Description property={this.state.property} />
+
+        <Reviews reviews={this.state.comments} users={this.state.users} />
 
         <Calendar />
 
