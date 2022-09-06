@@ -2,8 +2,6 @@
   padding: 0 2rem;
 }
 
-
-
 .footer {
   display: flex;
   flex: 1;
@@ -101,18 +99,20 @@
 }
 
 .leftrespan {
-
   float: left;
 }
 
 .rightrespan {
-
   float: right;
+}
+
+.calendar {
+  float: left;
 }
 
 .guestEntry {
   margin: 1px grey;
-  padding: 10px
+  padding: 10px;
 }
 
 .spacer {
