@@ -1,13 +1,18 @@
-import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import Description from "../components/Description";
 import Reservations from "../components/Reservations";
-import { Loader } from "@googlemaps/js-api-loader";
-import Map from "../components/Map";
+
+// import { Loader } from "@googlemaps/js-api-loader";
+// import Map from "../components/Map";
+
 import React, { Component } from "react";
 import Reviews from "../components/Review";
-import Calendar from "../components/Calendar";
 import axios from "axios";
+import Header from "../components/Header";
+
+import Map, { StaticGoogleMap, Marker, Path } from "../components/Map";
+import Calendar from "../components/Calendar";
+
 
 export default class App extends Component {
   constructor(props) {
@@ -31,7 +36,12 @@ export default class App extends Component {
       comments: [],
       stars: "",
       users: [],
+      reservations: {
+        startDate: [],
+        endDate: [],
+      },
     };
+    this.handleDates = this.handleDates.bind(this);
   }
 
   componentDidMount() {
@@ -47,29 +57,52 @@ export default class App extends Component {
 
     axios.get("/api/comments").then((res) => {
       this.setState({ comments: res.data.comments });
+      console.log(res.data.comments);
+    });
+
+    axios.get("/api/reservations").then((res) => {
+      this.setState({
+        startDate: res.data.startDate,
+        endDate: res.data.endDate,
+      });
+    });
+  }
+
+  handleDates(e) {
+    console.log("Hi");
+    this.setState({
+      startDate: e.currentTarget.value,
+      endDate: e.currentTarget.value,
     });
   }
 
   render() {
     return (
       <div className={styles.container}>
+
         <Head>
-          <title>Create Next App</title>
+          <title>chairbnb</title>
         </Head>
 
         <Description property={this.state.property} />
 
-        <Reservations property={this.state.property} />
+        <Reservations
+          property={this.state.property}
+          reservations={this.state.reservations}
+          handleDates={this.handleDates}
+        />
 
-        <Reviews reviews={this.state.comments} users={this.state.users} />
+        {/* <Calendar /> */}
+
+        <Description property={this.state.property} />
 
         <Calendar />
 
         {/* <Map property={this.props} /> */}
 
-        <main className={styles.main}></main>
 
         <footer className={styles.footer}></footer>
+
       </div>
     );
   }
@@ -79,15 +112,20 @@ export default class App extends Component {
 //   // Fetch Lat/Long for given address
 //   const apiKey = process.env.NEXT_PUBLIC_API_KEY;
 
-//   const res = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=1644+Platte+St,+Denver,+CO+80202&key=${apiKey}`, {
-//     mode: 'cors',
-//     method: 'get'
-//   });
-//   let data = await res.json()
+//   const res = await fetch(
+//     `https://maps.googleapis.com/maps/api/geocode/json?address=1644+Platte+St,+Denver,+CO+80202&key=${apiKey}`,
+//     {
+//       mode: "cors",
+//       method: "get",
+//     }
+//   );
+
+//   let data = await res.json();
+//   console.log(data);
 //   data = data.results[0];
 //   //Lat/long for given address:
-//   let locData = data.geometry.location;
+//   let locData = await data.geometry.location;
 
 //   // Pass data to the page via props
-//   return { props: { locData } }
+//   return { props: { locData } };
 // }
