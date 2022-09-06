@@ -2,7 +2,9 @@ import postgres from "postgres";
 import dotenv from "dotenv";
 dotenv.config();
 const { DATABASE_URL, PORT, NODE_ENV } = process.env;
+
 const sql = postgres(DATABASE_URL);
+
 
 export default async function commentsHandler(req, res) {
   if (req.method === "GET") {

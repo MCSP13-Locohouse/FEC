@@ -1,6 +1,7 @@
 import postgres from "postgres";
 
 const { DATABASE_URL, PORT, NODE_ENV } = process.env;
+
 const sql = postgres(DATABASE_URL);
 
 export default async function usersHandler(req, res) {
