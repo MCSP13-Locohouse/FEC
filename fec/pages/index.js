@@ -8,6 +8,8 @@ import React, { Component } from "react";
 import Reviews from "../components/Review";
 import Calendar from "../components/Calendar";
 import axios from "axios";
+import Gallery from "../components/Gallery";
+import Amenities from "../components/Amenities";
 const apiKey = process.env.NEXT_PUBLIC_API_KEY;
     console.log(process.env, "this is process")
 export default class App extends Component {
@@ -40,17 +42,14 @@ export default class App extends Component {
     this.handleDates = this.handleDates.bind(this);
   }
 
+
   componentDidMount() {
+    
     axios.get("/api/properties").then((response) => {
       this.setState((prevState) => ({
         property: response.data.properties[0],
       }));
     });
-  }
-
-  componentDidMount() {
-    
-    axios.get("/api/properties").then((res) => {});
 
     axios.get("/api/users").then((res) => {
       this.setState({ users: res.data.users });
@@ -110,7 +109,7 @@ export default class App extends Component {
         <Head>
           <title>chairbnb</title>
         </Head>
-
+        <Gallery />
         <Description property={this.state.property} />
 
         <Reservations
@@ -125,7 +124,7 @@ export default class App extends Component {
 
         <Calendar />
 
-        {/* {/* <Map property={this.props} /> */} */}
+        {/* <Map property={this.props} /> */}
 
 
         <footer className={styles.footer}></footer>

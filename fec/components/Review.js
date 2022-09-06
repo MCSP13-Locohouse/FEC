@@ -3,7 +3,7 @@ import styles from "../styles/Review.module.css";
 import ReviewModal from "./ReviewModal";
 const Reviews = (props) => {
   const [showModal, setShowModal] = useState(false);
-  const [reviewAvg, setReviewAvg] = useState([])
+  
 
   const openModal = () => {
     setShowModal((prev) => !prev);

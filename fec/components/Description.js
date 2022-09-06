@@ -21,7 +21,7 @@ const Description = ({ property }) => {
       <div id="amenities">
         <h2>What this place offers</h2>
         {property.amenities.ameniGroups.map((group, i) => (
-          <div classname="ameniGroup" key={i}>
+          <div className="ameniGroup" key={i}>
             <h3>{group.title}</h3>
             <Amenities amenities={property.amenities.ameniGroups[i].values} />
           </div>
