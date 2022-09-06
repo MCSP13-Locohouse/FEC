@@ -32,10 +32,14 @@ export default class App extends Component {
       comments: [],
       stars: "",
       users: [],
+      reservations: {
+        startDate: [],
+        endDate: [],
+      },
     };
+    this.handleDates = this.handleDates.bind(this);
   }
 
-  
   componentDidMount() {
     axios.get("/api/properties").then((response) => {
       this.setState((prevState) => ({
@@ -54,6 +58,22 @@ export default class App extends Component {
 
     axios.get("/api/comments").then((res) => {
       this.setState({ comments: res.data.comments });
+      console.log(res.data.comments);
+    });
+
+    axios.get("/api/reservations").then((res) => {
+      this.setState({
+        startDate: res.data.startDate,
+        endDate: res.data.endDate,
+      });
+    });
+  }
+
+  handleDates(e) {
+    console.log("Hi");
+    this.setState({
+      startDate: e.currentTarget.value,
+      endDate: e.currentTarget.value,
     });
 
     axios
@@ -86,33 +106,46 @@ export default class App extends Component {
   render() {
     return (
       <div className={styles.container}>
+
         <Head>
-          <title>Create Next App</title>
+          <title>chairbnb</title>
         </Head>
 
-        <Description
+        <Description property={this.state.property} />
+
+        <Reservations
           property={this.state.property}
-          handleProperty={this.handleProperty}
+          reservations={this.state.reservations}
+          handleDates={this.handleDates}
         />
 
-        <Reservations property={this.state.property}/>
+        {/* <Calendar /> */}
 
-        <Reviews reviews={this.state.comments} users={this.state.users} />
+        <Description property={this.state.property} />
 
         <Calendar />
 
-        {/* <Map property={this.props} />
+        {/* {/* <Map property={this.props} /> */} */}
 
-        <Map property={this.props} /> */}
-
-        <main className={styles.main}></main>
 
         <footer className={styles.footer}></footer>
+
       </div>
     );
   }
 }
 
+// export async function getServerSideProps() {
+//   // Fetch Lat/Long for given address
+//   const apiKey = process.env.NEXT_PUBLIC_API_KEY;
+
+//   const res = await fetch(
+//     `https://maps.googleapis.com/maps/api/geocode/json?address=1644+Platte+St,+Denver,+CO+80202&key=${apiKey}`,
+//     {
+//       mode: "cors",
+//       method: "get",
+//     }
+//   );
 
 // export async function getServerSideProps() {
 //   // Fetch Lat/Long for given address

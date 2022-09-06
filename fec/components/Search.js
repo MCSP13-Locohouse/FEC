@@ -1,31 +1,43 @@
 import React, { useState } from "react";
 import "react-date-range/dist/styles.css"; // main style file
 import "react-date-range/dist/theme/default.css"; // theme css file
-import {
-  DateRangePicker,
-  DateRange,
-  Calendar,
-  DefinedRange,
-} from "react-date-range";
+import { DateRange } from "react-date-range";
+import { format } from "date-fns";
 
-function Search() {
-  const [startDate, setStartDate] = useState(new Date());
-  const [endDate, setEndDate] = useState(new Date());
-
-  const selectionRange = {
-    startDate: startDate,
-    endDate,
-    key: "selection",
-  };
-
-  function handleSelect(ranges) {
-    setStartDate(ranges.selection.startDate);
-    setEndDate(ranges.selection.endDate);
-  }
-
+function Search({ date, setDate, openDate, setOpenDate, handleChange }) {
   return (
-    <div className="search">
-      <DateRangePicker ranges={[selectionRange]} onChange={handleSelect} />
+
+    <div id={"check_in"}>
+      <div id="checkin">CHECK-IN</div>
+      <input
+        name="btn1"
+        type="button"
+        className="visitDates"
+        onClick={() => setOpenDate(!openDate)}
+        value={`${format(date[0].startDate, "MM/dd/yyyy")}`}
+        onChange={handleChange}
+        // onChange={(e) => setDate({ startDate: e.target.value })}
+      />
+      <div id="checkout">CHECKOUT</div>
+      <input
+        name="btn2"
+        type="button"
+        className="visitDates"
+        onClick={() => setOpenDate(!openDate)}
+        value={`${format(date[0].endDate, "MM/dd/yyyy")}`}
+        onChange={handleChange}
+        // onChange={(e) => setDate({ endDate: e.target.value })}
+      />
+      {openDate && (
+        <DateRange
+          editableDateInputs={true}
+          onChange={(item) => setDate([item.selection])}
+          // onchange={handleChange}
+          moveRangeOnFirstSelection={false}
+          ranges={date}
+          className="date"
+        />
+      )}
     </div>
   );
 }
