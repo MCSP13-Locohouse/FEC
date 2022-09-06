@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import "react-date-range/dist/styles.css"; // main style file
-import "react-date-range/dist/theme/default.css"; // theme css file
-import {
-  DateRangePicker,
-  DateRange,
-  Calendar,
-  DefinedRange,
-} from "react-date-range";
+// import "react-date-range/dist/styles.css"; // main style file
+// import "react-date-range/dist/theme/default.css"; // theme css file
+// import {
+//   DateRangePicker,
+//   DateRange,
+//   Calendar,
+//   DefinedRange,
+// } from "react-date-range";
 
 function Search() {
   const [startDate, setStartDate] = useState(new Date());
@@ -25,7 +25,8 @@ function Search() {
 
   return (
     <div className="search">
-      hi
+
+
       <DateRangePicker ranges={[selectionRange]} onChange={handleSelect} />
     </div>
   );
