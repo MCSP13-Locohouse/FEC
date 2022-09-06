@@ -1,13 +1,12 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
-
 import Description from "../components/Description";
 import Reservations from "../components/Reservations";
 import { Loader } from '@googlemaps/js-api-loader';
 import Map from "../components/Map";
+import React, { Component } from "react";
+import Reviews from "../components/Review";
 import Calendar from "../components/Calendar";
-
-import React, { Component, useState } from "react";
 import axios from "axios";
 
 export default class App extends Component {
@@ -29,21 +28,51 @@ export default class App extends Component {
         host: "",
         amenities: { ameniGroups: [] },
       },
+      comments: [],
+      stars: "",
+      users: [],
+      mapLocation: "",
     };
   }
 
-  componentDidMount() {
 
+  componentDidMount() {
     axios.get("/api/properties").then((response) => {
-      console.log(
-        "Testing ability to parse response.data.properties[0] ",
-        response.data.properties[0]
-      );
       this.setState((prevState) => ({
         property: response.data.properties[0],
       }));
-    });
+    })
+      .then(() => {
+        axios.get("/api/users").then((res) => {
+          this.setState({ users: res.data.users });
+        })
+      })
+      .then(() => {
+        axios.get("/api/users").then((res) => {
+          this.setState({ users: res.data.users });
+        })
+      })
+      .then(() => {
+        axios.get("/api/comments").then((res) => {
+          this.setState({ comments: res.data.comments });
+        })
+      }).then(() => {
+        const apiKey = process.env.NEXT_PUBLIC_API_KEY;
+        let address = encodeURIComponent(this.state.property.number_street + ', ' + this.state.property.us_state + " " + this.state.property.zip);
+
+        fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${apiKey}`, {
+          mode: 'cors',
+          method: 'get'
+        }).then((response) => {
+          return response.json()
+        }).then((locData) => {
+          this.setState({ mapLocation: locData.results[0]['geometry']['location'] })
+        });
+      });
+
+
   }
+
 
   render() {
     return (
@@ -52,12 +81,19 @@ export default class App extends Component {
           <title>Create Next App</title>
         </Head>
 
-        <Description property={this.state.property} handleProperty={this.handleProperty} />
+        <Description
+          property={this.state.property}
+          handleProperty={this.handleProperty}
+        />
 
+        <Reservations property={this.state.property} />
+
+        <Reviews reviews={this.state.comments} users={this.state.users} />
 
         <Calendar />
 
-        <Map property={this.state.property} />
+        <Map location={this.state.mapLocation} />
+
 
         <main className={styles.main}></main>
 

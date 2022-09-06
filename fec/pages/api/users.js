@@ -1,13 +1,14 @@
 import postgres from "postgres";
 
-const sql = postgres(process.env.DB_CONNECTION_URL);
+const { DATABASE_URL, PORT, NODE_ENV } = process.env;
+const sql = postgres(DATABASE_URL);
 
-export default async function propertiesHandler(req, res) {
+export default async function usersHandler(req, res) {
   if (req.method === "GET") {
     try {
-      const properties = await sql`
-      SELECT * FROM properties`;
-      res.status(200).json({ properties });
+      const users = await sql`
+      SELECT * FROM customers`;
+      res.status(200).json({ users });
     } catch (err) {
       console.error(err);
       return res.status(500).json({ msg: "Messed up on our end" });
@@ -16,4 +17,3 @@ export default async function propertiesHandler(req, res) {
     res.status(400).json({ msg: "You messed up" });
   }
 }
-

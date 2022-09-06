@@ -6,20 +6,15 @@ import axios from "axios";
 
 export default function Map(props) {
     let position;
-
-    const googlemap = useRef(null)
+    const googlemap = useRef(null);
     const apiKey = process.env.NEXT_PUBLIC_API_KEY;
-
-
     // const lat = props.property.locData.lat;
     // const long = props.property.locData.lng;
     //const position = { lat: 37.090350, lng: -77.969390 };
     //Will need to get location lat long props 
 
     useEffect(() => {
-        if (props.property.zip.length > 4) {
-            getLatLong(props, apiKey, googlemap);
-        }
+        renderMap(props, apiKey, googlemap);
 
     });
 
@@ -241,39 +236,35 @@ const style = [
 
 
 
-export async function getLatLong(props, apiKey, googlemap) {
-    let address = encodeURIComponent(props.property.number_street + ', ' + props.property.us_state + " " + props.property.zip);
-    let locData = {};
-
+export async function renderMap(props, apiKey, googlemap) {
+    console.log('mapjs renderMap props: ', props)
     const loader = new Loader({
-        apiKey: apiKey,
+        apiKey,
         version: "weekly",
     });
+    let locData = props.location;
+    let map;
 
-    axios.get(`/api/getLatLong?${address}`).then((response) => {
-        locData = response.data;
-        let map;
-        loader
-            .load()
-            .then(() => {
-                const google = window.google;
-                map = new google.maps.Map(googlemap.current, {
-                    center: locData,
-                    zoom: 15,
-                    styles: style,
-                });
-                // const marker = new google.maps.Marker({
-                //     position: locData,
-                //     map,
-                //     label: `Your AirBnB is Here`,
-                // })
-                setMarkers(map, locData);
+    loader
+        .load()
+        .then(() => {
+            const google = window.google;
+            map = new google.maps.Map(googlemap.current, {
+                center: locData, //look this up
+                zoom: 15,
+                styles: style,
+            });
+            // const marker = new google.maps.Marker({
+            //     position: locData,
+            //     map,
+            //     label: `Your AirBnB is Here`,
+            // })
+            setMarkers(map, locData);
 
-            })
-        return locData;
-    }).catch((err) => {
-        console.log(err)
-    });
+            return locData;
+        }).catch((err) => {
+            console.log(err)
+        });
     return locData;
 }
 

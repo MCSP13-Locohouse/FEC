@@ -1,6 +1,5 @@
 
-
-export default async function getLatLong(req, res) {
+async function getLatLong(req, res) {
     let locData;
     if (req.method === "GET") {
         //console.log('getLatLong.js : ', req._parsedUrl.query);
