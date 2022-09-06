@@ -1,6 +1,7 @@
 import styles from "../styles/Home.module.css";
 import Description from "../components/Description";
 import Reservations from "../components/Reservations";
+import Head from "next/head";
 
 // import { Loader } from "@googlemaps/js-api-loader";
 // import Map from "../components/Map";
@@ -44,6 +45,7 @@ export default class App extends Component {
     };
     this.handleDates = this.handleDates.bind(this);
   }
+
 
   componentDidMount() {
     axios.get("/api/properties").then((response) => {
