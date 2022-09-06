@@ -78,6 +78,9 @@ export default class App extends Component {
   render() {
     return (
       <div className={styles.container}>
+        <Head>
+          <title>chairbnb</title>
+        </Head>
         <Header />
 
         <Description
