@@ -1,6 +1,9 @@
 import postgres from "postgres";
 
-const sql = postgres(process.env.DB_CONNECTION_URL);
+// const sql = postgres(process.env.DB_CONNECTION_URL);
+const sql = postgres(process.env.DATABASE_URL);
+
+postgres("postgres://user:password@host:port/database");
 
 export default async function propertiesHandler(req, res) {
   if (req.method === "GET") {
@@ -16,4 +19,3 @@ export default async function propertiesHandler(req, res) {
     res.status(400).json({ msg: "You messed up" });
   }
 }
-

@@ -13,7 +13,7 @@ function retNights(date1, date2) {
   return date2 - date1;
 }
 
-const Reservations = ({ property, reservations, handleDates }) => {
+const Reservations = ({ property, reservations }) => {
   const [openDate, setOpenDate] = useState(false);
   const [date, setDate] = useState([
     {
@@ -103,7 +103,7 @@ const Reservations = ({ property, reservations, handleDates }) => {
           <b>{resTotal}</b>
         </span>
       </div>
-      <Calendar date={date} setDate={setDate} onChange={handleDates} />
+      <Calendar date={date} setDate={setDate} />
     </div>
   );
 };
