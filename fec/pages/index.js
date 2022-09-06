@@ -34,9 +34,6 @@ export default class App extends Component {
     };
   }
 
-  // componentDidMount() {
-  // }
-
   componentDidMount() {
     axios.get("/api/properties").then((response) => {
       this.setState((prevState) => ({
@@ -60,7 +57,7 @@ export default class App extends Component {
           <title>Create Next App</title>
         </Head>
 
-        <Description property={this.state.property} handleProperty={this.handleProperty} />
+        <Description property={this.state.property} />
 
         <Reservations property={this.state.property} />
 

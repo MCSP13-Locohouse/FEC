@@ -1,9 +1,8 @@
 import React, { useEffect } from "react";
 
-const Description = ({ property, handleProperty }) => {
+const Description = ({ property }) => {
   return (
     <div className="description">
-      <button onClick={handleProperty}>Test fetch</button>
       <h3 id="property-title">
         {property.title} hosted by {property.host || "one of our most trusted hosts"}
       </h3>
@@ -20,13 +19,11 @@ const Description = ({ property, handleProperty }) => {
       </div>
       <div id="amenities">
         <h2>What this place offers</h2>
-        {property.amenities.ameniGroups.map((group) => (
+        {property.amenities.ameniGroups.map((group, i) => (
           <>
-            <h3>{group.title}</h3>
-            {group.values.map((value) => (
-              <ul>
-                <li>{value}</li>
-              </ul>
+            <h3 key={`${group.title}:${i}`}>{group.title}</h3>
+            {group.values.map((value, i) => (
+              <li key={`${value}:${i}`}>{value}</li>
             ))}
           </>
         ))}
