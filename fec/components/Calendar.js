@@ -3,7 +3,7 @@ import "react-date-range/dist/styles.css"; // main style file
 import "react-date-range/dist/theme/default.css"; // theme css file
 import { DateRange } from "react-date-range";
 
-function Calendar({ date, setDate, handleChange }) {
+function Calendar({ date, setDate }) {
   return (
     <div className="search">
       <h2>Select checkout date</h2>
