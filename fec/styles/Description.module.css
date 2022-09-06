@@ -27,3 +27,7 @@
 .button:active {
   transform: scale(0.96);
 }
+
+.link:hover {
+  cursor: pointer;
+}

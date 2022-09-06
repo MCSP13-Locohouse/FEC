@@ -2,12 +2,18 @@ import React, { useState } from "react";
 import styles from "../styles/Description.module.css";
 import Amenities from "./Amenities";
 import AmenitiesModal from "./AmenitiesModal";
+import AboutModal from "./AboutModal";
 
 const Description = ({ property }) => {
   const [showDModal, setShowDModal] = useState(false);
+  const [showAModal, setShowAModal] = useState(false);
 
   const openDModal = () => {
     setShowDModal((prev) => !prev);
+  };
+
+  const openAModal = () => {
+    setShowAModal((prev) => !prev);
   };
 
   return (
@@ -25,6 +31,17 @@ const Description = ({ property }) => {
         <p id="guest-access">{property.guest}</p>
         <h3>Other things to note</h3>
         <p id="other">{property.other}</p>
+        <u className={styles.link} onClick={openAModal}>
+          Show more
+        </u>
+        <AboutModal
+          showDModal={showDModal}
+          setShowDModal={setShowAModal}
+          property={property}
+          onClose={() => {
+            setShowAModal(false);
+          }}
+        />
       </div>
       <div id="amenities">
         <h2>What this place offers</h2>

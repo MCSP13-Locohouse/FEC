@@ -11,10 +11,12 @@ const AmenitiesModal = ({ showDModal, setShowDModal, onClose, amenities }) => {
         <>
           <div className={styles.AmenitiesModal} />
 
-          <div className="amenitiesModalStyle">
-            <div className="amenitiesHeader">
+          <div className={styles.modalOverlay}>
+            <div className={styles.header}>
               Amenities
-              <button onClick={onClose}>X</button>
+              <button className={styles.button} onClick={onClose}>
+                X
+              </button>
             </div>
             <div className="amenitiesModalList">
               {amenities.ameniGroups.map((group, i) => (

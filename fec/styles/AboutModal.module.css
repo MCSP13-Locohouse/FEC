@@ -1,4 +1,4 @@
-.AmenitiesModal {
+.AboutModal {
   display: flex;
   position: fixed;
   top: 50%;
@@ -49,9 +49,4 @@
 .button:hover {
   cursor: pointer;
   background-color: rgba(92, 92, 92, 0.15);
-}
-
-.header {
-  width: 100%;
-  height: fit-content;
 }
