@@ -10,10 +10,15 @@ const cleaningFee = 60;
 const serviceFee = 41;
 
 function retNights(date1, date2) {
-  return date2 - date1;
+  let result = Math.floor((((((date2 - date1)/1000)/60)/60)/24));
+  console.log(date2);
+  console.log(date1);
+  console.log(result)
+  return result;
 }
 
-const Reservations = ({ property, reservations, handleDates }) => {
+const Reservations = ({ property, handleDates }) => {
+  
   const [openDate, setOpenDate] = useState(false);
   const [date, setDate] = useState([
     {
@@ -34,7 +39,7 @@ const Reservations = ({ property, reservations, handleDates }) => {
     console.log(date[0].startDate);
     console.log(e.currentTarget.value);
   };
-  const resTotal = property.price + cleaningFee + serviceFee;
+  const resTotal = parseInt(property.price* Math.floor(((((((date[0].endDate) - (date[0].startDate))/1000)/60)/60)/24))) + parseInt(cleaningFee) + parseInt(serviceFee);
 
   return (
     <div className="container">
@@ -79,9 +84,9 @@ const Reservations = ({ property, reservations, handleDates }) => {
         </form>
         <div className={styles.spacer}></div>
         <span className={styles.leftrespan}>
-          price X {/*retNights(state.chkout, state.chkin) */} nights
+          price X {retNights(date[0].startDate, date[0].endDate)} nights
         </span>
-        <span className={styles.rightrespan}>{property.price * 2}</span>
+        <span className={styles.rightrespan}>{property.price * Math.floor(((((((date[0].endDate) - (date[0].startDate))/1000)/60)/60)/24))}</span>
         <div className={styles.spacer}></div>
         <br></br>
         <div className={styles.spacer}></div>
