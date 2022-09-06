@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import { useEffect, useRef } from 'react';
 import { Wrapper, Status } from "@googlemaps/react-wrapper";
 import { Loader } from "@googlemaps/js-api-loader"
@@ -300,7 +299,7 @@ function setMarkers(map, locData) {
         label: `Your AirBnB is Here`,
     });
 }
-=======
+
 // import { useEffect, useRef } from "react";
 // import { Wrapper, Status } from "@googlemaps/react-wrapper";
 // import { Loader } from "@googlemaps/js-api-loader";
@@ -331,4 +330,4 @@ function setMarkers(map, locData) {
 // };
 
 // export default Map;
->>>>>>> 3cace3d95757575560818179d839d2c8d8a288f5
+

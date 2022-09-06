@@ -104,9 +104,9 @@ export default class App extends Component {
     return (
       <div className={styles.container}>
 
-        <Head>
+        <div>
           <title>chairbnb</title>
-        </Head>
+        </div>
 
         <Description property={this.state.property} />
 
@@ -133,17 +133,3 @@ export default class App extends Component {
     );
   }
 }
-
-
-export async function getServerSideProps() {
-  // Fetch Lat/Long for given address
-  const apiKey = process.env.NEXT_PUBLIC_API_KEY;
-
-  const res = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=1644+Platte+St,+Denver,+CO+80202&key=${apiKey}`, {
-    mode: 'cors',
-    method: 'get'
-  });
-  let data = await res.json()
-  data = data.results[0];
-  //Lat/long for given address:
-  let locData = data.geometry.location;
