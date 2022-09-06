@@ -23,7 +23,7 @@ export default class App extends Component {
         guest: "",
         other: "",
         number_street: "",
-        US_state: "",
+        us_state: "",
         zip: "",
         host: "",
         amenities: { ameniGroups: [] },
@@ -35,6 +35,7 @@ export default class App extends Component {
         startDate: [],
         endDate: [],
       },
+      mapLocation: "",
     };
   }
 
@@ -43,16 +44,36 @@ export default class App extends Component {
       this.setState((prevState) => ({
         property: response.data.properties[0],
       }));
-    });
+    })
+      .then(() => {
+        axios.get("/api/users").then((res) => {
+          this.setState({ users: res.data.users });
+        })
+      })
+      .then(() => {
+        axios.get("/api/users").then((res) => {
+          this.setState({ users: res.data.users });
+        })
+      })
+      .then(() => {
+        axios.get("/api/comments").then((res) => {
+          this.setState({ comments: res.data.comments });
+        })
+      }).then(() => {
+        const apiKey = process.env.NEXT_PUBLIC_API_KEY;
+        let address = encodeURIComponent(this.state.property.number_street + ', ' + this.state.property.us_state + " " + this.state.property.zip);
 
-    axios.get("/api/users").then((res) => {
-      this.setState({ users: res.data.users });
-    });
+        fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${apiKey}`, {
+          mode: 'cors',
+          method: 'get'
+        }).then((response) => {
+          return response.json()
+        }).then((locData) => {
+          this.setState({ mapLocation: locData.results[0]['geometry']['location'] })
+        });
 
-    axios.get("/api/comments").then((res) => {
-      this.setState({ comments: res.data.comments });
-      console.log(res.data.comments);
-    });
+
+      });
 
     axios.get("/api/reservations").then((res) => {
       this.setState({
@@ -62,12 +83,25 @@ export default class App extends Component {
     });
   }
 
+
+  handleDates(e) {
+    console.log("Hi");
+    this.setState({
+      startDate: e.currentTarget.value,
+      endDate: e.currentTarget.value,
+    });
+
+
+  }
+
+
   render() {
     return (
       <div className={styles.container}>
-        <Head>
+
+        <div>
           <title>chairbnb</title>
-        </Head>
+        </div>
 
         <Header />
 
@@ -80,9 +114,10 @@ export default class App extends Component {
           property={this.state.property}
           reservations={this.state.reservations}
         />
-
-        <Reviews reviews={this.state.comments} users={this.state.users} />
+         <Reviews reviews={this.state.comments} users={this.state.users} />
         {/* /* <Map property={this.props} /> */}
+        <Map location={this.state.mapLocation} />
+
         <main className={styles.main}></main>
 
         <footer className={styles.footer}></footer>
@@ -90,25 +125,3 @@ export default class App extends Component {
     );
   }
 }
-
-// export async function getServerSideProps() {
-//   // Fetch Lat/Long for given address
-//   const apiKey = process.env.NEXT_PUBLIC_API_KEY;
-
-//   const res = await fetch(
-//     `https://maps.googleapis.com/maps/api/geocode/json?address=1644+Platte+St,+Denver,+CO+80202&key=${apiKey}`,
-//     {
-//       mode: "cors",
-//       method: "get",
-//     }
-//   );
-
-//   let data = await res.json();
-//   console.log(data);
-//   data = data.results[0];
-//   //Lat/long for given address:
-//   let locData = await data.geometry.location;
-
-//   // Pass data to the page via props
-//   return { props: { locData } };
-// }
