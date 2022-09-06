@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import Amenities from "./Amenities";
 
 const Description = ({ property }) => {
   return (
@@ -20,12 +21,10 @@ const Description = ({ property }) => {
       <div id="amenities">
         <h2>What this place offers</h2>
         {property.amenities.ameniGroups.map((group, i) => (
-          <>
-            <h3 key={`${group.title}:${i}`}>{group.title}</h3>
-            {group.values.map((value, i) => (
-              <li key={`${value}:${i}`}>{value}</li>
-            ))}
-          </>
+          <div classname="ameniGroup" key={i}>
+            <h3>{group.title}</h3>
+            <Amenities amenities={property.amenities.ameniGroups[i].values} />
+          </div>
         ))}
       </div>
     </div>
