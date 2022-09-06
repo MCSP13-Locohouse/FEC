@@ -7,7 +7,6 @@ import React, { Component } from "react";
 import Reviews from "../components/Review";
 import axios from "axios";
 import Header from "../components/Header";
-
 // import Map, { StaticGoogleMap, Marker, Path } from "../components/Map";
 
 export default class App extends Component {
@@ -45,10 +44,6 @@ export default class App extends Component {
         property: response.data.properties[0],
       }));
     });
-  }
-
-  componentDidMount() {
-    axios.get("/api/properties").then((res) => {});
 
     axios.get("/api/users").then((res) => {
       this.setState({ users: res.data.users });
@@ -80,14 +75,16 @@ export default class App extends Component {
           property={this.state.property}
           handleProperty={this.handleProperty}
         />
+
         <Reservations
           property={this.state.property}
           reservations={this.state.reservations}
         />
-        {/* <Calendar /> */}
+
         <Reviews reviews={this.state.comments} users={this.state.users} />
         {/* /* <Map property={this.props} /> */}
         <main className={styles.main}></main>
+
         <footer className={styles.footer}></footer>
       </div>
     );

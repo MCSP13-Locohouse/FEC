@@ -1,8 +1,9 @@
 import postgres from "postgres";
 import dotenv from "dotenv";
 dotenv.config();
-console.log(process.env);
+// console.log(process.env);
 const { DATABASE_URL, PORT, NODE_ENV } = process.env;
+
 // const sql = postgres(`postgres://localhost:5432/samchav`);
 const sql = postgres(process.env.DATABASE_URL);
 
