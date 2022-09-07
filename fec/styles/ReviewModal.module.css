@@ -12,6 +12,7 @@
     height: 80vh;
     flex-wrap: wrap;
     border: 1px solid black;
+    /* overflow: scroll; */
     border-radius: 15px;
 }
 

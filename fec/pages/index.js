@@ -5,14 +5,17 @@ import Reservations from "../components/Reservations";
 import { Loader } from "@googlemaps/js-api-loader";
 import React, { Component } from "react";
 import Reviews from "../components/Review";
+import Calendar from "../components/Calendar";
 import axios from "axios";
 import Header from "../components/Header";
 import Map, { StaticGoogleMap, Marker, Path } from "../components/Map";
+import Gallery from "../components/Gallery";
 
 export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      host: "",
       property: {
         prop_id: -1,
         title: "",
@@ -42,6 +45,12 @@ export default class App extends Component {
     };
   }
 
+
+  async componentDidMount() {
+    const propState = await axios.get("/api/properties");
+    this.setState((prevState) => ({
+      property: propState.data.properties[0],
+    }));
 
     const usersState = await axios.get("/api/users");
     this.setState({ users: usersState.data.users, host: usersState.data.users[0].name_firstlast });
@@ -93,6 +102,8 @@ export default class App extends Component {
          */}
 
         <Header />
+
+        <Gallery/>
 
         <Reservations
           property={this.state.property}
