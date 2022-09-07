@@ -29,8 +29,8 @@ CREATE TABLE reservations (
     first_name TEXT,
     last_name TEXT,
     guest_num INT,
-    startdate INT,
-    enddate INT
+    startdate TEXT,
+    enddate TEXT
 
 );
 
@@ -42,7 +42,7 @@ CREATE TABLE comments (
     comment TEXT
 );
 
-INSERT INTO properties (title, price, specs, about, prop_space, guest, other, number_street, us_state, zip, amenities) VALUES ('Sunset Palace', '150', 'lots of specs here', 'Not much about here', '8,000 sqft', 'Enter through the servant cottage', 'no other here','1313 mockingbird lane','VA','22306', 
+INSERT INTO properties (title, price, specs, about, prop_space, guest, other, number_street, us_state, zip, amenities) VALUES ('Sunset Palace', '150', 'lots of specs here', 'Not much about here', '8,000 sqft', 'Enter through the servant cottage', 'no other here','3636 FM813','TX','75165', 
 
   '{"ameniGroups":
     [
