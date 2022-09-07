@@ -310,7 +310,7 @@ function setMarkers(map, locData) {
         map,
         icon: image,
         shape: shape,
-        label: `Your AirBnB is Here`,
+        label: `Exact location provided afrer booking`,
     });
 }
 
