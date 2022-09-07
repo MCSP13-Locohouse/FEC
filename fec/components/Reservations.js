@@ -10,7 +10,9 @@ import { DateRange } from "react-date-range";
 
 const cleaningFee = 60;
 const serviceFee = 41;
-// const starCount = this.state.comments[0].stars ? this.state.comments[0].stars: null;
+const starCount = () => {for (let n of comments.stars) {count = (comments.stars[n] + comments.stars[n+1]) / comments.stars.length;
+  return count}};
+
 
 function retNights(date1, date2) {
   let result = Math.floor((date2 - date1) / 1000 / 60 / 60 / 24);
@@ -78,7 +80,7 @@ const Reservations = ({ property, comments, handleDates }) => {
     <div className="container">
       <div className={styles.reservations_box}>
         <span className={styles.price}>${property.price}</span>
-        <span className="stars">stars: 5</span>
+        <span className="stars">stars: {starCount}</span>
         <br></br>
         <div className={styles.spacer}></div>
         <form
