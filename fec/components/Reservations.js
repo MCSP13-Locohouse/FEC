@@ -9,6 +9,7 @@ import "react-date-range/dist/theme/default.css"; // theme css file
 
 const cleaningFee = 60;
 const serviceFee = 41;
+// const starCount = this.state.comments[0].stars ? this.state.comments[0].stars: null;
 
 function retNights(date1, date2) {
   let result = Math.floor((((((date2 - date1)/1000)/60)/60)/24));
@@ -27,8 +28,8 @@ function resClick(event) {
     first_name: "Joe",
     last_name: "Snuffy",
     guest_num: formData.get("guest_num"),
-    startdate: reservations.startDate,
-    enddate: reservations.endDate
+    startdate: date[0].startDate,
+    enddate: date[0].endDate
   })
   .then((response) => response.json()).then((response) => console.log(response))
   .catch(function (error) {
