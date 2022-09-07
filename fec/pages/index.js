@@ -17,6 +17,7 @@ export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      host: "",
       property: {
         prop_id: -1,
         title: "",
@@ -43,28 +44,45 @@ export default class App extends Component {
     this.handleDates = this.handleDates.bind(this);
   }
 
-  componentDidMount() {
-    axios.get("/api/properties").then((response) => {
-      this.setState((prevState) => ({
-        property: response.data.properties[0],
-      }));
+  async componentDidMount() {
+    const propertyState = await axios.get("/api/properties");
+    this.setState((prevState) => ({
+      property: propertyState.data.properties[0],
+    }));
+
+    // axios.get("/api/properties").then((response) => {
+    //   this.setState((prevState) => ({
+    //     property: response.data.properties[0],
+    //   }));
+    // });
+
+    const usersState = await axios.get("/api/users");
+    this.setState({ users: usersState.data.users, host: usersState.data.users[0].name_firstlast });
+
+    // axios.get("/api/users").then((res) => {
+    //   this.setState({ users: res.data.users });
+    // });
+
+    const commentsState = await axios.get("/api/comments");
+    this.setState({ comments: commentsState.data.comments });
+
+    // axios.get("/api/comments").then((res) => {
+    //   this.setState({ comments: res.data.comments });
+    //   console.log(res.data.comments);
+    // });
+
+    const reservationsState = await axios.get("/api/reservations");
+    this.setState({
+      startDate: reservationsState.data.startDate,
+      endDate: reservationsState.data.endDate,
     });
 
-    axios.get("/api/users").then((res) => {
-      this.setState({ users: res.data.users });
-    });
-
-    axios.get("/api/comments").then((res) => {
-      this.setState({ comments: res.data.comments });
-      console.log(res.data.comments);
-    });
-
-    axios.get("/api/reservations").then((res) => {
-      this.setState({
-        startDate: res.data.startDate,
-        endDate: res.data.endDate,
-      });
-    });
+    // axios.get("/api/reservations").then((res) => {
+    //   this.setState({
+    //     startDate: res.data.startDate,
+    //     endDate: res.data.endDate,
+    //   });
+    // });
   }
 
   handleDates(e) {
@@ -88,7 +106,7 @@ export default class App extends Component {
           handleDates={this.handleDates}
         />
 
-        <Description property={this.state.property} host={this.state.users} />
+        <Description property={this.state.property} host={this.state.host} />
 
         <Reviews reviews={this.state.comments} users={this.state.users} />
 

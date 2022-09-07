@@ -19,7 +19,7 @@ const AmenitiesModal = ({ showDModal, setShowDModal, onClose, amenities }) => {
               </button>
             </div>
             <div className="amenitiesModalList">
-              {amenities.ameniGroups.map((group, i) => (
+              {amenities.map((group, i) => (
                 <div classname="ameniGroup" key={i}>
                   <h3>{group.title}</h3>
                   <Amenities amenities={amenities.ameniGroups[i].values} />

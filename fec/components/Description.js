@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "../styles/Description.module.css";
 import Amenities from "./Amenities";
 import AmenitiesModal from "./AmenitiesModal";
@@ -7,6 +7,9 @@ import AboutModal from "./AboutModal";
 const Description = ({ property, host }) => {
   const [showDModal, setShowDModal] = useState(false);
   const [showAModal, setShowAModal] = useState(false);
+  const [dude, setDude] = useState("dude");
+
+  console.log("Come on man: ", host);
 
   const openDModal = () => {
     setShowDModal((prev) => !prev);
@@ -16,36 +19,43 @@ const Description = ({ property, host }) => {
     setShowAModal((prev) => !prev);
   };
 
+  // useEffect(() => {
+  //   console.log("What is dude?", dude);
+  //   setDude({
+  //     dude: host.name_firstlast,
+  //   });
+  // }, [host]);
+
   return (
     <div className={styles.Description}>
-      <h2 id="property-title">
-        {property.title} hosted by {host[0].name_firstlast || "one of our most trusted hosts"}
+      <h2 className={styles.titleLine}>
+        {property.title} hosted by {host || "one of our most trusted hosts"}
       </h2>
-      <p id="property-specs">{property.specs}</p>
-      <div className={styles.propDesc}>
-        <p id="about">{property.about}</p>
+      <p className={styles.propSpecs}>{property.specs}</p>
+      <div id="about" className={styles.readout}>
+        <p>{property.about}</p>
         <h3>The space</h3>
         <p id="space">{property.prop_space}</p>
         <h3>Guest access</h3>
         <p id="guest-access">{property.guest}</p>
         <h3>Other things to note</h3>
         <p id="other">{property.other}</p>
-        <u className={styles.link} onClick={openAModal}>
-          Show more
-        </u>
-        <AboutModal
-          showDModal={showDModal}
-          setShowDModal={setShowAModal}
-          property={property}
-          onClose={() => {
-            setShowAModal(false);
-          }}
-        />
       </div>
+      <div className={styles.link}>
+        <u onClick={openAModal}>Show more</u>
+      </div>
+      <AboutModal
+        showAModal={showAModal}
+        setShowAModal={setShowAModal}
+        property={property}
+        onClose={() => {
+          setShowAModal(false);
+        }}
+      />
       <div id="amenities">
         <h2>What this place offers</h2>
         {property.amenities.ameniGroups.map((group, i) => (
-          <div classname="ameniGroup" key={i}>
+          <div className="ameniGroup" key={i}>
             <h3>{group.title}</h3>
             <Amenities amenities={property.amenities.ameniGroups[i].values} />
           </div>

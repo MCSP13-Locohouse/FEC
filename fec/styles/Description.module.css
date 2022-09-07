@@ -1,7 +1,7 @@
 .Description {
-  width: 65vh;
-  /* height: 50vh; */
   background: rgba(255, 255, 255, 0.8);
+  width: 30%;
+  /* height: 50vh; */
   /* position: relative;
   display: flex;
   justify-content: center;
@@ -28,12 +28,16 @@
   transform: scale(0.96);
 }
 
+.link {
+  border-bottom: 1px solid lightgray;
+  padding-bottom: 5px;
+}
+
 .link:hover {
   cursor: pointer;
 }
 
 .propDesc {
-  border: 2px solid black;
   display: -webkit-box;
   -webkit-line-clamp: 6;
   -webkit-box-orient: vertical;
@@ -41,4 +45,11 @@
   text-overflow: ellipsis;
   overflow: hidden;
   line-height: 24px;
+  border-top: 1px solid lightgray;
+}
+
+.titleLine {
+}
+
+.propSpecs {
 }
