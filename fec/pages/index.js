@@ -31,11 +31,11 @@ export default class App extends Component {
         host: "",
         amenities: { ameniGroups: [] },
       },
-      comments: {
-        prop_id: -1,
-        stars: -1,
+      
+        prop_id: [],
+        stars: [],
         comment: [],
-      },
+      
       users: [],
       reservations: {
         startDate: [],
