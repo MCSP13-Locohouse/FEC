@@ -11,17 +11,10 @@ const cleaningFee = 60;
 const serviceFee = 41;
 
 function retNights(date1, date2) {
-<<<<<<< HEAD
   let result = Math.floor((((((date2 - date1)/1000)/60)/60)/24));
   // console.log(date2);
   // console.log(date1);
   // console.log(result)
-=======
-  let result = Math.floor((date2 - date1) / 1000 / 60 / 60 / 24);
-  console.log(date2);
-  console.log(date1);
-  console.log(result);
->>>>>>> 07f70a37669061756b5fd1128409af6e2a9c4845
   return result;
 }
 

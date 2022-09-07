@@ -73,14 +73,7 @@ export default class App extends Component {
         });
 
 
-<<<<<<< HEAD
-    axios.get("/api/comments").then((res) => {
-      this.setState({ comments: res.data.comments });
-      // console.log(res.data.comments);
-    });
-=======
       });
->>>>>>> 07f70a37669061756b5fd1128409af6e2a9c4845
 
     axios.get("/api/reservations").then((res) => {
       this.setState({
@@ -120,11 +113,6 @@ export default class App extends Component {
         <Reservations
           property={this.state.property}
           reservations={this.state.reservations}
-<<<<<<< HEAD
-          handleDates={this.handleDates}
-          stars={this.state.stars}
-=======
->>>>>>> 07f70a37669061756b5fd1128409af6e2a9c4845
         />
          <Reviews reviews={this.state.comments} users={this.state.users} />
         {/* /* <Map property={this.props} /> */}
