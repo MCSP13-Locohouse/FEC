@@ -124,7 +124,7 @@ img {
 
 .rightSide {
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
   color: grey;
   margin-left: 100px;
 }

@@ -32,15 +32,15 @@ const Reviews = (props) => {
                     {item.stars} Stars! {item.comment}
                   </div>
                 ))}
-                <br></br>
+                <button className={styles.button} onClick={openModal}>
+                  Show all reviews
+                </button>
               </div>
             </div>
           ))}
         </div>
       </div>
-      <button className={styles.button} onClick={openModal}>
-        Show all reviews
-      </button>
+
       <ReviewModal
         showModal={showModal}
         setShowModal={setShowModal}

@@ -1,9 +1,9 @@
-import postgres from "postgres";
 import dotenv from "dotenv";
+import postgres from "postgres";
+
 dotenv.config();
-// console.log(process.env);
-const { DATABASE_URL, PORT, NODE_ENV } = process.env;
-const sql = postgres(process.env.DATABASE_URL);
+const { DB_CONNECTION_URL, PORT, NODE_ENV } = process.env;
+const sql = postgres(process.env.DB_CONNECTION_URL);
 
 postgres("postgres://user:password@host:port/database");
 
