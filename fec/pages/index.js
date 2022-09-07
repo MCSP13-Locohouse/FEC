@@ -60,21 +60,6 @@ export default class App extends Component {
           this.setState({ comments: res.data.comments });
         })
       })
-    // .then(() => {
-    //   const apiKey = process.env.NEXT_PUBLIC_API_KEY;
-    //   let address = encodeURIComponent(this.state.property.number_street + ', ' + this.state.property.us_state + " " + this.state.property.zip);
-    //   console.log("index.js stateObj:", this.state.property);
-    //   fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${apiKey}`, {
-    //     mode: 'cors',
-    //     method: 'get'
-    //   }).then((response) => {
-    //     return response.json()
-    //   }).then((locData) => {
-    //     this.setState({ mapLocation: locData.results[0]['geometry']['location'] })
-    //   });
-
-
-    // });
 
     axios.get("/api/reservations").then((res) => {
       this.setState({
