@@ -4,17 +4,23 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "node server.js",
+    "dev": "next dev",
     "build": "next build",
     "start": "NODE_ENV=production node server.js",
     "lint": "next lint"
   },
   "dependencies": {
-    "@heroicons/react": "^2.0.10",
-    "axios": "^0.27.2",
-    "cors": "^2.8.5",
-    "date-fns": "^2.29.2",
+
     "dotenv": "^16.0.2",
+    "axios": "^0.27.2",
+
+    "cors": "^2.8.5",
+
+    "date-fns": "^2.29.2",
+    "@googlemaps/js-api-loader": "^1.14.3",
+    "@googlemaps/react-wrapper": "^1.1.35",
+    "@heroicons/react": "^2.0.10",
+
     "express": "^4.18.1",
     "fs": "^0.0.1-security",
     "heroicons-react": "^1.4.1",
