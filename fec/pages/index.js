@@ -47,9 +47,7 @@ export default class App extends Component {
 
   async componentDidMount() {
     const propState = await axios.get("/api/properties");
-    this.setState((prevState) => ({
-      property: propState.data.properties[0],
-    }));
+    this.setState({ property: propState.data.properties[0] });
 
     const usersState = await axios.get("/api/users");
     this.setState({
@@ -116,7 +114,7 @@ export default class App extends Component {
 
         <Reviews reviews={this.state.comments} users={this.state.users} />
 
-        {/* <Map location={this.state.mapLocation} /> */}
+        <Map location={this.state.property} />
 
         <main className={styles.main}></main>
 

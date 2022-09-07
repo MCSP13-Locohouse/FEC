@@ -115,13 +115,42 @@ const Reservations = ({ property, handleDates }) => {
           // onChange={handleChange}
         >
           <hr size="1" width="90%" color="grey"></hr>
-          {/* <Search
-            date={date}
-            setDate={setDate}
-            openDate={openDate}
-            setOpenDate={setOpenDate}
-            onChange={handleChange}
-          /> */}
+          <div id={"check_in"}>
+            <div id="checkin" name="checkin">
+              CHECK-IN
+            </div>
+            <input
+              name="btn1"
+              type="button"
+              className="visitDates"
+              onClick={() => setOpenDate(!openDate)}
+              value={`${format(date[0].startDate, "MM/dd/yyyy")}`}
+              onChange={handleChange}
+              // onChange={(e) => setDate({ startDate: e.target.value })}
+            />
+            <div id="checkout" name="checkout">
+              CHECKOUT
+            </div>
+            <input
+              name="btn2"
+              type="button"
+              className="visitDates"
+              onClick={() => setOpenDate(!openDate)}
+              value={`${format(date[0].endDate, "MM/dd/yyyy")}`}
+              onChange={handleChange}
+              // onChange={(e) => setDate({ endDate: e.target.value })}
+            />
+            {openDate && (
+              <DateRange
+                editableDateInputs={true}
+                onChange={(item) => setDate([item.selection])}
+                // onchange={handleChange}
+                moveRangeOnFirstSelection={false}
+                ranges={date}
+                className="date"
+              />
+            )}
+          </div>
           <div id={"check_in"}>
             <div id="checkin">CHECK-IN</div>
             <input
@@ -208,43 +237,3 @@ const Reservations = ({ property, handleDates }) => {
   );
 };
 export default Reservations;
-
-// const [chkin, setChkin] = useState({
-//   chkin: new Date().toISOString().slice(0, 10),
-// });
-
-// const [chkout, setChkout] = useState({
-//   chkout: new Date().toISOString().slice(0, 10),
-// });
-
-{
-  /* <input
-            required
-            className={styles.check_in}
-            type="date"
-            name="date"
-            id="dateinputin"
-            placeholder="check-in date"
-            value={chkin.chkin}
-            // onChange={handleChange}
-            editableDateInputs={true}
-            onChange={(item) => setChkin([item])}
-            moveRangeOnFirstSelection={false}
-            // ranges={date}
-          />{" "}
-          <input
-            required
-            className={styles.check_out}
-            type="date"
-            name="date"
-            id="dateinputout"
-            placeholder="check-out date"
-            value={chkout.chkout}
-            // onChange={handleChange}
-            editableDateInputs={true}
-            onChange={(item) => setChkout([item])}
-            moveRangeOnFirstSelection={false}
-            // ranges={date}
-            // className="date"
-          />{" "} */
-}
