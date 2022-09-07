@@ -30,14 +30,27 @@
 
 .link {
   border-bottom: 1px solid lightgray;
-  padding-bottom: 5px;
+  padding-bottom: 15px;
 }
 
-.link:hover {
+.link u {
+  font-weight: bold;
+  font-size: large;
+}
+
+.link u:hover {
   cursor: pointer;
 }
 
-.propDesc {
+.titleLine {
+}
+
+.propSpecs {
+  border-bottom: 1px solid lightgray;
+  padding-bottom: 15px;
+}
+
+.readout {
   display: -webkit-box;
   -webkit-line-clamp: 6;
   -webkit-box-orient: vertical;
@@ -45,11 +58,11 @@
   text-overflow: ellipsis;
   overflow: hidden;
   line-height: 24px;
-  border-top: 1px solid lightgray;
+  /* border-bottom: 1px solid lightgray; */
 }
 
-.titleLine {
-}
-
-.propSpecs {
+.expander {
+  margin-top: 5px;
+  border-bottom: 1px solid lightgray;
+  padding-bottom: 15px;
 }

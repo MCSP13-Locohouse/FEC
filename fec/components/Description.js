@@ -52,7 +52,7 @@ const Description = ({ property, host }) => {
           setShowAModal(false);
         }}
       />
-      <div id="amenities">
+      <div id="amenities" className={styles.readout}>
         <h2>What this place offers</h2>
         {property.amenities.ameniGroups.map((group, i) => (
           <div className="ameniGroup" key={i}>
@@ -60,18 +60,20 @@ const Description = ({ property, host }) => {
             <Amenities amenities={property.amenities.ameniGroups[i].values} />
           </div>
         ))}
+      </div>
+      <div className={styles.expander}>
         <button className={styles.button} onClick={openDModal}>
           Show All Amenities
         </button>
-        <AmenitiesModal
-          showDModal={showDModal}
-          setShowDModal={setShowDModal}
-          amenities={property.amenities.ameniGroups}
-          onClose={() => {
-            setShowDModal(false);
-          }}
-        />
       </div>
+      <AmenitiesModal
+        showDModal={showDModal}
+        setShowDModal={setShowDModal}
+        amenities={property.amenities.ameniGroups}
+        onClose={() => {
+          setShowDModal(false);
+        }}
+      />
     </div>
   );
 };

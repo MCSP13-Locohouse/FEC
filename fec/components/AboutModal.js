@@ -6,12 +6,12 @@ const AboutModal = ({ showAModal, setShowAModal, onClose, property }) => {
     <>
       {showAModal ? (
         <>
-          <div className={styles.AboutModal} />
+          <div className={styles.modalOverlay} />
 
-          <div className={styles.modalOverlay}>
+          <div className={styles.AboutModal}>
             <div className={styles.header}>
               <button className={styles.button} onClick={onClose}>
-                X
+                <span>X</span>
               </button>
             </div>
             <div className={styles.about}>
