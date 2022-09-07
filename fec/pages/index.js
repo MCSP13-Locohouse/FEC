@@ -2,7 +2,7 @@ import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import Description from "../components/Description";
 import Reservations from "../components/Reservations";
-// import { Loader } from "@googlemaps/js-api-loader";
+import { Loader } from "@googlemaps/js-api-loader";
 import React, { Component } from "react";
 import Reviews from "../components/Review";
 import Calendar from "../components/Calendar";
@@ -30,8 +30,11 @@ export default class App extends Component {
         host: "",
         amenities: { ameniGroups: [] },
       },
-      comments: [],
-      stars: "",
+      comments: {
+        prop_id: -1,
+        stars: -1,
+        comment: [],
+      },
       users: [],
       reservations: {
         startDate: [],
@@ -40,6 +43,7 @@ export default class App extends Component {
       mapLocation: "",
     };
   }
+
 
   async componentDidMount() {
     const propState = await axios.get("/api/properties");
@@ -57,6 +61,7 @@ export default class App extends Component {
     this.setState({
       startDate: reservsState.data.startDate,
       endDate: reservsState.data.endDate,
+
     });
 
     // const apiKey = process.env.NEXT_PUBLIC_API_KEY;
@@ -100,12 +105,11 @@ export default class App extends Component {
         <Reservations
           property={this.state.property}
           reservations={this.state.reservations}
+
           handleDates={this.handleDates}
         />
 
         <Description property={this.state.property} host={this.state.host} />
-
-        {/* <Calendar /> */}
 
         <Reviews reviews={this.state.comments} users={this.state.users} />
 
