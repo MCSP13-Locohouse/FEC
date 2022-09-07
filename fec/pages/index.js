@@ -47,7 +47,7 @@ export default class App extends Component {
 
   async componentDidMount() {
     const propState = await axios.get("/api/properties");
-    this.setState(({
+    this.setState((prevState) => ({
       property: propState.data.properties[0],
     }));
 
