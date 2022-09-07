@@ -69,7 +69,7 @@ export default class App extends Component {
         }).then((response) => {
           return response.json()
         }).then((locData) => {
-          this.setState({ mapLocation: locData.results[0]['geometry']['location'] })
+          // this.setState({ mapLocation: locData.results[0]['geometry']['location'] })
         });
 
 
