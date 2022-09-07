@@ -1,5 +1,4 @@
 .AmenitiesModal {
-  display: flex;
   position: fixed;
   top: 50%;
   left: 50%;
@@ -8,12 +7,17 @@
   color: rgb(0, 0, 0);
   padding: 50px;
   z-index: 1000;
-  width: 55vw;
-  height: 80vh;
+  width: 720px;
+  height: 680px;
   flex-wrap: wrap;
   border: 1px solid black;
-  /* overflow: scroll; */
+  overflow: auto;
   border-radius: 15px;
+  -webkit-box-direction: normal;
+  -webkit-box-orient: vertical;
+  max-height: 100%;
+  display: flex;
+  font-size: large;
 }
 
 .modalOverlay {
@@ -26,7 +30,7 @@
   bottom: 0;
   background-color: grey;
   z-index: 1000;
-  overflow: scroll;
+  overflow: auto;
 }
 
 .button {
@@ -54,4 +58,18 @@
 .header {
   width: 100%;
   height: fit-content;
+}
+
+.ameniGroup {
+  border-bottom: 1px solid lightgray;
+}
+
+.ameniGroup ul {
+  list-style-type: none;
+  margin-bottom: 5px;
+  padding: 0;
+}
+
+.ameniGroup li {
+  margin: 2px;
 }

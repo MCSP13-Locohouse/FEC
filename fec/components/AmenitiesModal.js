@@ -20,7 +20,7 @@ const AmenitiesModal = ({ showDModal, setShowDModal, onClose, amenities }) => {
             <div className="amenitiesModalList">
               <h2>What this place offers</h2>
               {amenities.map((group, i) => (
-                <div classname="ameniGroup" key={i}>
+                <div className={styles.ameniGroup} key={i}>
                   <h3>{group.title}</h3>
                   <Amenities amenities={amenities[i].values} />
                 </div>

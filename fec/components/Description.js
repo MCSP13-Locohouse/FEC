@@ -7,9 +7,6 @@ import AboutModal from "./AboutModal";
 const Description = ({ property, host }) => {
   const [showDModal, setShowDModal] = useState(false);
   const [showAModal, setShowAModal] = useState(false);
-  const [dude, setDude] = useState("dude");
-
-  console.log("Come on man: ", host);
 
   const openDModal = () => {
     setShowDModal((prev) => !prev);
@@ -18,13 +15,6 @@ const Description = ({ property, host }) => {
   const openAModal = () => {
     setShowAModal((prev) => !prev);
   };
-
-  // useEffect(() => {
-  //   console.log("What is dude?", dude);
-  //   setDude({
-  //     dude: host.name_firstlast,
-  //   });
-  // }, [host]);
 
   return (
     <div className={styles.Description}>
@@ -56,7 +46,13 @@ const Description = ({ property, host }) => {
         {property.amenities.ameniGroups.map((group) => {
           group.values.map((amenity, i) => {
             let itemKey = amenity + i;
-            return <li key={itemKey}>{amenity}</li>;
+            return (
+              <div id="listHolder">
+                <ul>
+                  <li key={itemKey}>{amenity}</li>
+                </ul>
+              </div>
+            );
           });
         })}
       </div>

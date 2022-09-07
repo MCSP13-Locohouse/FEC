@@ -48,7 +48,7 @@ export default class App extends Component {
     }));
 
     const usersState = await axios.get("/api/users");
-    this.setState({ users: usersState.data.users });
+    this.setState({ users: usersState.data.users, host: usersState.data.users[0].name_firstlast });
 
     const commentsState = await axios.get("/api/comments");
     this.setState({ comments: commentsState.data.comments });
@@ -98,7 +98,7 @@ export default class App extends Component {
 
         <Calendar />
 
-        <Map location={this.state.mapLocation} />
+        {/* <Map location={this.state.mapLocation} /> */}
 
         <main className={styles.main}></main>
 

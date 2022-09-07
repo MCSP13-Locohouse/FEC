@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "../styles/AboutModal.module.css";
 
 const AboutModal = ({ showAModal, setShowAModal, onClose, property }) => {
+  const [modal, setModal] = useState(false);
+
   return (
     <>
       {showAModal ? (
