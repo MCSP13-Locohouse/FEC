@@ -28,8 +28,11 @@ export default class App extends Component {
         host: "",
         amenities: { ameniGroups: [] },
       },
-      comments: [],
-      stars: "",
+      comments: {
+        prop_id: -1,
+        stars: -1,
+        comment: [],
+      },
       users: [],
       reservations: {
         startDate: [],
@@ -48,16 +51,13 @@ export default class App extends Component {
       .then(() => {
         axios.get("/api/users").then((res) => {
           this.setState({ users: res.data.users });
-        })
-      })
-      .then(() => {
-        axios.get("/api/users").then((res) => {
-          this.setState({ users: res.data.users });
+          console.log(res.data.users[0])
         })
       })
       .then(() => {
         axios.get("/api/comments").then((res) => {
           this.setState({ comments: res.data.comments });
+          console.log(res.data.comments[0])
         })
       }).then(() => {
         const apiKey = process.env.NEXT_PUBLIC_API_KEY;
@@ -113,6 +113,7 @@ export default class App extends Component {
         <Reservations
           property={this.state.property}
           reservations={this.state.reservations}
+          comments={this.state.comments}
         />
          <Reviews reviews={this.state.comments} users={this.state.users} />
         {/* /* <Map property={this.props} /> */}
