@@ -1,9 +1,9 @@
 import postgres from "postgres";
 
+const { DATABASE_URL, PORT, NODE_ENV } = process.env;
 const sql = postgres(process.env.DATABASE_URL);
-// const sql = postgres(process.env.DATABASE_URL);
 
-postgres("postgres://user:password@host:port/database");
+// postgres("postgres://user:password@host:port/database");
 
 export default async function propertiesHandler(req, res) {
   if (req.method === "GET") {
