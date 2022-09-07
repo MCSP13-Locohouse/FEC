@@ -41,7 +41,7 @@ export default class App extends Component {
 
   componentDidMount() {
     axios.get("/api/properties").then((response) => {
-      this.setState((prevState) => ({
+      this.setState(() => ({
         property: response.data.properties[0],
       }));
     })
@@ -59,21 +59,22 @@ export default class App extends Component {
         axios.get("/api/comments").then((res) => {
           this.setState({ comments: res.data.comments });
         })
-      }).then(() => {
-        const apiKey = process.env.NEXT_PUBLIC_API_KEY;
-        let address = encodeURIComponent(this.state.property.number_street + ', ' + this.state.property.us_state + " " + this.state.property.zip);
+      })
+    // .then(() => {
+    //   const apiKey = process.env.NEXT_PUBLIC_API_KEY;
+    //   let address = encodeURIComponent(this.state.property.number_street + ', ' + this.state.property.us_state + " " + this.state.property.zip);
+    //   console.log("index.js stateObj:", this.state.property);
+    //   fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${apiKey}`, {
+    //     mode: 'cors',
+    //     method: 'get'
+    //   }).then((response) => {
+    //     return response.json()
+    //   }).then((locData) => {
+    //     this.setState({ mapLocation: locData.results[0]['geometry']['location'] })
+    //   });
 
-        fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${apiKey}`, {
-          mode: 'cors',
-          method: 'get'
-        }).then((response) => {
-          return response.json()
-        }).then((locData) => {
-          // this.setState({ mapLocation: locData.results[0]['geometry']['location'] })
-        });
 
-
-      });
+    // });
 
     axios.get("/api/reservations").then((res) => {
       this.setState({
@@ -116,7 +117,7 @@ export default class App extends Component {
         />
         <Reviews reviews={this.state.comments} users={this.state.users} />
         {/* /* <Map property={this.props} /> */}
-        <Map location={this.state.mapLocation} />
+        <Map location={this.state.property} />
 
         <main className={styles.main}></main>
 
