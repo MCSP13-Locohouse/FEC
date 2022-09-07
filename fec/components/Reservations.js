@@ -52,7 +52,7 @@ console.log(object);
 // alert("Please wait while you are transferred to our third-party payment site")
 // }
 
-const Reservations = ({ property, handleDates }) => {
+const Reservations = ({ property, comments, handleDates }) => {
   const [openDate, setOpenDate] = useState(false);
   const [date, setDate] = useState([
     {
@@ -85,7 +85,7 @@ const Reservations = ({ property, handleDates }) => {
     <div className="container">
       <div className={styles.reservations_box}>
         <span className={styles.price}>${property.price}</span>
-        <span className="stars">stars</span>
+        <span className="stars">stars: 5</span>
         <br></br>
         <div className={styles.spacer}></div>
         <form

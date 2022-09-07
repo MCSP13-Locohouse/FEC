@@ -107,8 +107,8 @@ export default class App extends Component {
 
         <Reservations
           property={this.state.property}
-          reservations={this.state.reservations}
           comments={this.state.comments}
+          reservations={this.state.reservations}
           handleDates={this.handleDates}
         />
 
