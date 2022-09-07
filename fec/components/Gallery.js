@@ -3,18 +3,22 @@ import Image from "next/image";
 import styles from "../styles/Gallery.module.css";
 
 const Gallery = (props) => {
-  const [showModal, setShowModal] = useState(false);
-  
+  const [showModal, setShowModal] = useState(false);  //this will be a modal later
 
   return (
     <div className={styles.body}>
       <h1 className={styles.header}>Treehouse Casita</h1>
       <br></br>
-      <div className={styles.desc}>5.0 · 1 reviews · Superhost · Colorado Springs, Colorado, United States
-      <button className={styles.shareButton}><u>share</u></button>
-      <button className={styles.saveButton}><u>save</u></button>
+      <div className={styles.desc}>
+        5.0 · 1 reviews · Superhost · Colorado Springs, Colorado, United States
+        <button className={styles.shareButton}>
+          <u>share</u>
+        </button>
+        <button className={styles.saveButton}>
+          <u>save</u>
+        </button>
       </div>
-      
+
       <div className={styles.container}>
         <div className={styles.mainImage}>
           <Image
