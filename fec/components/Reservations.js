@@ -10,8 +10,12 @@ import { DateRange } from "react-date-range";
 
 const cleaningFee = 60;
 const serviceFee = 41;
-const starCount = () => {for (let n of comments.stars) {count = (comments.stars[n] + comments.stars[n+1]) / comments.stars.length;
-  return count}};
+
+const starCount = () => {
+let count = 0;
+for (let n of comments.stars) {count += comments.stars[n]; 
+count/ comments.stars.length;
+return count}};
 
 
 function retNights(date1, date2) {
