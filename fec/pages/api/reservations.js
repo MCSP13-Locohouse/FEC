@@ -1,10 +1,10 @@
-import postgres from "postgres";
 import dotenv from "dotenv";
-import { ReceiptPercentIcon } from "@heroicons/react/24/solid";
-dotenv.config();
-const { DATABASE_URL, PORT, NODE_ENV } = process.env;
 
-const sql = postgres(process.env.DATABASE_URL);
+import postgres from "postgres";
+
+dotenv.config();
+const { DB_CONNECTION_URL, PORT, NODE_ENV } = process.env;
+const sql = postgres(process.env.DB_CONNECTION_URL);
 
 export default async function reservationsHandler(req, res) {
   if (req.method === "GET") {
