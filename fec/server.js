@@ -20,7 +20,7 @@ app
 
     server.listen(PORT, (err) => {
       if (err) throw err;
-      console.log("> Express Server listening on http://localhost:3000");
+      console.log(`> Express Server listening on http://localhost: ${PORT}`);
     });
   })
   .catch((ex) => {

@@ -29,7 +29,9 @@ CREATE TABLE reservations (
     first_name TEXT,
     last_name TEXT,
     guest_num INT,
-    res_date INT
+    startdate INT,
+    enddate INT
+
 );
 
 CREATE TABLE comments (
@@ -40,7 +42,8 @@ CREATE TABLE comments (
     comment TEXT
 );
 
-INSERT INTO properties (title, price, specs, about, prop_space, guest, other, number_street, US_state, zip, amenities) VALUES ('Sunset Palace', '150', 'lots of specs here', 'Not much about here', '8,000 sqft', 'Enter through the servant cottage', 'no other here','3636 FM813','TX','75165', 
+INSERT INTO properties (title, price, specs, about, prop_space, guest, other, number_street, us_state, zip, amenities) VALUES ('Sunset Palace', '150', 'lots of specs here', 'Not much about here', '8,000 sqft', 'Enter through the servant cottage', 'no other here','1313 mockingbird lane','VA','22306', 
+
   '{"ameniGroups":
     [
       {"title": "Scenic Views", "values": ["Mountain view", "Ocean View"]}, 
@@ -58,5 +61,5 @@ INSERT INTO properties (title, price, specs, about, prop_space, guest, other, nu
     ]
   }');
 INSERT INTO customers (name_firstlast) VALUES ('Jane Doe');
-INSERT INTO reservations (prop_id, first_name, last_name, guest_num, res_date) VALUES ('1', 'Bob', 'Testor', '3','20221231');
+INSERT INTO reservations (prop_id, first_name, last_name, guest_num, startdate, enddate) VALUES ('1', 'Bob', 'Testor', '3','20221230', '20221231');
 INSERT INTO comments (first_name, last_name, prop_id, stars, comment) VALUES ('Erin', 'Smith', '1', '5','This place is great!');

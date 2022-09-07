@@ -1,18 +1,13 @@
+import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import Description from "../components/Description";
 import Reservations from "../components/Reservations";
-
 // import { Loader } from "@googlemaps/js-api-loader";
-// import Map from "../components/Map";
-
 import React, { Component } from "react";
 import Reviews from "../components/Review";
 import axios from "axios";
 import Header from "../components/Header";
-
 import Map, { StaticGoogleMap, Marker, Path } from "../components/Map";
-import Calendar from "../components/Calendar";
-
 
 export default class App extends Component {
   constructor(props) {
@@ -42,7 +37,6 @@ export default class App extends Component {
       },
       mapLocation: "",
     };
-    this.handleDates = this.handleDates.bind(this);
   }
 
   componentDidMount() {
@@ -75,7 +69,7 @@ export default class App extends Component {
         }).then((response) => {
           return response.json()
         }).then((locData) => {
-          this.setState({ mapLocation: locData.results[0]['geometry']['location'] })
+          // this.setState({ mapLocation: locData.results[0]['geometry']['location'] })
         });
 
 
@@ -88,6 +82,7 @@ export default class App extends Component {
       });
     });
   }
+
 
   handleDates(e) {
     console.log("Hi");
@@ -108,23 +103,24 @@ export default class App extends Component {
           <title>chairbnb</title>
         </div>
 
-        <Description property={this.state.property} />
+        <Header />
+
+        <Description
+          property={this.state.property}
+          handleProperty={this.handleProperty}
+        />
 
         <Reservations
           property={this.state.property}
           reservations={this.state.reservations}
-          handleDates={this.handleDates}
         />
-
-        <Calendar />
-
+        <Reviews reviews={this.state.comments} users={this.state.users} />
+        {/* /* <Map property={this.props} /> */}
         <Map location={this.state.mapLocation} />
-
 
         <main className={styles.main}></main>
 
         <footer className={styles.footer}></footer>
-
       </div>
     );
   }
