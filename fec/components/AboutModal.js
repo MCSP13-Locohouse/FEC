@@ -11,7 +11,7 @@ const AboutModal = ({ showAModal, setShowAModal, onClose, property }) => {
           <div className={styles.AboutModal}>
             <div className={styles.header}>
               <button className={styles.button} onClick={onClose}>
-                <span>X</span>
+                X
               </button>
             </div>
             <div className={styles.about}>

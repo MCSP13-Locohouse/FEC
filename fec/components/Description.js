@@ -53,13 +53,12 @@ const Description = ({ property, host }) => {
         }}
       />
       <div id="amenities" className={styles.readout}>
-        <h2>What this place offers</h2>
-        {property.amenities.ameniGroups.map((group, i) => (
-          <div className="ameniGroup" key={i}>
-            <h3>{group.title}</h3>
-            <Amenities amenities={property.amenities.ameniGroups[i].values} />
-          </div>
-        ))}
+        {property.amenities.ameniGroups.map((group) => {
+          group.values.map((amenity, i) => {
+            let itemKey = amenity + i;
+            return <li key={itemKey}>{amenity}</li>;
+          });
+        })}
       </div>
       <div className={styles.expander}>
         <button className={styles.button} onClick={openDModal}>

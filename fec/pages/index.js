@@ -5,6 +5,7 @@ import Reservations from "../components/Reservations";
 // import { Loader } from "@googlemaps/js-api-loader";
 import React, { Component } from "react";
 import Reviews from "../components/Review";
+import Calendar from "../components/Calendar";
 import axios from "axios";
 import Header from "../components/Header";
 import Map, { StaticGoogleMap, Marker, Path } from "../components/Map";
@@ -40,57 +41,32 @@ export default class App extends Component {
     };
   }
 
-  componentDidMount() {
-    axios
-      .get("/api/properties")
-      .then((response) => {
-        this.setState((prevState) => ({
-          property: response.data.properties[0],
-        }));
-      })
-      .then(() => {
-        axios.get("/api/users").then((res) => {
-          this.setState({ users: res.data.users });
-        });
-      })
-      .then(() => {
-        axios.get("/api/users").then((res) => {
-          this.setState({ users: res.data.users });
-        });
-      })
-      .then(() => {
-        axios.get("/api/comments").then((res) => {
-          this.setState({ comments: res.data.comments });
-        });
-      })
-      .then(() => {
-        const apiKey = process.env.NEXT_PUBLIC_API_KEY;
-        let address = encodeURIComponent(
-          this.state.property.number_street +
-            ", " +
-            this.state.property.us_state +
-            " " +
-            this.state.property.zip
-        );
+  async componentDidMount() {
+    const propState = await axios.get("/api/properties");
+    this.setState((prevState) => ({
+      property: propState.data.properties[0],
+    }));
 
-        fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${apiKey}`, {
-          mode: "cors",
-          method: "get",
-        })
-          .then((response) => {
-            return response.json();
-          })
-          .then((locData) => {
-            // this.setState({ mapLocation: locData.results[0]['geometry']['location'] })
-          });
-      });
+    const usersState = await axios.get("/api/users");
+    this.setState({ users: usersState.data.users });
 
-    axios.get("/api/reservations").then((res) => {
-      this.setState({
-        startDate: res.data.startDate,
-        endDate: res.data.endDate,
-      });
+    const commentsState = await axios.get("/api/comments");
+    this.setState({ comments: commentsState.data.comments });
+
+    const reservsState = await axios.get("/api/reservations");
+    this.setState({
+      startDate: reservsState.data.startDate,
+      endDate: reservsState.data.endDate,
     });
+
+    // const apiKey = process.env.NEXT_PUBLIC_API_KEY;
+    // let address = encodeURIComponent(
+    //   this.state.property.number_street + ", " + this.state.property.us_state + " " + this.state.property.zip
+    // );
+    // const mapGet = await axios.get(
+    //   `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${apiKey}`
+    // );
+    // this.setState({ mapLocation: mapGet.results[0]["geometry"]["location"] });
   }
 
   handleDates(e) {
