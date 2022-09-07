@@ -7,6 +7,7 @@ import Reservations from "../components/Reservations";
 import React, { Component } from "react";
 import Reviews from "../components/Review";
 import Calendar from "../components/Calendar";
+import Calendar from "../components/Calendar";
 import axios from "axios";
 import Gallery from "../components/Gallery";
 import Amenities from "../components/Amenities";
@@ -16,6 +17,7 @@ export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      host: "",
       property: {
         prop_id: -1,
         title: "",
@@ -31,8 +33,11 @@ export default class App extends Component {
         host: "",
         amenities: { ameniGroups: [] },
       },
-      comments: [],
-      stars: "",
+      comments: {
+        prop_id: -1,
+        stars: -1,
+        comment: [],
+      },
       users: [],
       reservations: {
         startDate: [],
@@ -78,14 +83,16 @@ export default class App extends Component {
       //   });
 
 
-      // });
+    // });
 
-    axios.get("/api/reservations").then((res) => {
-      this.setState({
-        startDate: res.data.startDate,
-        endDate: res.data.endDate,
-      });
-    });
+    // const apiKey = process.env.NEXT_PUBLIC_API_KEY;
+    // let address = encodeURIComponent(
+    //   this.state.property.number_street + ", " + this.state.property.us_state + " " + this.state.property.zip
+    // );
+    // const mapGet = await axios.get(
+    //   `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${apiKey}`
+    // );
+    // this.setState({ mapLocation: mapGet.results[0]["geometry"]["location"] });
   }
 
 
@@ -103,7 +110,6 @@ export default class App extends Component {
   render() {
     return (
       <div className={styles.container}>
-
         <div>
           <title>chairbnb</title>
         </div>
@@ -118,6 +124,8 @@ export default class App extends Component {
         <Reservations
           property={this.state.property}
           reservations={this.state.reservations}
+
+          handleDates={this.handleDates}
         />
 
         <Reviews reviews={this.state.comments} users={this.state.users} />

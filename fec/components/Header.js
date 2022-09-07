@@ -6,7 +6,7 @@ import {
   Bars3Icon,
   UserCircleIcon,
   UserIcon,
-} from "@heroicons/react/24/solid";
+} from "../node_modules/@heroicons/react/24/solid";
 
 function Header() {
   return (
@@ -18,11 +18,7 @@ function Header() {
       </div>
 
       <div className="middle">
-        <input
-          type={"text"}
-          className="headerSearch"
-          placeholder="Start your search"
-        />
+        <input type={"text"} className="headerSearch" placeholder="Start your search" />
         <MagnifyingGlassCircleIcon className="magnify" />
       </div>
 

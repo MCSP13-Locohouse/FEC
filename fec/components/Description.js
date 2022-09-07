@@ -1,16 +1,29 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import styles from "../styles/Description.module.css";
 import Amenities from "./Amenities";
+import AmenitiesModal from "./AmenitiesModal";
+import AboutModal from "./AboutModal";
 
-const Description = ({ property }) => {
+const Description = ({ property, host }) => {
+  const [showDModal, setShowDModal] = useState(false);
+  const [showAModal, setShowAModal] = useState(false);
+
+  const openDModal = () => {
+    setShowDModal((prev) => !prev);
+  };
+
+  const openAModal = () => {
+    setShowAModal((prev) => !prev);
+  };
+
   return (
-    <div className="description">
-      <h3 id="property-title">
-        {property.title} hosted by {property.host || "one of our most trusted hosts"}
-      </h3>
-      <p id="property-specs">{property.specs}</p>
-      <div id="property-description">
-        <h2>About this space</h2>
-        <p id="about">{property.about}</p>
+    <div className={styles.Description}>
+      <h2 className={styles.titleLine}>
+        {property.title} hosted by {host || "one of our most trusted hosts"}
+      </h2>
+      <p className={styles.propSpecs}>{property.specs}</p>
+      <div id="about" className={styles.readout}>
+        <p>{property.about}</p>
         <h3>The space</h3>
         <p id="space">{property.prop_space}</p>
         <h3>Guest access</h3>

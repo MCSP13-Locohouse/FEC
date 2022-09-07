@@ -5,22 +5,36 @@ import axios from "axios";
 
 
 export default function Map(props) {
-    let position;
-    const googlemap = useRef(null);
+    //SET UP VARIABLES
+    let coordinates = {};
     const apiKey = process.env.NEXT_PUBLIC_API_KEY;
-    // const lat = props.property.locData.lat;
-    // const long = props.property.locData.lng;
-    //const position = { lat: 37.090350, lng: -77.969390 };
-    //Will need to get location lat long props 
+    let address = "";
+    if (props.location.prop_id === -1) {
+        //DO NOTHING IF PROPERTY'S INFORMATION HASN'T LOADED
+        console.log("map component: no property data");
+    } else {
+        address = encodeURIComponent(props.location.number_street + ', ' + props.location.us_state + " " + props.location.zip);
+        axios({
+            method: 'get',
+            url: `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${apiKey}`,
+            responseType: 'json'
+        })
+            .then((response) => {
+                return response.data.results[0]['geometry']['location']
+            })
+            .then((locData) => {
+                coordinates = locData;
+            })
+            .then(() => {
+                renderMap(coordinates, apiKey, googlemap);
+            });
 
-    useEffect(() => {
-        renderMap(props, apiKey, googlemap);
+        const googlemap = useRef(null);
 
-    });
-
-    return (
-        <div id="map" ref={googlemap} />
-    )
+        return (
+            <div id="map" ref={googlemap} />
+        )
+    }
 };
 
 const style = [
@@ -236,13 +250,12 @@ const style = [
 
 
 
-export async function renderMap(props, apiKey, googlemap) {
-    console.log('mapjs renderMap props: ', props)
+export async function renderMap(coordinates, apiKey, googlemap) {
     const loader = new Loader({
         apiKey,
         version: "weekly",
     });
-    let locData = props.location;
+    let locData = coordinates;
     let map;
 
     loader

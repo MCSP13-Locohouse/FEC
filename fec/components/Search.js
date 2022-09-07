@@ -4,11 +4,24 @@ import "react-date-range/dist/theme/default.css"; // theme css file
 import { DateRange } from "react-date-range";
 import { format } from "date-fns";
 
+
+
 function Search({ date, setDate, openDate, setOpenDate, handleChange }) {
+  
+  // const formData = new FormData(event.target);
+
+  // const [startD, setstartD] = useState("");
+  // const [endD, setendD] = useState("");
+
+  // setstartD(formData.get("checkin"));
+  // setendD(formData.get("checkout"));
+  
+  // formData.get("checkin")
+
   return (
 
     <div id={"check_in"}>
-      <div id="checkin">CHECK-IN</div>
+      <div id="checkin" name="checkin">CHECK-IN</div>
       <input
         name="btn1"
         type="button"
@@ -18,7 +31,7 @@ function Search({ date, setDate, openDate, setOpenDate, handleChange }) {
         onChange={handleChange}
         // onChange={(e) => setDate({ startDate: e.target.value })}
       />
-      <div id="checkout">CHECKOUT</div>
+      <div id="checkout" name = "checkout">CHECKOUT</div>
       <input
         name="btn2"
         type="button"

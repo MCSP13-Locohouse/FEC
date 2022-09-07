@@ -1,0 +1,75 @@
+.AmenitiesModal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
+  padding: 50px;
+  z-index: 1000;
+  width: 720px;
+  height: 680px;
+  flex-wrap: wrap;
+  border: 1px solid black;
+  overflow: auto;
+  border-radius: 15px;
+  -webkit-box-direction: normal;
+  -webkit-box-orient: vertical;
+  max-height: 100%;
+  display: flex;
+  font-size: large;
+}
+
+.modalOverlay {
+  display: flex;
+  position: fixed;
+  opacity: 0.3;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: grey;
+  z-index: 1000;
+  overflow: auto;
+}
+
+.button {
+  display: flex;
+  position: relative;
+  margin-top: -4%;
+  margin-bottom: 1%;
+  border: none;
+  width: 30px;
+  height: 30px;
+  /* font-weight: bold; */
+  font-size: 1.2rem;
+  font-family: monospace;
+  background-color: white;
+  border-radius: 15px;
+  justify-content: center;
+  align-content: center;
+}
+
+.button:hover {
+  cursor: pointer;
+  background-color: rgba(92, 92, 92, 0.15);
+}
+
+.header {
+  width: 100%;
+  height: fit-content;
+}
+
+.ameniGroup {
+  border-bottom: 1px solid lightgray;
+}
+
+.ameniGroup ul {
+  list-style-type: none;
+  margin-bottom: 5px;
+  padding: 0;
+}
+
+.ameniGroup li {
+  margin: 2px;
+}
