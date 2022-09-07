@@ -24,7 +24,7 @@ function Calendar({ date, setDate }) {
       }
     </div>
   );
-  // console.log(value);
+  console.log(value);
 }
 
 export default Calendar;
