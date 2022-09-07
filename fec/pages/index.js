@@ -47,9 +47,8 @@ export default class App extends Component {
 
   async componentDidMount() {
     const propState = await axios.get("/api/properties");
-    this.setState((prevState) => ({
-      property: propState.data.properties[0],
-    }));
+    this.setState({ property: propState.data.properties[0]
+          });
 
     const usersState = await axios.get("/api/users");
     this.setState({ users: usersState.data.users, host: usersState.data.users[0].name_firstlast });
