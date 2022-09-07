@@ -11,7 +11,7 @@ import axios from "axios";
 import Gallery from "../components/Gallery";
 import Amenities from "../components/Amenities";
 const apiKey = process.env.NEXT_PUBLIC_API_KEY;
-    console.log(process.env, "this is process")
+    // console.log(process.env, "this is process")
 export default class App extends Component {
   constructor(props) {
     super(props);
@@ -63,21 +63,22 @@ export default class App extends Component {
         axios.get("/api/comments").then((res) => {
           this.setState({ comments: res.data.comments });
         })
-      }).then(() => {
-        const apiKey = process.env.NEXT_PUBLIC_API_KEY;
-        let address = encodeURIComponent(this.state.property.number_street + ', ' + this.state.property.us_state + " " + this.state.property.zip);
+      })
+      // }).then(() => {
+      //   const apiKey = process.env.NEXT_PUBLIC_API_KEY;
+      //   let address = encodeURIComponent(this.state.property.number_street + ', ' + this.state.property.us_state + " " + this.state.property.zip);
 
-        fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${apiKey}`, {
-          mode: 'cors',
-          method: 'get'
-        }).then((response) => {
-          return response.json()
-        }).then((locData) => {
-          this.setState({ mapLocation: locData.results[0]['geometry']['location'] })
-        });
+      //   fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${apiKey}`, {
+      //     mode: 'cors',
+      //     method: 'get'
+      //   }).then((response) => {
+      //     return response.json()
+      //   }).then((locData) => {
+      //     this.setState({ mapLocation: locData.results[0]['geometry']['location'] })
+      //   });
 
 
-      });
+      // });
 
     axios.get("/api/reservations").then((res) => {
       this.setState({
@@ -88,15 +89,15 @@ export default class App extends Component {
   }
 
 
-  handleDates(e) {
-    console.log("Hi");
-    this.setState({
-      startDate: e.currentTarget.value,
-      endDate: e.currentTarget.value,
-    });
+  // handleDates(e) {
+  //   console.log("Hi");
+  //   this.setState({
+  //     startDate: e.currentTarget.value,
+  //     endDate: e.currentTarget.value,
+  //   });
 
 
-  }
+  // }
 
 
   render() {
@@ -106,18 +107,20 @@ export default class App extends Component {
         <div>
           <title>chairbnb</title>
         </div>
+        <Gallery />
+        {/* <Header /> */}
 
-        <Header />
-
-        <Description
+        {/* <Description
           property={this.state.property}
           handleProperty={this.handleProperty}
-        />
+        /> */}
 
         <Reservations
           property={this.state.property}
           reservations={this.state.reservations}
         />
+
+        <Reviews reviews={this.state.comments} users={this.state.users} />
 
         <main className={styles.main}></main>
 

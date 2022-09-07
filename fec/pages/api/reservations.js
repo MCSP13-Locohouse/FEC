@@ -1,9 +1,9 @@
 import postgres from "postgres";
 import dotenv from "dotenv";
 dotenv.config();
-const { DATABASE_URL, PORT, NODE_ENV } = process.env;
+const { DB_CONNECTION_URL, PORT, NODE_ENV } = process.env;
 
-const sql = postgres(DATABASE_URL);
+const sql = postgres(DB_CONNECTION_URL);
 
 export default async function reservationsHandler(req, res) {
   if (req.method === "GET") {
