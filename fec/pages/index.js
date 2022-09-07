@@ -2,7 +2,7 @@ import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import Description from "../components/Description";
 import Reservations from "../components/Reservations";
-// import { Loader } from "@googlemaps/js-api-loader";
+import { Loader } from "@googlemaps/js-api-loader";
 import React, { Component } from "react";
 import Reviews from "../components/Review";
 import axios from "axios";
