@@ -1,7 +1,7 @@
 import postgres from "postgres";
 
-// const sql = postgres(process.env.DB_CONNECTION_URL);
 const sql = postgres(process.env.DATABASE_URL);
+// const sql = postgres(process.env.DATABASE_URL);
 
 postgres("postgres://user:password@host:port/database");
 

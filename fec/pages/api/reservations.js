@@ -3,7 +3,7 @@ import dotenv from "dotenv";
 dotenv.config();
 const { DATABASE_URL, PORT, NODE_ENV } = process.env;
 
-const sql = postgres(DATABASE_URL);
+const sql = postgres(process.env.DATABASE_URL);
 
 export default async function reservationsHandler(req, res) {
   if (req.method === "GET") {

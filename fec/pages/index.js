@@ -7,7 +7,7 @@ import React, { Component } from "react";
 import Reviews from "../components/Review";
 import axios from "axios";
 import Header from "../components/Header";
-// import Map, { StaticGoogleMap, Marker, Path } from "../components/Map";
+import Map, { StaticGoogleMap, Marker, Path } from "../components/Map";
 
 export default class App extends Component {
   constructor(props) {
