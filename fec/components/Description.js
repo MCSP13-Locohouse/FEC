@@ -43,18 +43,18 @@ const Description = ({ property, host }) => {
         }}
       />
       <div id="amenities" className={styles.readout}>
-        {property.amenities.ameniGroups.map((group) => {
-          group.values.map((amenity, i) => {
-            let itemKey = amenity + i;
-            return (
-              <div id="listHolder">
+        <div id="listHolder">
+          {property.amenities.ameniGroups.map((group) =>
+            group.values.map((amenity, i) => {
+              let itemKey = amenity + i;
+              return (
                 <ul>
                   <li key={itemKey}>{amenity}</li>
                 </ul>
-              </div>
-            );
-          });
-        })}
+              );
+            })
+          )}
+        </div>
       </div>
       <div className={styles.expander}>
         <button className={styles.button} onClick={openDModal}>

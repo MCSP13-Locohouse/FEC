@@ -56,7 +56,7 @@ INSERT INTO properties (title, price, specs, about, prop_space, guest, other, nu
                 '{"ameniGroups":
                   [
                     {"title": "Scenic Views", "values": ["Mountain view", "Ocean View"]}, 
-                    {"title": "Bathroom", "values": ["bathtub", "Hair dryer", "Cleaning products", "Shampoo", "Conditioner", "Body soap", "Bidet", "Hot water", "Shower gel"]},
+                    {"title": "Bathroom", "values": ["Bathtub", "Hair dryer", "Cleaning products", "Shampoo", "Conditioner", "Body soap", "Bidet", "Hot water", "Shower gel"]},
                     {"title": "Bedroom and Laundry", "values": ["Free washer, In unit","Free dryer, In unit","Essentials: Towels, bed sheets, soap, and toilet paper", "Hangers", "Bed linens", "Extra pillows and blankets", "Iron", "Clothing storage"]},
                     {"title": "Entertainment", "values": ["TV"]},
                     {"title": "Heating and Cooling", "values": ["Window AC unit", "Indoor fireplace", "Ceiling fan", "Portable fans", "Central heating"]},

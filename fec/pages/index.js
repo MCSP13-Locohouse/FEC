@@ -84,6 +84,17 @@ export default class App extends Component {
           <title>chairbnb</title>
         </div>
 
+        {/* 
+        Formatting:
+        Header
+        Photos
+        Reservations
+        Description
+        Calendar
+        Reviews
+        Map
+         */}
+
         <Header />
 
         <Reservations
@@ -94,9 +105,9 @@ export default class App extends Component {
 
         <Description property={this.state.property} host={this.state.host} />
 
-        <Reviews reviews={this.state.comments} users={this.state.users} />
+        {/* <Calendar /> */}
 
-        <Calendar />
+        <Reviews reviews={this.state.comments} users={this.state.users} />
 
         {/* <Map location={this.state.mapLocation} /> */}
 
