@@ -29,8 +29,8 @@ CREATE TABLE reservations (
     first_name TEXT,
     last_name TEXT,
     guest_num INT,
-    startdate INT,
-    enddate INT
+    startdate TEXT,
+    enddate TEXT
 
 );
 
