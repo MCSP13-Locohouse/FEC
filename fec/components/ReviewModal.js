@@ -3,11 +3,7 @@ import styles from "../styles/ReviewModal.module.css";
 
 const ReviewModal = ({ showModal, setShowModal, onClose, users, reviews }) => {
   const [modal, setModal] = useState(false);
-  const [reviewAvg, setReviewAvg] = useState([])
   // console.log(users);
-  // reviewBar = (num) => {
-    
-  // }
   return (
     <>
       {showModal ? (
@@ -33,7 +29,7 @@ const ReviewModal = ({ showModal, setShowModal, onClose, users, reviews }) => {
                 {item.name_firstlast}
                 {reviews.map((item, i) => (
                   <ul key={i}>
-                    <li>
+                    <li >
                       {/* below = need to have item comment equal to the user, this is a placeholder */}
                       {item.stars} Stars! {item.comment}
                     </li>
