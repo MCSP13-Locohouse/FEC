@@ -24,14 +24,23 @@ const Reviews = (props) => {
             <div key={i}>
               {item.name_firstlast}
               <br></br>
-              
+              <div>
+                {props.reviews.map((item, i) => (
+                  <div key={i}>
+                    {" "}
+                    {/* below = need to have item comment equal to the user, this is a placeholder */}
+                    {item.stars} Stars! {item.comment}
+                  </div>
+                ))}
+                <button className={styles.button} onClick={openModal}>
+                  Show all reviews
+                </button>
+              </div>
             </div>
           ))}
         </div>
       </div>
-      <button className={styles.button} onClick={openModal}>
-        Show all reviews
-      </button>
+
       <ReviewModal
         showModal={showModal}
         setShowModal={setShowModal}
