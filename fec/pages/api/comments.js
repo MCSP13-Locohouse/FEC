@@ -5,6 +5,8 @@ dotenv.config();
 const { DATABASE_URL, PORT, NODE_ENV } = process.env;
 const sql = postgres(process.env.DATABASE_URL);
 
+postgres("postgres://user:password@host:port/database");
+
 export default async function commentsHandler(req, res) {
   if (req.method === "GET") {
     try {

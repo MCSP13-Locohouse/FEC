@@ -6,12 +6,11 @@ import Search from "./Search";
 import "react-date-range/dist/styles.css"; // main style file
 import "react-date-range/dist/theme/default.css"; // theme css file
 
-
 const cleaningFee = 60;
 const serviceFee = 41;
 
 function retNights(date1, date2) {
-  let result = Math.floor((((((date2 - date1)/1000)/60)/60)/24));
+  let result = Math.floor((date2 - date1) / 1000 / 60 / 60 / 24);
   // console.log(date2);
   // console.log(date1);
   // console.log(result)
@@ -20,20 +19,22 @@ function retNights(date1, date2) {
 
 function resClick(event) {
   event.preventDefault();
-  console.log('clickEvent triggered')
+  console.log("clickEvent triggered");
   const formData = new FormData(event.target);
-  axios.post('/api/reservations', {
-    prop_id: "1",
-    first_name: "Joe",
-    last_name: "Snuffy",
-    guest_num: formData.get("guest_num"),
-    startdate: reservations.startDate,
-    enddate: reservations.endDate
-  })
-  .then((response) => response.json()).then((response) => console.log(response))
-  .catch(function (error) {
-    console.log(error);
-  });
+  axios
+    .post("/api/reservations", {
+      prop_id: "1",
+      first_name: "Joe",
+      last_name: "Snuffy",
+      guest_num: formData.get("guest_num"),
+      startdate: reservations.startDate,
+      enddate: reservations.endDate,
+    })
+    .then((response) => response.json())
+    .then((response) => console.log(response))
+    .catch(function (error) {
+      console.log(error);
+    });
 }
 
 // function paymentSite() {
@@ -103,9 +104,9 @@ const Reservations = ({ property, handleDates }) => {
           </select>
           <hr size="1" width="90%" color="grey"></hr>
           <br></br>
-        <button type="submit" className={styles.reserve_button}>
+          <button type="submit" className={styles.reserve_button}>
             Reserve
-        </button>
+          </button>
           <p>You won`t be charged yet</p>
         </form>
         <div className={styles.spacer}></div>
@@ -144,43 +145,3 @@ const Reservations = ({ property, handleDates }) => {
   );
 };
 export default Reservations;
-
-// const [chkin, setChkin] = useState({
-//   chkin: new Date().toISOString().slice(0, 10),
-// });
-
-// const [chkout, setChkout] = useState({
-//   chkout: new Date().toISOString().slice(0, 10),
-// });
-
-{
-  /* <input
-            required
-            className={styles.check_in}
-            type="date"
-            name="date"
-            id="dateinputin"
-            placeholder="check-in date"
-            value={chkin.chkin}
-            // onChange={handleChange}
-            editableDateInputs={true}
-            onChange={(item) => setChkin([item])}
-            moveRangeOnFirstSelection={false}
-            // ranges={date}
-          />{" "}
-          <input
-            required
-            className={styles.check_out}
-            type="date"
-            name="date"
-            id="dateinputout"
-            placeholder="check-out date"
-            value={chkout.chkout}
-            // onChange={handleChange}
-            editableDateInputs={true}
-            onChange={(item) => setChkout([item])}
-            moveRangeOnFirstSelection={false}
-            // ranges={date}
-            // className="date"
-          />{" "} */
-}
