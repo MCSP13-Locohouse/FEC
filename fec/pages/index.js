@@ -2,7 +2,7 @@ import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import Description from "../components/Description";
 import Reservations from "../components/Reservations";
-// import { Loader } from "@googlemaps/js-api-loader";
+import { Loader } from "@googlemaps/js-api-loader";
 import React, { Component } from "react";
 import Reviews from "../components/Review";
 import axios from "axios";
@@ -28,8 +28,11 @@ export default class App extends Component {
         host: "",
         amenities: { ameniGroups: [] },
       },
-      comments: [],
-      stars: "",
+      comments: {
+        prop_id: -1,
+        stars: -1,
+        comment: [],
+      },
       users: [],
       reservations: {
         startDate: [],
@@ -48,16 +51,13 @@ export default class App extends Component {
       .then(() => {
         axios.get("/api/users").then((res) => {
           this.setState({ users: res.data.users });
-        })
-      })
-      .then(() => {
-        axios.get("/api/users").then((res) => {
-          this.setState({ users: res.data.users });
+          console.log(res.data.users[0])
         })
       })
       .then(() => {
         axios.get("/api/comments").then((res) => {
           this.setState({ comments: res.data.comments });
+          console.log(res.data.comments[0])
         })
       })
 
@@ -99,6 +99,7 @@ export default class App extends Component {
         <Reservations
           property={this.state.property}
           reservations={this.state.reservations}
+          reviews={this.state.comments}
         />
         <Reviews reviews={this.state.comments} users={this.state.users} />
         {/* /* <Map property={this.props} /> */}

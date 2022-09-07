@@ -28,8 +28,8 @@ const ReviewModal = ({ showModal, setShowModal, onClose, users, reviews }) => {
               <div className={styles.comments} key={i}>
                 {item.name_firstlast}
                 {reviews.map((item, i) => (
-                  <ul>
-                    <li key={i}>
+                  <ul key={i}>
+                    <li >
                       {/* below = need to have item comment equal to the user, this is a placeholder */}
                       {item.stars} Stars! {item.comment}
                     </li>
