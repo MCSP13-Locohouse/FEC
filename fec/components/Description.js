@@ -1,16 +1,29 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import styles from "../styles/Description.module.css";
 import Amenities from "./Amenities";
+import AmenitiesModal from "./AmenitiesModal";
+import AboutModal from "./AboutModal";
 
-const Description = ({ property }) => {
+const Description = ({ property, host }) => {
+  const [showDModal, setShowDModal] = useState(false);
+  const [showAModal, setShowAModal] = useState(false);
+
+  const openDModal = () => {
+    setShowDModal((prev) => !prev);
+  };
+
+  const openAModal = () => {
+    setShowAModal((prev) => !prev);
+  };
+
   return (
-    <div className="description">
-      <h3 id="property-title">
-        {property.title} hosted by {property.host || "one of our most trusted hosts"}
-      </h3>
-      <p id="property-specs">{property.specs}</p>
-      <div id="property-description">
-        <h2>About this space</h2>
-        <p id="about">{property.about}</p>
+    <div className={styles.Description}>
+      <h2 className={styles.titleLine}>
+        {property.title} hosted by {host || "one of our most trusted hosts"}
+      </h2>
+      <p className={styles.propSpecs}>{property.specs}</p>
+      <div id="about" className={styles.readout}>
+        <p>{property.about}</p>
         <h3>The space</h3>
         <p id="space">{property.prop_space}</p>
         <h3>Guest access</h3>
@@ -18,15 +31,44 @@ const Description = ({ property }) => {
         <h3>Other things to note</h3>
         <p id="other">{property.other}</p>
       </div>
-      <div id="amenities">
-        <h2>What this place offers</h2>
-        {property.amenities.ameniGroups.map((group, i) => (
-          <div classname="ameniGroup" key={i}>
-            <h3>{group.title}</h3>
-            <Amenities amenities={property.amenities.ameniGroups[i].values} />
-          </div>
-        ))}
+      <div className={styles.link}>
+        <u onClick={openAModal}>Show more</u>
       </div>
+      <AboutModal
+        showAModal={showAModal}
+        setShowAModal={setShowAModal}
+        property={property}
+        onClose={() => {
+          setShowAModal(false);
+        }}
+      />
+      <div id="amenities" className={styles.readout}>
+        <div id="listHolder">
+          {property.amenities.ameniGroups.map((group) =>
+            group.values.map((amenity, i) => {
+              let itemKey = amenity + i;
+              return (
+                <ul>
+                  <li key={itemKey}>{amenity}</li>
+                </ul>
+              );
+            })
+          )}
+        </div>
+      </div>
+      <div className={styles.expander}>
+        <button className={styles.button} onClick={openDModal}>
+          Show All Amenities
+        </button>
+      </div>
+      <AmenitiesModal
+        showDModal={showDModal}
+        setShowDModal={setShowDModal}
+        amenities={property.amenities.ameniGroups}
+        onClose={() => {
+          setShowDModal(false);
+        }}
+      />
     </div>
   );
 };

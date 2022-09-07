@@ -3,12 +3,16 @@ import styles from "../styles/Home.module.css";
 import axios from "axios";
 import Calendar from "./Calendar.js";
 import Search from "./Search";
+import { format } from "date-fns"
 import "react-date-range/dist/styles.css"; // main style file
 import "react-date-range/dist/theme/default.css"; // theme css file
+import { DateRange } from "react-date-range";
+
 
 
 const cleaningFee = 60;
 const serviceFee = 41;
+// const starCount = this.state.comments[0].stars ? this.state.comments[0].stars: null;
 
 function retNights(date1, date2) {
   let result = Math.floor((((((date2 - date1)/1000)/60)/60)/24));
@@ -18,19 +22,27 @@ function retNights(date1, date2) {
   return result;
 }
 
-function resClick(event) {
+function resClick(event, date) {
   event.preventDefault();
-  console.log('clickEvent triggered')
-  const formData = new FormData(event.target);
+  const formData = new FormData(event.target.value);
+  // const startDate = formData.get("checkin");
+  // const endDate = formData.get("checkout");
+  console.log(event.target.value);
+
+  
+  const object = {
+  prop_id: "1",
+  first_name: "Joe",
+  last_name: "Snuffy",
+  guest_num: formData.get("guest_num"),
+  startdate: formData.get("checkin"),
+  enddate: formData.get("checkout")
+}
+console.log(object);
   axios.post('/api/reservations', {
-    prop_id: "1",
-    first_name: "Joe",
-    last_name: "Snuffy",
-    guest_num: formData.get("guest_num"),
-    startdate: reservations.startDate,
-    enddate: reservations.endDate
+
   })
-  .then((response) => response.json()).then((response) => console.log(response))
+  .then((response) => console.log(response))
   .catch(function (error) {
     console.log(error);
   });
@@ -82,14 +94,45 @@ const Reservations = ({ property, handleDates }) => {
           // onChange={handleChange}
         >
           <hr size="1" width="90%" color="grey"></hr>
-          <Search
+          {/* <Search
             date={date}
             setDate={setDate}
             openDate={openDate}
             setOpenDate={setOpenDate}
             onChange={handleChange}
-          />
-
+          /> */}
+          <div id={"check_in"}>
+                <div id="checkin" >CHECK-IN</div>
+                <input
+                  name="checkin"
+                  type="button"
+                  className="visitDates"
+                  onClick={() => setOpenDate(!openDate)}
+                  value={`${format(date[0].startDate, "MM/dd/yyyy")}`}
+                  onChange={handleChange}
+                  // onChange={(e) => setDate({ startDate: e.target.value })}
+                />
+                <div id="checkout" >CHECKOUT</div>
+                <input
+                  name = "checkout"
+                  type="button"
+                  className="visitDates"
+                  onClick={() => setOpenDate(!openDate)}
+                  value={`${format(date[0].endDate, "MM/dd/yyyy")}`}
+                  onChange={handleChange}
+                  // onChange={(e) => setDate({ endDate: e.target.value })}
+                />
+                {openDate && (
+                  <DateRange
+                    editableDateInputs={true}
+                    onChange={(item) => setDate([item.selection])}
+                    // onchange={handleChange}
+                    moveRangeOnFirstSelection={false}
+                    ranges={date}
+                    className="date"
+                  />
+                )}
+              </div>
           <br></br>
           <div className={styles.spacer}></div>
           <label> Number of Guests</label>
