@@ -3,7 +3,7 @@ import styles from "../styles/ReviewModal.module.css";
 
 const ReviewModal = ({ showModal, setShowModal, onClose, users, reviews }) => {
   const [modal, setModal] = useState(false);
-  console.log(users);
+  // console.log(users);
   return (
     <>
       {showModal ? (

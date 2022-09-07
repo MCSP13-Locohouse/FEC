@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "node server.js",
+    "dev": "next dev",
     "build": "next build",
     "start": "NODE_ENV=production node server.js",
     "lint": "next lint"
@@ -13,7 +13,9 @@
 
     "dotenv": "^16.0.2",
     "axios": "^0.27.2",
+
     "cors": "^2.8.5",
+
     "date-fns": "^2.29.2",
     "@googlemaps/js-api-loader": "^1.14.3",
     "@googlemaps/react-wrapper": "^1.1.35",
