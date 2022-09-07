@@ -70,8 +70,8 @@ const Reservations = ({ property, handleDates }) => {
       startDate: e.currentTarget.value,
       endDate: e.currentTarget.value,
     });
-    console.log(date[0].startDate);
-    console.log(e.currentTarget.value);
+    // console.log(date[0].startDate);
+    // console.log(e.currentTarget.value);
   };
   const resTotal =
     parseInt(
