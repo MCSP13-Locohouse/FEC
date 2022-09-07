@@ -108,7 +108,7 @@ export default class App extends Component {
         <Reservations
           property={this.state.property}
           reservations={this.state.reservations}
-
+          comments={this.state.comments}
           handleDates={this.handleDates}
         />
 
@@ -116,7 +116,7 @@ export default class App extends Component {
 
         <Reviews reviews={this.state.comments} users={this.state.users} />
 
-        {/* <Map location={this.state.mapLocation} /> */}
+        <Map location={this.state.property} />
 
         <main className={styles.main}></main>
 
