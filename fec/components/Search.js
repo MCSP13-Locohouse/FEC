@@ -8,7 +8,7 @@ function Search({ date, setDate, openDate, setOpenDate, handleChange }) {
   return (
 
     <div id={"check_in"}>
-      <div id="checkin">CHECK-IN</div>
+      <div id="checkin" name="checkin">CHECK-IN</div>
       <input
         name="btn1"
         type="button"
@@ -18,7 +18,7 @@ function Search({ date, setDate, openDate, setOpenDate, handleChange }) {
         onChange={handleChange}
         // onChange={(e) => setDate({ startDate: e.target.value })}
       />
-      <div id="checkout">CHECKOUT</div>
+      <div id="checkout" name = "checkout">CHECKOUT</div>
       <input
         name="btn2"
         type="button"
