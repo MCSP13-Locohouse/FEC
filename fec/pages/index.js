@@ -116,10 +116,6 @@ export default class App extends Component {
           handleDates={this.handleDates}
         />
 
-        <Reservations property={this.state.property} />
-
-        <Description property={this.state.property} />
-
         <Calendar />
 
         <Map location={this.state.mapLocation} />
