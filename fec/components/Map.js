@@ -266,6 +266,7 @@ export async function renderMap(coordinates, apiKey, googlemap) {
                 center: locData, //look this up
                 zoom: 15,
                 styles: style,
+                disableDefaultUI: true,
             });
             // const marker = new google.maps.Marker({
             //     position: locData,
