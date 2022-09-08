@@ -48,8 +48,6 @@ const Reservations = ({ property, stars, handleDates }) => {
     },
   ]);
 
-  console.log(stars)
-  
   // console.log(date[0].startDate);
   // console.log(date[0].endDate);
   const handleChange = (e) => {
@@ -135,18 +133,18 @@ const Reservations = ({ property, stars, handleDates }) => {
           price X {retNights(date[0].startDate, date[0].endDate)} nights
         </span>
         <span className={styles.rightrespan}>
-          {property.price * Math.floor((date[0].endDate - date[0].startDate) / 1000 / 60 / 60 / 24)}
+          ${property.price * Math.floor((date[0].endDate - date[0].startDate) / 1000 / 60 / 60 / 24)}
         </span>
         <div className={styles.spacer}></div>
         <br></br>
         <div className={styles.spacer}></div>
         <span className={styles.leftrespan}>Cleaning Fee</span>
-        <span className={styles.rightrespan}>{cleaningFee}</span>
+        <span className={styles.rightrespan}>${cleaningFee}</span>
         <div className={styles.spacer}></div>
         <br></br>
         <div className={styles.spacer}></div>
         <span className={styles.leftrespan}>Service Fee</span>
-        <span className={styles.rightrespan}>{serviceFee}</span>
+        <span className={styles.rightrespan}>${serviceFee}</span>
         <div className={styles.spacer}></div>
         <br></br>
         <hr size="1" width="90%" color="grey"></hr>
@@ -155,7 +153,7 @@ const Reservations = ({ property, stars, handleDates }) => {
           <b>Total Before Taxes</b>
         </span>
         <span className={styles.rightrespan}>
-          <b>{resTotal}</b>
+          <b>${resTotal}</b>
         </span>
       </div>
       <Calendar date={date} setDate={setDate} />
