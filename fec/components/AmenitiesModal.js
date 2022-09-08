@@ -9,7 +9,7 @@ const AmenitiesModal = ({ showDModal, setShowDModal, onClose, amenities }) => {
     <>
       {showDModal ? (
         <>
-          <div className={styles.modalOverlay} />
+          <div className={styles.modalOverlay} onClick={onClose} />
 
           <div className={styles.AmenitiesModal}>
             <div className={styles.header}>
@@ -17,7 +17,7 @@ const AmenitiesModal = ({ showDModal, setShowDModal, onClose, amenities }) => {
                 X
               </button>
             </div>
-            <div className="amenitiesModalList">
+            <div className={styles.amenitiesModalList}>
               <h2>What this place offers</h2>
               {amenities.map((group, i) => (
                 <div className={styles.ameniGroup} key={i}>

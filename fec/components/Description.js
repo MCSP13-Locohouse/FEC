@@ -44,16 +44,14 @@ const Description = ({ property, host }) => {
       />
       <div id="amenities" className={styles.readout}>
         <div id="listHolder">
-          {property.amenities.ameniGroups.map((group) =>
-            group.values.map((amenity, i) => {
-              let itemKey = amenity + i;
-              return (
-                <ul>
-                  <li key={itemKey}>{amenity}</li>
-                </ul>
-              );
-            })
-          )}
+          <ul>
+            {property.amenities.ameniGroups.map((group) =>
+              group.values.map((amenity, i) => {
+                let itemKey = amenity + i;
+                return <li key={itemKey}>{amenity}</li>;
+              })
+            )}
+          </ul>
         </div>
       </div>
       <div className={styles.expander}>
