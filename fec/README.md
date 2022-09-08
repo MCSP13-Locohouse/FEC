@@ -32,9 +32,9 @@ Create the `.env.local` file in root directory of your project.
 
 We've included a template (`.env.template`) to help you get started.
 
-### Dependencies
+<br>
 
----
+### Dependencies
 
 The map feature leverages [google maps](https://developers.google.com/maps) api to render approximate loacation on a map.
 
@@ -43,8 +43,6 @@ This requires an [API Key](https://developers.google.com/maps/documentation/embe
 Learn more about embeding google maps [here](https://developers.google.com/maps/documentation/embed/embedding-map)
 
 ## Learn More
-
----
 
 To learn more about Next.js, take a look at the following resources:
 
