@@ -60,7 +60,8 @@ export default class App extends Component {
     });
 
     axios.get("/api/comments").then((res) => {
-      this.setState({ comment: res.data.comments });
+      this.setState({ comment: res.data.comments,
+      stars: res.data.comments[0].stars});
     });
 
     axios.get("/api/reservations").then((res) => {
@@ -112,6 +113,7 @@ export default class App extends Component {
 
         <Reservations
           property={this.state.property}
+          stars={this.state.stars}
           reservations={this.state.reservations}
           handleDates={this.handleDates}
         />
