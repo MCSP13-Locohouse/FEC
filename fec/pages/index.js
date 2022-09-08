@@ -69,8 +69,8 @@ export default class App extends Component {
      startDate: res.data.startDate,
      endDate: res.data.endDate,
    });
- });
-    
+ });    
+
 
     // const apiKey = process.env.NEXT_PUBLIC_API_KEY;
     // let address = encodeURIComponent(
@@ -110,12 +110,11 @@ export default class App extends Component {
 
         <Header />
 
-        <Gallery/>
+        <Gallery />
 
         <Reservations
           property={this.state.property}
           reservations={this.state.reservations}
-
           handleDates={this.handleDates}
         />
 
@@ -123,7 +122,7 @@ export default class App extends Component {
 
         <Reviews reviews={this.state.comment} users={this.state.users} />
 
-        {/* <Map location={this.state.mapLocation} /> */}
+        <Map location={this.state.property} />
 
         <main className={styles.main}></main>
 
