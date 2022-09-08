@@ -8,7 +8,7 @@ const AboutModal = ({ showAModal, setShowAModal, onClose, property }) => {
     <>
       {showAModal ? (
         <>
-          <div className={styles.modalOverlay} />
+          <div className={styles.modalOverlay} onClick={onClose} />
 
           <div className={styles.AboutModal}>
             <div className={styles.header}>

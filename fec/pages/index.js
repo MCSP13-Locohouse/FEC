@@ -31,11 +31,11 @@ export default class App extends Component {
         host: "",
         amenities: { ameniGroups: [] },
       },
-      comments: {
-        prop_id: -1,
-        stars: -1,
-        comment: [],
-      },
+
+      prop_id: [],
+      stars: [],
+      comment: [],
+
       users: [],
       reservations: {
         startDate: [],
@@ -45,24 +45,30 @@ export default class App extends Component {
     };
   }
 
+  componentDidMount() {
+    axios.get("/api/properties").then((res) => {
+      this.setState((prevState) => ({
+        property: res.data.properties[0],
+      }));
+    });
 
-  async componentDidMount() {
-    const propState = await axios.get("/api/properties");
-    this.setState((prevState) => ({
-      property: propState.data.properties[0],
-    }));
+    axios.get("/api/users").then((res) => {
+      this.setState({
+        users: res.data.users,
+        host: res.data.users[0].name_firstlast,
+      });
+    });
 
-    const usersState = await axios.get("/api/users");
-    this.setState({ users: usersState.data.users, host: usersState.data.users[0].name_firstlast });
+    axios.get("/api/comments").then((res) => {
+      this.setState({ comment: res.data.comments,
+      stars: res.data.comments[0].stars});
+    });
 
-    const commentsState = await axios.get("/api/comments");
-    this.setState({ comments: commentsState.data.comments });
-
-    const reservsState = await axios.get("/api/reservations");
-    this.setState({
-      startDate: reservsState.data.startDate,
-      endDate: reservsState.data.endDate,
-
+    axios.get("/api/reservations").then((res) => {
+      this.setState({
+        startDate: res.data.startDate,
+        endDate: res.data.endDate,
+      });
     });
 
     // const apiKey = process.env.NEXT_PUBLIC_API_KEY;
@@ -107,14 +113,14 @@ export default class App extends Component {
 
         <Reservations
           property={this.state.property}
+          stars={this.state.stars}
           reservations={this.state.reservations}
-
           handleDates={this.handleDates}
         />
 
         <Description property={this.state.property} host={this.state.host} />
 
-        <Reviews reviews={this.state.comments} users={this.state.users} />
+        <Reviews reviews={this.state.comment} users={this.state.users} />
 
         <Map location={this.state.property} />
 
