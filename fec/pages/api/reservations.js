@@ -4,7 +4,15 @@ import postgres from "postgres";
 
 dotenv.config();
 const { DB_CONNECTION_URL, PORT, NODE_ENV } = process.env;
-const sql = postgres(process.env.DB_CONNECTION_URL);
+const sql = postgres(
+  process.env.DB_CONNECTION_URL,
+  process.env.NODE_ENV === "production"
+    ? {
+        ssl: { rejectUnauthorized: false },
+        max_lifetime: 60 * 30,
+      }
+    : {}
+);
 // postgres("postgres://user:password@host:port/database");
 
 export default async function reservationsHandler(req, res) {
