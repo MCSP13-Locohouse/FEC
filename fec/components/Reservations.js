@@ -81,42 +81,6 @@ const Reservations = ({ property, stars, handleDates }) => {
         >
           <hr size="1" width="90%" color="grey"></hr>
           <div id={"check_in"}>
-            <div id="checkin" name="checkin">
-              CHECK-IN
-            </div>
-            <input
-              name="btn1"
-              type="button"
-              className="visitDates"
-              onClick={() => setOpenDate(!openDate)}
-              value={`${format(date[0].startDate, "MM/dd/yyyy")}`}
-              onChange={handleChange}
-              // onChange={(e) => setDate({ startDate: e.target.value })}
-            />
-            <div id="checkout" name="checkout">
-              CHECKOUT
-            </div>
-            <input
-              name="btn2"
-              type="button"
-              className="visitDates"
-              onClick={() => setOpenDate(!openDate)}
-              value={`${format(date[0].endDate, "MM/dd/yyyy")}`}
-              onChange={handleChange}
-              // onChange={(e) => setDate({ endDate: e.target.value })}
-            />
-            {openDate && (
-              <DateRange
-                editableDateInputs={true}
-                onChange={(item) => setDate([item.selection])}
-                // onchange={handleChange}
-                moveRangeOnFirstSelection={false}
-                ranges={date}
-                className="date"
-              />
-            )}
-          </div>
-          <div id={"check_in"}>
             <div id="checkin">CHECK-IN</div>
             <input
               name="checkin"
