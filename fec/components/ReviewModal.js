@@ -3,7 +3,16 @@ import styles from "../styles/ReviewModal.module.css";
 
 const ReviewModal = ({ showModal, setShowModal, onClose, users, reviews }) => {
   const [modal, setModal] = useState(false);
-  // console.log(users);
+  const averageRating = 0
+  const reviewAverage = () => {
+    for (var i = 0; i < reviews.length; i++) {      
+      const starNumbers = parseInt(reviews[i].stars)
+      averageRating += starNumbers / reviews.length
+      console.log(averageRating)
+    }
+    return averageRating
+  }
+  reviewAverage();
   return (
     <>
       {showModal ? (
@@ -23,20 +32,19 @@ const ReviewModal = ({ showModal, setShowModal, onClose, users, reviews }) => {
               </button>
             </div>{" "}
             {/* header div end point */}
-            <div className={styles.ratings}>Overall Reviews Placeholder</div>
-            {users.map((item, i) => (
-              <div className={styles.comments} key={i}>
-                {item.name_firstlast}
-                {reviews.map((item, i) => (
-                  <ul key={i}>
-                    <li >
-                      {/* below = need to have item comment equal to the user, this is a placeholder */}
-                      {item.stars} Stars! {item.comment}
-                    </li>
-                  </ul>
-                ))}
-              </div>
-            ))}
+            <div className={styles.ratings}>Overall Reviews Rating: {averageRating} Stars!</div>
+            <div>
+              {reviews.map((item, i) => (
+                <div key={i}>
+                <ul className={styles.comments}>
+                  <li>
+                    <b>{item.first_name} {item.last_name}</b>
+                  </li>                  
+                </ul>
+                <div className={styles.paragraph}>{item.stars} Stars! {item.comment}</div>
+                </div>
+              ))}
+            </div>
           </div>
         </>
       ) : null}
