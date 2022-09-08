@@ -32,6 +32,9 @@ export default function Map(props) {
     })
     .then(() => {
       renderMap(coordinates, apiKey, googlemap);
+    })
+    .catch((err) => {
+      console.error(err);
     });
 
   const googlemap = useRef(null);
