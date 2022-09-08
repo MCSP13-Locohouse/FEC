@@ -33,7 +33,7 @@ export default class App extends Component {
       },
       comments: {
         prop_id: -1,
-        stars: -1,
+        stars: [],
         comment: [],
       },
       users: [],

@@ -15,8 +15,13 @@ function retNights(date1, date2) {
   let result = Math.floor((date2 - date1) / 1000 / 60 / 60 / 24);
   return result;
 }
+const stars = []
 
-const stars = [];
+const starCount = () => {if (stars !== undefined && stars !==null) { 
+  return stars}
+  else {return 5}
+  
+};
 
 function resClick(event, date) {
   event.preventDefault();
@@ -50,13 +55,8 @@ const Reservations = ({ property, comments, handleDates }) => {
     },
   ]);
 
-  const starCount = () => {for (let n of stars) {
-    let count = 0;
-    (count += stars[n])/stars.length
-    if (count !== null) {
-      return count;}
-      else {return "5"}
-  }}
+  starCount();
+  
   // console.log(date[0].startDate);
   // console.log(date[0].endDate);
   const handleChange = (e) => {
@@ -77,8 +77,8 @@ const Reservations = ({ property, comments, handleDates }) => {
   return (
     <div className="container">
       <div className={styles.reservations_box}>
-        <span className={styles.price}>${property.price}</span>
-        <span className="stars">stars: {starCount}</span>
+        <span className={styles.price}>${property.price} per night</span>
+        <span className="stars"></span>
         <br></br>
         <div className={styles.spacer}></div>
         <form
