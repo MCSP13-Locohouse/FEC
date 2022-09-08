@@ -18,7 +18,9 @@ You can start editing the page by modifying `pages/index.js`. The page auto-upda
 
 [API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages. return
+The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+
+<br>
 
 ### Environmental Variables
 
@@ -32,6 +34,8 @@ We've included a template (`.env.template`) to help you get started.
 
 ### Dependencies
 
+---
+
 The map feature leverages [google maps](https://developers.google.com/maps) api to render approximate loacation on a map.
 
 This requires an [API Key](https://developers.google.com/maps/documentation/embed/get-api-key).
@@ -39,6 +43,8 @@ This requires an [API Key](https://developers.google.com/maps/documentation/embe
 Learn more about embeding google maps [here](https://developers.google.com/maps/documentation/embed/embedding-map)
 
 ## Learn More
+
+---
 
 To learn more about Next.js, take a look at the following resources:
 
