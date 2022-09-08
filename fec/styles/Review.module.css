@@ -1,11 +1,23 @@
 .reviews {
-    width: 50vh;
-    height: 50vh;
+    width: 70vw;
+    height: 500px;
     background: rgba(255, 255, 255, 0.8);
-    position: relative;
+    /* position: relative; */
     display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items:center;  
+    font-family:Verdana, Geneva, Tahoma, sans-serif
+}
+
+
+.comments {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: 400px;
 }
 
 .button {

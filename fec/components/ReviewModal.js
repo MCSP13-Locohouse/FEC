@@ -8,7 +8,6 @@ const ReviewModal = ({ showModal, setShowModal, onClose, users, reviews }) => {
     for (var i = 0; i < reviews.length; i++) {      
       const starNumbers = parseInt(reviews[i].stars)
       averageRating += starNumbers / reviews.length
-      console.log(averageRating)
     }
     return averageRating
   }
@@ -17,7 +16,7 @@ const ReviewModal = ({ showModal, setShowModal, onClose, users, reviews }) => {
     <>
       {showModal ? (
         <>
-          <div className={styles.modalOverlay} />
+          <div className={styles.modalOverlay} onClick={onClose}/>
 
           <div className={styles.reviewModal}>
             <div className={styles.header}>

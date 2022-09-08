@@ -17,6 +17,7 @@
     min-width: 500px
 }
 
+
 .modalOverlay {
     display: flex;
 
@@ -29,7 +30,7 @@
     bottom: 0;
     background-color: grey;
     z-index: 1000;
-    overflow: scroll;
+    overflow: hidden;
 }
 
 .button {
@@ -93,7 +94,7 @@
     align-content: flex-start;
     flex-direction: column-reverse;
     height: fit-content;
-
+    
 }
 
 .paragraph {

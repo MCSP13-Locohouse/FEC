@@ -61,7 +61,7 @@ export default class App extends Component {
  });
 
  axios.get("/api/comments").then((res) => {
-   this.setState({ comment: res.data.comments });
+   this.setState({ comment: res.data.comments });  
  });
 
  axios.get("/api/reservations").then((res) => {
