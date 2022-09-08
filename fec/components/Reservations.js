@@ -34,8 +34,8 @@ const Reservations = ({ property }) => {
 
   function handleRes(event) {
     event.preventDefault();
-    const formData = new FormData(event.target.value);
-
+    const formData = new FormData(document.getElementById("form"));
+    console.log(formData);
     const object = {
       prop_id: "1",
       first_name: "Joe",
@@ -66,12 +66,13 @@ const Reservations = ({ property }) => {
     <div className="container">
       <div className={styles.reservations_box}>
         <span className={styles.price}>${property.price} per night</span>
-        <span className="stars">{stars} Stars!</span>
+        {/* <span className="stars">{stars} Stars!</span> */}
         <br></br>
         <div className={styles.spacer}></div>
         <form
           onSubmit={handleRes}
           className={styles.form}
+          id="form"
           // onChange={handleChange}
         >
           <hr size="1" width="90%" color="grey"></hr>
@@ -111,12 +112,30 @@ const Reservations = ({ property }) => {
           <div className={styles.spacer}></div>
           <label> Number of Guests</label>
           <select name="guest_num">
-            <option value="1"> 1</option>
-            <option value="2"> 2</option>
-            <option value="3"> 3</option>
-            <option value="4"> 4</option>
-            <option value="5"> 5</option>
-            <option value="More than that"> More than that!</option>
+            <option name="options" value="1">
+              {" "}
+              1
+            </option>
+            <option name="options" value="2">
+              {" "}
+              2
+            </option>
+            <option name="options" value="3">
+              {" "}
+              3
+            </option>
+            <option name="options" value="4">
+              {" "}
+              4
+            </option>
+            <option name="options" value="5">
+              {" "}
+              5
+            </option>
+            <option name="options" value="More than that">
+              {" "}
+              More than that!
+            </option>
           </select>
           <hr size="1" width="90%" color="grey"></hr>
           <br></br>
@@ -161,16 +180,3 @@ const Reservations = ({ property }) => {
   );
 };
 export default Reservations;
-
-// const handleTwo = (e) => {
-//   e.preventDefault();
-//   handleOnChange();
-//   setOpenDate(!openDate);
-//   // setDate({
-//   //   ...date,
-//   //   startDate: e.currentTarget.value,
-//   //   endDate: e.currentTarget.value,
-//   // });
-//   // console.log(date[0].startDate);
-//   // console.log(e.currentTarget.value);
-// };
