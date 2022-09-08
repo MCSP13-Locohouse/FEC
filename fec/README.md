@@ -36,9 +36,9 @@ We've included a template (`.env.template`) to help you get started.
 
 ### Dependencies
 
-The map feature leverages [google maps](https://developers.google.com/maps) api to render approximate loacation on a map.
+The map feature leverages [Google Maps](https://developers.google.com/maps) api to render approximate loacation on a map.
 
-This requires an [API Key](https://developers.google.com/maps/documentation/embed/get-api-key).
+Follow the link to learn more about Google Map's [API Key](https://developers.google.com/maps/documentation/embed/get-api-key).
 
 Learn more about embeding google maps [here](https://developers.google.com/maps/documentation/embed/embedding-map)
 
