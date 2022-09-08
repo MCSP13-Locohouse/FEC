@@ -4,6 +4,8 @@ import postgres from "postgres";
 dotenv.config();
 const { DB_CONNECTION_URL, PORT, NODE_ENV } = process.env;
 const sql = postgres(process.env.DB_CONNECTION_URL);
+// const sql = postgres(process.env.DATABASE_URL);
+// postgres("postgres://user:password@host:port/database");
 
 export default async function usersHandler(req, res) {
   if (req.method === "GET") {
