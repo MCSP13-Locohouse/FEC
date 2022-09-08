@@ -31,11 +31,11 @@ export default class App extends Component {
         host: "",
         amenities: { ameniGroups: [] },
       },
-      
-        prop_id: [],
-        stars: [],
-        comment: [],
-      
+
+      prop_id: [],
+      stars: [],
+      comment: [],
+
       users: [],
       reservations: {
         startDate: [],
@@ -45,32 +45,31 @@ export default class App extends Component {
     };
   }
 
+  componentDidMount() {
+    axios.get("/api/properties").then((res) => {
+      this.setState((prevState) => ({
+        property: res.data.properties[0],
+      }));
+    });
 
-   componentDidMount() {
- axios.get("/api/properties").then((res) => {
-   this.setState((prevState) => ({
-     property: res.data.properties[0],
-   }));
- });
+    axios.get("/api/users").then((res) => {
+      this.setState({
+        users: res.data.users,
+        host: res.data.users[0].name_firstlast,
+      });
+    });
 
- axios.get("/api/users").then((res) => {
-   this.setState({
-     users: res.data.users,
-     host: res.data.users[0].name_firstlast,
-   });
- });
+    axios.get("/api/comments").then((res) => {
+      this.setState({ comment: res.data.comments,
+      stars: res.data.comments[0].stars});
+    });
 
- axios.get("/api/comments").then((res) => {
-   this.setState({ comment: res.data.comments });  
- });
-
- axios.get("/api/reservations").then((res) => {
-   this.setState({
-     startDate: res.data.startDate,
-     endDate: res.data.endDate,
-   });
- });
-    
+    axios.get("/api/reservations").then((res) => {
+      this.setState({
+        startDate: res.data.startDate,
+        endDate: res.data.endDate,
+      });
+    });
 
     // const apiKey = process.env.NEXT_PUBLIC_API_KEY;
     // let address = encodeURIComponent(
@@ -110,12 +109,12 @@ export default class App extends Component {
 
         <Header />
 
-        <Gallery/>
+        <Gallery />
 
         <Reservations
           property={this.state.property}
+          stars={this.state.stars}
           reservations={this.state.reservations}
-
           handleDates={this.handleDates}
         />
 
@@ -123,7 +122,7 @@ export default class App extends Component {
 
         <Reviews reviews={this.state.comment} users={this.state.users} />
 
-        {/* <Map location={this.state.mapLocation} /> */}
+        <Map location={this.state.property} />
 
         <main className={styles.main}></main>
 
