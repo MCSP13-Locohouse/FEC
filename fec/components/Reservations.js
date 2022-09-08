@@ -16,11 +16,14 @@ function retNights(date1, date2) {
   return result;
 }
 
+
+const Reservations = ({ property, stars, handleDates }) => {
+
 // function paymentSite() {
 // alert("Please wait while you are transferred to our third-party payment site")
 // }
 
-const Reservations = ({ property }) => {
+
   const [openDate, setOpenDate] = useState(false);
   const [date, setDate] = useState([
     {
@@ -54,6 +57,41 @@ const Reservations = ({ property }) => {
       });
   }
 
+  function resClick(event, date) {
+    event.preventDefault();
+    let formData = new FormData(document.getElementById("form"));
+  
+    const object = {
+      prop_id: "1",
+      first_name: "Joe",
+      last_name: "Snuffy",
+      guest_num: formData.get("guest_num"),
+      startdate: formData.get("checkin"),
+      enddate: formData.get("checkout"),
+    };
+    console.log(object);
+    axios
+      .post("/api/reservations", {})
+      .then((response) => console.log(response))
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
+  
+
+  // console.log(date[0].startDate);
+  // console.log(date[0].endDate);
+  const handleChange = (e) => {
+    e.preventDefault();
+    setDate({
+      ...date,
+      startDate: e.currentTarget.value,
+      endDate: e.currentTarget.value,
+    });
+    console.log(date[0].startDate);
+    console.log(e.currentTarget.value);
+  };
+
   const resTotal =
     parseInt(
       property.price *
@@ -69,19 +107,19 @@ const Reservations = ({ property }) => {
         {/* <span className="stars">{stars} Stars!</span> */}
         <br></br>
         <div className={styles.spacer}></div>
-        <form
-          onSubmit={handleRes}
+
+        <form id="form"
+          onSubmit={resClick}
           className={styles.form}
-          id="form"
-          // onChange={handleChange}
         >
           <hr size="1" width="90%" color="grey"></hr>
 
           <div id={"check_in"}>
             <div id="checkin">CHECK-IN</div>
             <input
-              name="checkedin"
-              type="button"
+              name="checkin"
+              // type="button"
+
               className="visitDates"
               onClick={() => {
                 setOpenDate(!openDate);
@@ -91,7 +129,7 @@ const Reservations = ({ property }) => {
             <div id="checkout">CHECKOUT</div>
             <input
               name="checkout"
-              type="button"
+              // type="button"
               className="visitDates"
               onClick={() => {
                 setOpenDate(!openDate);
@@ -149,21 +187,20 @@ const Reservations = ({ property }) => {
           price X {retNights(date[0].startDate, date[0].endDate)} nights
         </span>
         <span className={styles.rightrespan}>
-          {property.price *
-            Math.floor(
-              (date[0].endDate - date[0].startDate) / 1000 / 60 / 60 / 24
-            )}
+
+          ${property.price * Math.floor((date[0].endDate - date[0].startDate) / 1000 / 60 / 60 / 24)}
+
         </span>
         <div className={styles.spacer}></div>
         <br></br>
         <div className={styles.spacer}></div>
         <span className={styles.leftrespan}>Cleaning Fee</span>
-        <span className={styles.rightrespan}>{cleaningFee}</span>
+        <span className={styles.rightrespan}>${cleaningFee}</span>
         <div className={styles.spacer}></div>
         <br></br>
         <div className={styles.spacer}></div>
         <span className={styles.leftrespan}>Service Fee</span>
-        <span className={styles.rightrespan}>{serviceFee}</span>
+        <span className={styles.rightrespan}>${serviceFee}</span>
         <div className={styles.spacer}></div>
         <br></br>
         <hr size="1" width="90%" color="grey"></hr>
@@ -172,7 +209,7 @@ const Reservations = ({ property }) => {
           <b>Total Before Taxes</b>
         </span>
         <span className={styles.rightrespan}>
-          <b>{resTotal}</b>
+          <b>${resTotal}</b>
         </span>
       </div>
       <Calendar date={date} setDate={setDate} />
