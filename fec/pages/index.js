@@ -50,7 +50,10 @@ export default class App extends Component {
     this.setState({ property: propState.data.properties[0] });
 
     const usersState = await axios.get("/api/users");
-    this.setState({ users: usersState.data.users, host: usersState.data.users[0].name_firstlast });
+    this.setState({
+      users: usersState.data.users,
+      host: usersState.data.users[0].name_firstlast,
+    });
 
     const commentsState = await axios.get("/api/comments");
     this.setState({ comments: commentsState.data.comments });
@@ -82,9 +85,9 @@ export default class App extends Component {
   render() {
     return (
       <div className={styles.container}>
-        <div>
+        <Head>
           <title>chairbnb</title>
-        </div>
+        </Head>
 
         {/* 
         Formatting:
@@ -109,7 +112,7 @@ export default class App extends Component {
 
         <Description property={this.state.property} host={this.state.host} />
 
-        <Reviews reviews={this.state.comments} users={this.state.users} />
+        {/* <Reviews reviews={this.state.comments} users={this.state.users} /> */}
 
         <Map location={this.state.property} />
 

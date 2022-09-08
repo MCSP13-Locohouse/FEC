@@ -8,50 +8,51 @@ const Reviews = (props) => {
     setShowModal((prev) => !prev);
   };
 
-  return (
-    <div
-      className="reviews"
-      style={{
-        display: "flex",
-        flexWrap: "wrap",
-        marginBottom: "20px",
-        marginTop: "20px",
-      }}
-    >
-      <div className={styles.reviews}>
-        <div>
-          {props.users.map((item, i) => (
-            <div key={i}>
-              {item.name_firstlast}
-              <br></br>
-              <div>
-                {props.reviews.map((item, i) => (
-                  <div key={i}>
-                    {" "}
-                    {/* below = need to have item comment equal to the user, this is a placeholder */}
-                    {item.stars} Stars! {item.comment}
-                  </div>
-                ))}
-                <button className={styles.button} onClick={openModal}>
-                  Show all reviews
-                </button>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
+  return;
+  // (
+  //   <div
+  //     className="reviews"
+  //     style={{
+  //       display: "flex",
+  //       flexWrap: "wrap",
+  //       marginBottom: "20px",
+  //       marginTop: "20px",
+  //     }}
+  //   >
+  //     <div className={styles.reviews}>
+  //       <div>
+  //         {props.users.map((item, i) => (
+  //           <div key={i}>
+  //             {item.name_firstlast}
+  //             <br></br>
+  //             <div>
+  //               {props.reviews.map((item, i) => (
+  //                 <div key={i}>
+  //                   {" "}
+  //                   {/* below = need to have item comment equal to the user, this is a placeholder */}
+  //                   {item.stars} Stars! {item.comment}
+  //                 </div>
+  //               ))}
+  //               <button className={styles.button} onClick={openModal}>
+  //                 Show all reviews
+  //               </button>
+  //             </div>
+  //           </div>
+  //         ))}
+  //       </div>
+  //     </div>
 
-      <ReviewModal
-        showModal={showModal}
-        setShowModal={setShowModal}
-        users={props.users}
-        reviews={props.reviews}
-        onClose={() => {
-          setShowModal(false);
-        }}
-      />
-    </div>
-  );
+  //     <ReviewModal
+  //       showModal={showModal}
+  //       setShowModal={setShowModal}
+  //       users={props.users}
+  //       reviews={props.reviews}
+  //       onClose={() => {
+  //         setShowModal(false);
+  //       }}
+  //     />
+  //   </div>
+  // );
 };
 
 export default Reviews;

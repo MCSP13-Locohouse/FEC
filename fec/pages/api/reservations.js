@@ -23,7 +23,7 @@ export default async function reservationsHandler(req, res) {
       const { prop_id, first_name, last_name, guest_num, startdate, enddate } =
         req.body;
       const reservationMaker = await sql`
-  INSERT INTO reservations (prop_id, first_name, last_name, guest_num, startdate, enddate) VALUES (${prop_id}, ${first_name}, ${last_name}, ${guest_num} ${startdate}, ${enddate}) RETURNING *`;
+  INSERT INTO reservations (prop_id, first_name, last_name, guest_num, startdate, enddate) VALUES (${prop_id}, ${first_name}, ${last_name}, ${guest_num}, ${startdate}, ${enddate}) RETURNING *`;
       res.status(200).json({ reservationMaker });
     } catch (err) {
       console.error(err);
