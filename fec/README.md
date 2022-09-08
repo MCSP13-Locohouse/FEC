@@ -32,7 +32,11 @@ We've included a template (`.env.template`) to help you get started.
 
 ### Dependencies
 
-The map module leverages [google maps](https://developers.google.com/maps) api to render approximate loacation on a map. This requires an [API Key](https://developers.google.com/maps/documentation/embed/get-api-key). Learn more about embeding google maps [here](https://developers.google.com/maps/documentation/embed/embedding-map)
+The map feature leverages [google maps](https://developers.google.com/maps) api to render approximate loacation on a map.
+
+This requires an [API Key](https://developers.google.com/maps/documentation/embed/get-api-key).
+
+Learn more about embeding google maps [here](https://developers.google.com/maps/documentation/embed/embedding-map)
 
 ## Learn More
 
