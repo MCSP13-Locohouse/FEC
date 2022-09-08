@@ -37,26 +37,20 @@ const Reservations = ({ property, stars, handleDates }) => {
     event.preventDefault();
     let formData = new FormData(document.getElementById("form"));
   
-    const object = {
+    axios.post("/api/reservations", {
       prop_id: "1",
       first_name: "Joe",
       last_name: "Snuffy",
       guest_num: formData.get("guest_num"),
       startdate: formData.get("checkin"),
       enddate: formData.get("checkout")
-    };
-    console.log(object);
-    axios
-      .post("/api/reservations", {})
+      })
       .then((response) => console.log(response))
       .catch(function (error) {
         console.log(error);
       });
   }
   
-
-  // console.log(date[0].startDate);
-  // console.log(date[0].endDate);
   const handleChange = (e) => {
     e.preventDefault();
     setDate({
