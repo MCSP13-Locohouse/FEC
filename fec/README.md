@@ -42,6 +42,8 @@ This requires an [API Key](https://developers.google.com/maps/documentation/embe
 
 Learn more about embeding google maps [here](https://developers.google.com/maps/documentation/embed/embedding-map)
 
+<br>
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
