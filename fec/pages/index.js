@@ -46,24 +46,31 @@ export default class App extends Component {
   }
 
 
-  async componentDidMount() {
-    const propState = await axios.get("/api/properties");
-    this.setState((prevState) => ({
-      property: propState.data.properties[0],
-    }));
+   componentDidMount() {
+ axios.get("/api/properties").then((res) => {
+   this.setState((prevState) => ({
+     property: res.data.properties[0],
+   }));
+ });
 
-    const usersState = await axios.get("/api/users");
-    this.setState({ users: usersState.data.users, host: usersState.data.users[0].name_firstlast });
+ axios.get("/api/users").then((res) => {
+   this.setState({
+     users: res.data.users,
+     host: res.data.users[0].name_firstlast,
+   });
+ });
 
-    const commentsState = await axios.get("/api/comments");
-    this.setState({ comments: commentsState.data.comments });
+ axios.get("/api/comments").then((res) => {
+   this.setState({ comment: res.data.comments });
+ });
 
-    const reservsState = await axios.get("/api/reservations");
-    this.setState({
-      startDate: reservsState.data.startDate,
-      endDate: reservsState.data.endDate,
-
-    });
+ axios.get("/api/reservations").then((res) => {
+   this.setState({
+     startDate: res.data.startDate,
+     endDate: res.data.endDate,
+   });
+ });
+    
 
     // const apiKey = process.env.NEXT_PUBLIC_API_KEY;
     // let address = encodeURIComponent(
@@ -114,7 +121,7 @@ export default class App extends Component {
 
         <Description property={this.state.property} host={this.state.host} />
 
-        <Reviews reviews={this.state.comments} users={this.state.users} />
+        <Reviews reviews={this.state.comment} users={this.state.users} />
 
         {/* <Map location={this.state.mapLocation} /> */}
 

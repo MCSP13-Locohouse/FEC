@@ -5,6 +5,7 @@ import next from "next";
 //GET ENVIRONMENT VARIABLES
 dotenv.config();
 const { DATABASE_URL, PORT, NODE_ENV } = process.env;
+console.log(DATABASE_URL)
 const dev = process.env.NODE_ENV !== "production";
 
 const app = next({ dev });

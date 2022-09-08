@@ -63,3 +63,6 @@ INSERT INTO properties (title, price, specs, about, prop_space, guest, other, nu
 INSERT INTO customers (name_firstlast) VALUES ('Jane Doe');
 INSERT INTO reservations (prop_id, first_name, last_name, guest_num, startdate, enddate) VALUES ('1', 'Bob', 'Testor', '3','20221230', '20221231');
 INSERT INTO comments (first_name, last_name, prop_id, stars, comment) VALUES ('Erin', 'Smith', '1', '5','This place is great!');
+INSERT INTO comments (first_name, last_name, prop_id, stars, comment) VALUES ('Dolores', 'Mercer', '1', '1','Would never stay here again!');
+INSERT INTO comments (first_name, last_name, prop_id, stars, comment) VALUES ('Kevin', 'Wright', '1', '5','Awesome!');
+INSERT INTO comments (first_name, last_name, prop_id, stars, comment) VALUES ('Erick', 'Martinez', '1', '3','I mean, it is okay I guess!');

@@ -14,10 +14,13 @@
     border: 1px solid black;
     /* overflow: scroll; */
     border-radius: 15px;
+    min-width: 500px
 }
 
 .modalOverlay {
     display: flex;
+
+    flex-direction: column;
     position: fixed;
     opacity: .3;
     top: 0;
@@ -73,6 +76,10 @@
 }
 
 .ratings {
+    display: flex;
+    text-align: center;
+
+    flex-direction: column;
     margin-top: 15px;
     display: flex;
     width: 40%;
@@ -82,10 +89,14 @@
 
 .comments {
     margin-top: 15px;
-    display: flexbox;
+    display: flex;
     align-content: flex-start;
     flex-direction: column-reverse;
-    /* border: 1px solid black; */
     height: fit-content;
-    flex-wrap: wrap;
+
+}
+
+.paragraph {
+    margin-left: 40px;
+    position: static;
 }
