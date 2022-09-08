@@ -32,31 +32,7 @@ const Reservations = ({ property, stars, handleDates }) => {
       key: "selection",
     },
   ]);
-  console.log(`${format(date[0].startDate, "MM/dd/yyyy")}`);
-  console.log(`${format(date[0].endDate, "MM/dd/yyyy")}`);
-
-  function handleRes(event) {
-    event.preventDefault();
-    const formData = new FormData(document.getElementById("form"));
-    console.log(formData);
-    const object = {
-      prop_id: "1",
-      first_name: "Joe",
-      last_name: "Snuffy",
-      guest_num: formData.get("guest_num"),
-      startdate: `${format(date[0].startDate, "MM/dd/yyyy")}`,
-      enddate: `${format(date[0].endDate, "MM/dd/yyyy")}`,
-    };
-
-    console.log(object);
-    axios
-      .post("/api/reservations", object)
-      .then((response) => console.log(response))
-      .catch(function (error) {
-        console.log(error);
-      });
-  }
-
+  
   function resClick(event, date) {
     event.preventDefault();
     let formData = new FormData(document.getElementById("form"));
@@ -67,7 +43,7 @@ const Reservations = ({ property, stars, handleDates }) => {
       last_name: "Snuffy",
       guest_num: formData.get("guest_num"),
       startdate: formData.get("checkin"),
-      enddate: formData.get("checkout"),
+      enddate: formData.get("checkout")
     };
     console.log(object);
     axios
