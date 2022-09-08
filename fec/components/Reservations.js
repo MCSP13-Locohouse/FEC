@@ -16,28 +16,6 @@ function retNights(date1, date2) {
   return result;
 }
 
-function resClick(event, date) {
-  event.preventDefault();
-  const formData = new FormData(event.target.value);
-   console.log(event.target.value);
-
-  const object = {
-    prop_id: "1",
-    first_name: "Joe",
-    last_name: "Snuffy",
-    guest_num: formData.get("guest_num"),
-    startdate: formData.get("checkin"),
-    enddate: formData.get("checkout"),
-  };
-  console.log(object);
-  axios
-    .post("/api/reservations", {})
-    .then((response) => console.log(response))
-    .catch(function (error) {
-      console.log(error);
-    });
-}
-
 const Reservations = ({ property, stars, handleDates }) => {
   const [openDate, setOpenDate] = useState(false);
   const [date, setDate] = useState([
@@ -47,6 +25,28 @@ const Reservations = ({ property, stars, handleDates }) => {
       key: "selection",
     },
   ]);
+
+  function resClick(event, date) {
+    event.preventDefault();
+    let formData = new FormData(document.getElementById("form"));
+  
+    const object = {
+      prop_id: "1",
+      first_name: "Joe",
+      last_name: "Snuffy",
+      guest_num: formData.get("guest_num"),
+      startdate: formData.get("checkin"),
+      enddate: formData.get("checkout"),
+    };
+    console.log(object);
+    axios
+      .post("/api/reservations", {})
+      .then((response) => console.log(response))
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
+  
 
   // console.log(date[0].startDate);
   // console.log(date[0].endDate);
@@ -72,7 +72,7 @@ const Reservations = ({ property, stars, handleDates }) => {
         <span className="stars">{stars} Stars!</span>
         <br></br>
         <div className={styles.spacer}></div>
-        <form
+        <form id="form"
           onSubmit={resClick}
           className={styles.form}
           // onChange={handleChange}
@@ -82,7 +82,7 @@ const Reservations = ({ property, stars, handleDates }) => {
             <div id="checkin">CHECK-IN</div>
             <input
               name="checkin"
-              type="button"
+              // type="button"
               className="visitDates"
               onClick={() => setOpenDate(!openDate)}
               value={`${format(date[0].startDate, "MM/dd/yyyy")}`}
@@ -92,7 +92,7 @@ const Reservations = ({ property, stars, handleDates }) => {
             <div id="checkout">CHECKOUT</div>
             <input
               name="checkout"
-              type="button"
+              // type="button"
               className="visitDates"
               onClick={() => setOpenDate(!openDate)}
               value={`${format(date[0].endDate, "MM/dd/yyyy")}`}
