@@ -27,7 +27,6 @@ const Reviews = (props) => {
                 </li>
                 {users.stars} Stars! - {users.comment}
               </ul>
-
             </div>
           ))}
           <button className={styles.button} onClick={openModal}>
@@ -35,7 +34,7 @@ const Reviews = (props) => {
           </button>
         </div>
       </div>
-
+      //{" "}
       <ReviewModal
         showModal={showModal}
         setShowModal={setShowModal}

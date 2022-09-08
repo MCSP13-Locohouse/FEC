@@ -16,29 +16,11 @@ function retNights(date1, date2) {
   return result;
 }
 
-function resClick(event, date) {
-  event.preventDefault();
-  const formData = new FormData(event.target.value);
-   console.log(event.target.value);
+// function paymentSite() {
+// alert("Please wait while you are transferred to our third-party payment site")
+// }
 
-  const object = {
-    prop_id: "1",
-    first_name: "Joe",
-    last_name: "Snuffy",
-    guest_num: formData.get("guest_num"),
-    startdate: formData.get("checkin"),
-    enddate: formData.get("checkout"),
-  };
-  console.log(object);
-  axios
-    .post("/api/reservations", {})
-    .then((response) => console.log(response))
-    .catch(function (error) {
-      console.log(error);
-    });
-}
-
-const Reservations = ({ property, stars, handleDates }) => {
+const Reservations = ({ property }) => {
   const [openDate, setOpenDate] = useState(false);
   const [date, setDate] = useState([
     {
@@ -47,23 +29,36 @@ const Reservations = ({ property, stars, handleDates }) => {
       key: "selection",
     },
   ]);
+  console.log(`${format(date[0].startDate, "MM/dd/yyyy")}`);
+  console.log(`${format(date[0].endDate, "MM/dd/yyyy")}`);
 
-  console.log(stars)
-  
-  // console.log(date[0].startDate);
-  // console.log(date[0].endDate);
-  const handleChange = (e) => {
-    e.preventDefault();
-    setDate({
-      ...date,
-      startDate: e.currentTarget.value,
-      endDate: e.currentTarget.value,
-    });
-    console.log(date[0].startDate);
-    console.log(e.currentTarget.value);
-  };
+  function handleRes(event) {
+    event.preventDefault();
+    const formData = new FormData(document.getElementById("form"));
+    console.log(formData);
+    const object = {
+      prop_id: "1",
+      first_name: "Joe",
+      last_name: "Snuffy",
+      guest_num: formData.get("guest_num"),
+      startdate: `${format(date[0].startDate, "MM/dd/yyyy")}`,
+      enddate: `${format(date[0].endDate, "MM/dd/yyyy")}`,
+    };
+
+    console.log(object);
+    axios
+      .post("/api/reservations", object)
+      .then((response) => console.log(response))
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
+
   const resTotal =
-    parseInt(property.price * Math.floor((date[0].endDate - date[0].startDate) / 1000 / 60 / 60 / 24)) +
+    parseInt(
+      property.price *
+        Math.floor((date[0].endDate - date[0].startDate) / 1000 / 60 / 60 / 24)
+    ) +
     parseInt(cleaningFee) +
     parseInt(serviceFee);
 
@@ -71,77 +66,42 @@ const Reservations = ({ property, stars, handleDates }) => {
     <div className="container">
       <div className={styles.reservations_box}>
         <span className={styles.price}>${property.price} per night</span>
-        <span className="stars">{stars} Stars!</span>
+        {/* <span className="stars">{stars} Stars!</span> */}
         <br></br>
         <div className={styles.spacer}></div>
         <form
-          onSubmit={resClick}
+          onSubmit={handleRes}
           className={styles.form}
+          id="form"
           // onChange={handleChange}
         >
           <hr size="1" width="90%" color="grey"></hr>
-          <div id={"check_in"}>
-            <div id="checkin" name="checkin">
-              CHECK-IN
-            </div>
-            <input
-              name="btn1"
-              type="button"
-              className="visitDates"
-              onClick={() => setOpenDate(!openDate)}
-              value={`${format(date[0].startDate, "MM/dd/yyyy")}`}
-              onChange={handleChange}
-              // onChange={(e) => setDate({ startDate: e.target.value })}
-            />
-            <div id="checkout" name="checkout">
-              CHECKOUT
-            </div>
-            <input
-              name="btn2"
-              type="button"
-              className="visitDates"
-              onClick={() => setOpenDate(!openDate)}
-              value={`${format(date[0].endDate, "MM/dd/yyyy")}`}
-              onChange={handleChange}
-              // onChange={(e) => setDate({ endDate: e.target.value })}
-            />
-            {openDate && (
-              <DateRange
-                editableDateInputs={true}
-                onChange={(item) => setDate([item.selection])}
-                // onchange={handleChange}
-                moveRangeOnFirstSelection={false}
-                ranges={date}
-                className="date"
-              />
-            )}
-          </div>
+
           <div id={"check_in"}>
             <div id="checkin">CHECK-IN</div>
             <input
-              name="checkin"
+              name="checkedin"
               type="button"
               className="visitDates"
-              onClick={() => setOpenDate(!openDate)}
+              onClick={() => {
+                setOpenDate(!openDate);
+              }}
               value={`${format(date[0].startDate, "MM/dd/yyyy")}`}
-              onChange={handleChange}
-              // onChange={(e) => setDate({ startDate: e.target.value })}
             />
             <div id="checkout">CHECKOUT</div>
             <input
               name="checkout"
               type="button"
               className="visitDates"
-              onClick={() => setOpenDate(!openDate)}
+              onClick={() => {
+                setOpenDate(!openDate);
+              }}
               value={`${format(date[0].endDate, "MM/dd/yyyy")}`}
-              onChange={handleChange}
-              // onChange={(e) => setDate({ endDate: e.target.value })}
             />
             {openDate && (
               <DateRange
                 editableDateInputs={true}
                 onChange={(item) => setDate([item.selection])}
-                // onchange={handleChange}
                 moveRangeOnFirstSelection={false}
                 ranges={date}
                 className="date"
@@ -152,12 +112,30 @@ const Reservations = ({ property, stars, handleDates }) => {
           <div className={styles.spacer}></div>
           <label> Number of Guests</label>
           <select name="guest_num">
-            <option value="1"> 1</option>
-            <option value="2"> 2</option>
-            <option value="3"> 3</option>
-            <option value="4"> 4</option>
-            <option value="5"> 5</option>
-            <option value="More than that"> More than that!</option>
+            <option name="options" value="1">
+              {" "}
+              1
+            </option>
+            <option name="options" value="2">
+              {" "}
+              2
+            </option>
+            <option name="options" value="3">
+              {" "}
+              3
+            </option>
+            <option name="options" value="4">
+              {" "}
+              4
+            </option>
+            <option name="options" value="5">
+              {" "}
+              5
+            </option>
+            <option name="options" value="More than that">
+              {" "}
+              More than that!
+            </option>
           </select>
           <hr size="1" width="90%" color="grey"></hr>
           <br></br>
@@ -171,7 +149,10 @@ const Reservations = ({ property, stars, handleDates }) => {
           price X {retNights(date[0].startDate, date[0].endDate)} nights
         </span>
         <span className={styles.rightrespan}>
-          {property.price * Math.floor((date[0].endDate - date[0].startDate) / 1000 / 60 / 60 / 24)}
+          {property.price *
+            Math.floor(
+              (date[0].endDate - date[0].startDate) / 1000 / 60 / 60 / 24
+            )}
         </span>
         <div className={styles.spacer}></div>
         <br></br>
@@ -199,43 +180,3 @@ const Reservations = ({ property, stars, handleDates }) => {
   );
 };
 export default Reservations;
-
-// const [chkin, setChkin] = useState({
-//   chkin: new Date().toISOString().slice(0, 10),
-// });
-
-// const [chkout, setChkout] = useState({
-//   chkout: new Date().toISOString().slice(0, 10),
-// });
-
-{
-  /* <input
-            required
-            className={styles.check_in}
-            type="date"
-            name="date"
-            id="dateinputin"
-            placeholder="check-in date"
-            value={chkin.chkin}
-            // onChange={handleChange}
-            editableDateInputs={true}
-            onChange={(item) => setChkin([item])}
-            moveRangeOnFirstSelection={false}
-            // ranges={date}
-          />{" "}
-          <input
-            required
-            className={styles.check_out}
-            type="date"
-            name="date"
-            id="dateinputout"
-            placeholder="check-out date"
-            value={chkout.chkout}
-            // onChange={handleChange}
-            editableDateInputs={true}
-            onChange={(item) => setChkout([item])}
-            moveRangeOnFirstSelection={false}
-            // ranges={date}
-            // className="date"
-          />{" "} */
-}
