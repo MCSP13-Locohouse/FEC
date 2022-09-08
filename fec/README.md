@@ -1,4 +1,6 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Front-End Capstone: ChairBnB
+
+This is a [Next.js](https://nextjs.org/) front end project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app). It's meant to emulate the user experience of the popular AirBnB. Integrating data (reviews, property info and amenities, map services) into a seamless experience for the user.
 
 ## Getting Started
 
@@ -17,6 +19,14 @@ You can start editing the page by modifying `pages/index.js`. The page auto-upda
 [API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
 
 The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+
+### Environmental Variables
+
+Some inormation will be uniqe to the environemnt in which this project is deployed or should not be shared publicly such as port numbers, api keys, etc. [Next.js](https://nextjs.org/) will get that info from a file named `.env.local` Create the `.env.local` file in root directory of your project. We've included a template (`.env.template`) to help you get started.
+
+### Dependencies
+
+The map module leverages [google maps](https://developers.google.com/maps) api to render approximate loacation on a map. This requires an [API Key](https://developers.google.com/maps/documentation/embed/get-api-key). Learn more about embeding google maps [here](https://developers.google.com/maps/documentation/embed/embedding-map)
 
 ## Learn More
 
