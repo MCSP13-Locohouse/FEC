@@ -10,22 +10,16 @@ import { DateRange } from "react-date-range";
 
 const cleaningFee = 60;
 const serviceFee = 41;
-// const starCount = this.state.comments[0].stars ? this.state.comments[0].stars: null;
 
 function retNights(date1, date2) {
   let result = Math.floor((date2 - date1) / 1000 / 60 / 60 / 24);
-  // console.log(date2);
-  // console.log(date1);
-  // console.log(result)
   return result;
 }
 
 function resClick(event, date) {
   event.preventDefault();
   const formData = new FormData(event.target.value);
-  // const startDate = formData.get("checkin");
-  // const endDate = formData.get("checkout");
-  console.log(event.target.value);
+   console.log(event.target.value);
 
   const object = {
     prop_id: "1",
@@ -44,11 +38,7 @@ function resClick(event, date) {
     });
 }
 
-// function paymentSite() {
-// alert("Please wait while you are transferred to our third-party payment site")
-// }
-
-const Reservations = ({ property, handleDates }) => {
+const Reservations = ({ property, stars, handleDates }) => {
   const [openDate, setOpenDate] = useState(false);
   const [date, setDate] = useState([
     {
@@ -57,6 +47,9 @@ const Reservations = ({ property, handleDates }) => {
       key: "selection",
     },
   ]);
+
+  console.log(stars)
+  
   // console.log(date[0].startDate);
   // console.log(date[0].endDate);
   const handleChange = (e) => {
@@ -77,8 +70,8 @@ const Reservations = ({ property, handleDates }) => {
   return (
     <div className="container">
       <div className={styles.reservations_box}>
-        <span className={styles.price}>${property.price}</span>
-        <span className="stars">stars</span>
+        <span className={styles.price}>${property.price} per night</span>
+        <span className="stars">{stars} Stars!</span>
         <br></br>
         <div className={styles.spacer}></div>
         <form
