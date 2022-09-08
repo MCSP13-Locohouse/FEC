@@ -25,16 +25,16 @@ const Reviews = (props) => {
               {item.name_firstlast}
               <br></br>
               <div>
-                {props.reviews.map((item, i) => (
+                {/* {props.reviews.map((item, i) => (
                   <div key={i}>
                     {" "}
-                    {/* below = need to have item comment equal to the user, this is a placeholder */}
+                
                     {item.stars} Stars! {item.comment}
                   </div>
                 ))}
                 <button className={styles.button} onClick={openModal}>
                   Show all reviews
-                </button>
+                </button> */}
               </div>
             </div>
           ))}

@@ -11,27 +11,17 @@ import { DateRange } from "react-date-range";
 const cleaningFee = 60;
 const serviceFee = 41;
 
-const starCount = () => {
-let count = 0;
-for (let n of comments.stars) {count += comments.stars[n]; 
-count/ comments.stars.length;
-return count}};
-
-
 function retNights(date1, date2) {
   let result = Math.floor((date2 - date1) / 1000 / 60 / 60 / 24);
-  // console.log(date2);
-  // console.log(date1);
-  // console.log(result)
   return result;
 }
+
+const stars = [];
 
 function resClick(event, date) {
   event.preventDefault();
   const formData = new FormData(event.target.value);
-  // const startDate = formData.get("checkin");
-  // const endDate = formData.get("checkout");
-  console.log(event.target.value);
+   console.log(event.target.value);
 
   const object = {
     prop_id: "1",
@@ -50,10 +40,6 @@ function resClick(event, date) {
     });
 }
 
-// function paymentSite() {
-// alert("Please wait while you are transferred to our third-party payment site")
-// }
-
 const Reservations = ({ property, comments, handleDates }) => {
   const [openDate, setOpenDate] = useState(false);
   const [date, setDate] = useState([
@@ -63,6 +49,14 @@ const Reservations = ({ property, comments, handleDates }) => {
       key: "selection",
     },
   ]);
+
+  const starCount = () => {for (let n of stars) {
+    let count = 0;
+    (count += stars[n])/stars.length
+    if (count !== null) {
+      return count;}
+      else {return "5"}
+  }}
   // console.log(date[0].startDate);
   // console.log(date[0].endDate);
   const handleChange = (e) => {
