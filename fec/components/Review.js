@@ -4,7 +4,6 @@ import ReviewModal from "./ReviewModal";
 const Reviews = (props) => {
   const [showModal, setShowModal] = useState(false);
   const numOfReviews = props.reviews.length
-  console.log(numOfReviews, "number of rev")
   const openModal = () => {
     setShowModal((prev) => !prev);
   };
@@ -22,15 +21,15 @@ const Reviews = (props) => {
       <div className={styles.reviews}>
         <div className={styles.comments}>
           {props.reviews.map((users, i) => (
-            <div key={i}>
-              <ul>
+            
+              <ul key={i}>
                 <li>
                   {users.first_name}
                 </li>
                 {users.stars} Stars! - {users.comment}
               </ul>
 
-            </div>
+            
           ))}
           
         </div>

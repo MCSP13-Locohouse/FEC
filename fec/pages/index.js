@@ -65,6 +65,7 @@ export default class App extends Component {
     });
 
     axios.get("/api/reservations").then((res) => {
+      console.log(res.data, "res data for reservations")
       this.setState({
         startDate: res.data.startDate,
         endDate: res.data.endDate,

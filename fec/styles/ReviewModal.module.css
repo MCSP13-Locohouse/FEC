@@ -8,20 +8,20 @@
     color: rgb(0, 0, 0);
     padding: 50px;
     z-index: 1000;
-    width: 55vw;
-    height: 80vh;
+    width: 80%;
+    height: 80%;
     flex-wrap: wrap;
     border: 1px solid black;
-    /* overflow: scroll; */
     border-radius: 15px;
-    min-width: 500px
+    min-width: 500px;
+    -webkit-box-direction: normal;
+    -webkit-box-orient: vertical;
+    max-height: 80%;    
 }
 
 
 .modalOverlay {
-    display: flex;
-
-    flex-direction: column;
+    display: flex;    
     position: fixed;
     opacity: .3;
     top: 0;
@@ -29,26 +29,23 @@
     right: 0;
     bottom: 0;
     background-color: grey;
-    z-index: 1000;
-    overflow: hidden;
+    z-index: 1000;  
 }
 
 .button {
-    display: flex;
-    position: relative;
-    margin-top: -4%;
-    margin-bottom: 1%;
-    border: none;
-    width: 30px;
-    height: 30px;
-    /* font-weight: bold; */
-    font-size: 1.2rem;
-    font-family: monospace;
+    float: left;
+    display: block;
+    text-align: center;
+    text-decoration: none;
     background-color: white;
     border-radius: 15px;
-    justify-content: center;
-    align-content: center;
-}
+    border: none;
+    margin-top: -60px;
+    margin-left: -30px;
+    scale: 1.2;
+    width: 25px;
+    height: 25px;
+  }
 
 .button:hover {
     cursor: pointer;
@@ -74,27 +71,31 @@
 .header {
     width: 100%;
     height: fit-content;
-}
+    /* position: fixed; */
+    top: 0;
+    left: 15px;
+    padding: 10px;
+    /* overflow: hidden; */
+  }
 
 .ratings {
     display: flex;
-    text-align: center;
-
+    text-align: center;    
     flex-direction: column;
     margin-top: 15px;
     display: flex;
     width: 40%;
     height: 95%;
-    border: 1px solid black;
 }
 
 .comments {
     margin-top: 15px;
-    display: flex;
-    align-content: flex-start;
+    max-height: 95%;
+    width: 55%;
+    margin-left: 20px;
     flex-direction: column-reverse;
     height: fit-content;
-    
+    overflow: auto;
 }
 
 .paragraph {

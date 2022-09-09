@@ -10,7 +10,7 @@ import { DateRange } from "react-date-range";
 
 const cleaningFee = 60;
 const serviceFee = 41;
-
+const guest_numbers = 0;
 function retNights(date1, date2) {
   let result = Math.floor((date2 - date1) / 1000 / 60 / 60 / 24);
   return result;
@@ -18,8 +18,9 @@ function retNights(date1, date2) {
 
 function resClick(event, date) {
   event.preventDefault();
+  // console.log(event.target[2], "this is event")
   const formData = new FormData(event.target.value);
-   console.log(event.target.value);
+  // console.log(event.target.value, "form data");
 
   const object = {
     prop_id: "1",
@@ -29,7 +30,7 @@ function resClick(event, date) {
     startdate: formData.get("checkin"),
     enddate: formData.get("checkout"),
   };
-  console.log(object);
+  
   axios
     .post("/api/reservations", {})
     .then((response) => console.log(response))
@@ -48,7 +49,7 @@ const Reservations = ({ property, stars, handleDates }) => {
     },
   ]);
 
-  console.log(stars)
+  // console.log(stars)
   
   // console.log(date[0].startDate);
   // console.log(date[0].endDate);
@@ -59,8 +60,8 @@ const Reservations = ({ property, stars, handleDates }) => {
       startDate: e.currentTarget.value,
       endDate: e.currentTarget.value,
     });
-    console.log(date[0].startDate);
-    console.log(e.currentTarget.value);
+    // console.log(date[0].startDate);
+    // console.log(e.currentTarget.value);
   };
   const resTotal =
     parseInt(property.price * Math.floor((date[0].endDate - date[0].startDate) / 1000 / 60 / 60 / 24)) +
@@ -98,38 +99,6 @@ const Reservations = ({ property, stars, handleDates }) => {
             </div>
             <input
               name="btn2"
-              type="button"
-              className="visitDates"
-              onClick={() => setOpenDate(!openDate)}
-              value={`${format(date[0].endDate, "MM/dd/yyyy")}`}
-              onChange={handleChange}
-              // onChange={(e) => setDate({ endDate: e.target.value })}
-            />
-            {openDate && (
-              <DateRange
-                editableDateInputs={true}
-                onChange={(item) => setDate([item.selection])}
-                // onchange={handleChange}
-                moveRangeOnFirstSelection={false}
-                ranges={date}
-                className="date"
-              />
-            )}
-          </div>
-          <div id={"check_in"}>
-            <div id="checkin">CHECK-IN</div>
-            <input
-              name="checkin"
-              type="button"
-              className="visitDates"
-              onClick={() => setOpenDate(!openDate)}
-              value={`${format(date[0].startDate, "MM/dd/yyyy")}`}
-              onChange={handleChange}
-              // onChange={(e) => setDate({ startDate: e.target.value })}
-            />
-            <div id="checkout">CHECKOUT</div>
-            <input
-              name="checkout"
               type="button"
               className="visitDates"
               onClick={() => setOpenDate(!openDate)}
