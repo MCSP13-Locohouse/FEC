@@ -102,21 +102,21 @@ export default class App extends Component {
 
         <Header />
 
-        <Gallery />
+        <main className={styles.main}>
+          <Gallery />
 
-        <Reservations
-          property={this.state.property}
-          stars={this.state.stars}
-          reservations={this.state.reservations}
-        />
+          <Reservations
+            property={this.state.property}
+            stars={this.state.stars}
+            reservations={this.state.reservations}
+          />
 
-        <Description property={this.state.property} host={this.state.host} />
+          <Description property={this.state.property} host={this.state.host} />
 
-        <Reviews reviews={this.state.comment} users={this.state.users} />
+          <Reviews reviews={this.state.comment} users={this.state.users} />
 
-        <Map location={this.state.property} />
-
-        <main className={styles.main}></main>
+          <Map location={this.state.property} />
+        </main>
 
         <footer className={styles.footer}></footer>
       </div>
