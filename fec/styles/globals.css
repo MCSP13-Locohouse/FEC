@@ -172,3 +172,17 @@ p {
 .search {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
+
+.rdrDateDisplayWrapper {
+  border-radius: 10px;
+}
+
+h2 {
+  height: 20px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+h5 {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  height: 15px;
+}
