@@ -5,7 +5,6 @@ import Reservations from "../components/Reservations";
 import { Loader } from "@googlemaps/js-api-loader";
 import React, { Component } from "react";
 import Reviews from "../components/Review";
-import Calendar from "../components/Calendar";
 import axios from "axios";
 import Header from "../components/Header";
 import Map, { StaticGoogleMap, Marker, Path } from "../components/Map";
@@ -60,8 +59,10 @@ export default class App extends Component {
     });
 
     axios.get("/api/comments").then((res) => {
-      this.setState({ comment: res.data.comments,
-      stars: res.data.comments[0].stars});
+      this.setState({
+        comment: res.data.comments,
+        stars: res.data.comments[0].stars,
+      });
     });
 
     axios.get("/api/reservations").then((res) => {
@@ -81,20 +82,12 @@ export default class App extends Component {
     // this.setState({ mapLocation: mapGet.results[0]["geometry"]["location"] });
   }
 
-  handleDates(e) {
-    console.log("Hi");
-    this.setState({
-      startDate: e.currentTarget.value,
-      endDate: e.currentTarget.value,
-    });
-  }
-
   render() {
     return (
       <div className={styles.container}>
-        <div>
+        <Head>
           <title>chairbnb</title>
-        </div>
+        </Head>
 
         {/* 
         Formatting:
@@ -115,7 +108,6 @@ export default class App extends Component {
           property={this.state.property}
           stars={this.state.stars}
           reservations={this.state.reservations}
-          handleDates={this.handleDates}
         />
 
         <Description property={this.state.property} host={this.state.host} />

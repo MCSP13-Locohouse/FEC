@@ -29,7 +29,6 @@ const Reviews = (props) => {
                 {users.stars} Stars! - {users.comment}
               </ul>
 
-            
           ))}
           
         </div>
@@ -37,7 +36,7 @@ const Reviews = (props) => {
             Show all {numOfReviews} reviews
           </button>
       </div>
-
+      //{" "}
       <ReviewModal
         showModal={showModal}
         setShowModal={setShowModal}
