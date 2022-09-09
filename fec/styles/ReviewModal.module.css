@@ -17,6 +17,7 @@
     -webkit-box-direction: normal;
     -webkit-box-orient: vertical;
     max-height: 80%;    
+    overflow: hidden;
 }
 
 
@@ -92,7 +93,8 @@
     margin-top: 15px;
     max-height: 95%;
     width: 55%;
-    margin-left: 20px;
+    margin-left: 100px;
+    text-align: center;
     flex-direction: column-reverse;
     height: fit-content;
     overflow: auto;

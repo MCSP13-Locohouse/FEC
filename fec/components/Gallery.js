@@ -43,10 +43,10 @@ const Gallery = (props) => {
           <Image alt="Landscape picture" width={300} height={200} objectFit="cover" src="/3.PNG" onClick={openModal}/>
         </div>
         <div className={styles.imageDivThree}>
-          <Image alt="Landscape picture" width={300} height={200} objectFit="cover" src="/4.PNG" onClick={openModal}/>
+          <Image alt="Landscape picture" width={300} height={200} objectFit="cover" src="/4.PNG" onClick={openModal} className={styles.imageDivThree}/>
         </div>
         <div className={styles.imageDivFour}>
-          <Image alt="Landscape picture" width={300} height={200} objectFit="cover" src="/5.PNG" onClick={openModal}/>
+          <Image alt="Landscape picture" width={300} height={200} objectFit="cover" src="/5.PNG" onClick={openModal} className={styles.imageDivFour}/>
         </div>
       </div>
       <GalleryModal 
