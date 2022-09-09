@@ -84,7 +84,7 @@ export default class App extends Component {
 
   render() {
     return (
-      <div className={styles.container}>
+      <div className={styles.main}>
         <Head>
           <title>chairbnb</title>
         </Head>
