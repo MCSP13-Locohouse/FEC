@@ -17,7 +17,6 @@ const sql = postgres(
     : {}
 );
 
->>>>>>> e01904ccbf1aa7cbe341c85acac83544ac87dab2
 // postgres("postgres://user:password@host:port/database");
 
 export default async function propertiesHandler(req, res) {
