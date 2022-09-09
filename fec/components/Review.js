@@ -36,7 +36,6 @@ const Reviews = (props) => {
             Show all {numOfReviews} reviews
           </button>
       </div>
-      //{" "}
       <ReviewModal
         showModal={showModal}
         setShowModal={setShowModal}
