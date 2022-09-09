@@ -11,7 +11,7 @@ export default function Map(props) {
     let address = "";
     if (props.location.prop_id === -1) {
         //DO NOTHING IF PROPERTY'S INFORMATION HASN'T LOADED
-        console.log("map component: no property data");
+        // console.log("map component: no property data");
     } else {
         address = encodeURIComponent(props.location.number_street + ', ' + props.location.us_state + " " + props.location.zip);
         axios({
