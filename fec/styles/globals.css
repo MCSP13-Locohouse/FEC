@@ -13,7 +13,7 @@
 
 .visitDates {
   min-height: 30px;
-  min-width: 125px;
+  width: 125px;
   font-size: 15px;
   background-color: white;
   border: 1px solid grey;
@@ -31,6 +31,8 @@
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
+  width: 100%;
+  margin-left: 15px;
 }
 
 #checkin {
@@ -164,5 +166,9 @@ img {
 p {
   margin-top: 35px;
   margin-right: 10px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.search {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
