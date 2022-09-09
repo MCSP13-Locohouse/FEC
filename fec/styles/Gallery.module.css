@@ -1,16 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap');
 .body {
-    display: inline-flex;
+    display: flex;
     flex-direction: column;
-    width: 90vw;
-    justify-content: center;
-    align-content: center;
+    width: 100%;
+    justify-items: center;
+    align-items: center;
+    font-family: 'Roboto Condensed', sans-serif;
 }
 
 
 .container {
-    display: inline-flex;
+    display: flex;
     height: 500px;
-    width: 1150px;
+    min-width: 600px;
+    width: 45vw;
     flex-direction: column;
     flex-wrap: wrap;
     padding: 5px;
@@ -32,17 +35,21 @@
 }
 
 .header {
-    position: relative;
-    margin-bottom: -3px;
+    display: flex;
+    align-items: flex-start;
+    justify-items: left;
+    margin-right: 60%;
+    margin-bottom: 0px;
 }
 
 .desc {
-    position: relative;
+    display: flex;
+    margin-right: 46%;
 }
 
 .shareButton {
     position: absolute;
-    margin-left: 560px;
+    margin-left: 40%;
     background-color: white;
     border: 0px;
     cursor: pointer;
@@ -50,7 +57,7 @@
 
 .saveButton {
     position: absolute;
-    margin-left: 620px;
+    margin-left: 43%;
     background-color: white;
     border: 0px;
     cursor: pointer;
