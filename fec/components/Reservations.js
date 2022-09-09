@@ -10,7 +10,7 @@ import { DateRange } from "react-date-range";
 
 const cleaningFee = 60;
 const serviceFee = 41;
-
+const guest_numbers = 0;
 function retNights(date1, date2) {
   let result = Math.floor((date2 - date1) / 1000 / 60 / 60 / 24);
   return result;
@@ -58,8 +58,8 @@ const Reservations = ({ property, stars, handleDates }) => {
       startDate: e.currentTarget.value,
       endDate: e.currentTarget.value,
     });
-    console.log(date[0].startDate);
-    console.log(e.currentTarget.value);
+    // console.log(date[0].startDate);
+    // console.log(e.currentTarget.value);
   };
 
   const resTotal =
@@ -80,6 +80,7 @@ const Reservations = ({ property, stars, handleDates }) => {
 
         <form id="form" onSubmit={resClick} className={styles.form}>
           <hr size="1" width="90%" color="grey"></hr>
+
 
           <div id={"check_in"}>
             <div id="checkin">CHECK-IN</div>
@@ -107,6 +108,7 @@ const Reservations = ({ property, stars, handleDates }) => {
               <DateRange
                 editableDateInputs={true}
                 onChange={(item) => setDate([item.selection])}
+                // onchange={handleChange}
                 moveRangeOnFirstSelection={false}
                 ranges={date}
                 className="date"

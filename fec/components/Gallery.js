@@ -1,9 +1,14 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import styles from "../styles/Gallery.module.css";
+import GalleryModal from "./GalleryModal";
 
 const Gallery = (props) => {
-  const [showModal, setShowModal] = useState(false);  //this will be a modal later
+  const [showModal, setShowModal] = useState(false);  //this will be a modal later 
+  const openModal = () => {
+    setShowModal((prev) => !prev);
+  };
+
 
   return (
     <div className={styles.body}>
@@ -28,21 +33,27 @@ const Gallery = (props) => {
             height="405%"
             objectFit="cover"
             className={styles.bigImage}
+            onClick={openModal}
           />
         </div>
         <div className={styles.imageDivOne}>
-          <Image width={300} height={200} objectFit="cover" src="/2.PNG" />
+          <Image alt="Landscape picture" width={300} height={200} objectFit="cover" src="/2.PNG" onClick={openModal}/>
         </div>
         <div className={styles.imageDivTwo}>
-          <Image width={300} height={200} objectFit="cover" src="/3.PNG" />
+          <Image alt="Landscape picture" width={300} height={200} objectFit="cover" src="/3.PNG" onClick={openModal}/>
         </div>
         <div className={styles.imageDivThree}>
-          <Image width={300} height={200} objectFit="cover" src="/4.PNG" />
+          <Image alt="Landscape picture" width={300} height={200} objectFit="cover" src="/4.PNG" onClick={openModal}/>
         </div>
         <div className={styles.imageDivFour}>
-          <Image width={300} height={200} objectFit="cover" src="/5.PNG" />
+          <Image alt="Landscape picture" width={300} height={200} objectFit="cover" src="/5.PNG" onClick={openModal}/>
         </div>
       </div>
+      <GalleryModal 
+         showModal={showModal}
+         setShowModal={setShowModal}
+         onClose={openModal}
+      />
     </div>
   );
 };
