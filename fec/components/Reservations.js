@@ -19,10 +19,6 @@ function retNights(date1, date2) {
 
 const Reservations = ({ property, stars, handleDates }) => {
 
-// function paymentSite() {
-// alert("Please wait while you are transferred to our third-party payment site")
-// }
-
 
   const [openDate, setOpenDate] = useState(false);
   const [date, setDate] = useState([
