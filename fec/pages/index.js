@@ -84,7 +84,7 @@ export default class App extends Component {
 
   render() {
     return (
-      <div className={styles.main}>
+      <div className={styles.container}>
         <Head>
           <title>chairbnb</title>
         </Head>
@@ -102,24 +102,24 @@ export default class App extends Component {
 
         <Header />
 
-        <Gallery />
+        <main className={styles.main}>
+          <Gallery />
 
-        <Reservations
-          property={this.state.property}
-          stars={this.state.stars}
-          reservations={this.state.reservations}
-          reviews={this.state.comment}
-        />
+          <Reservations
+            property={this.state.property}
+            stars={this.state.stars}
+            reservations={this.state.reservations}
+            reviews={this.state.comment}
+          />
 
-        <Description property={this.state.property} host={this.state.host} />
+          <Description property={this.state.property} host={this.state.host} />
 
-        <Reviews reviews={this.state.comment} users={this.state.users} />
+          <Reviews reviews={this.state.comment} users={this.state.users} />
 
-        <Map location={this.state.property} />
+          <Map location={this.state.property} />
+        </main>
 
-        <main className={styles.main}></main>
-
-        <footer className={styles.footer}></footer>
+        <footer className={styles.footer}>2022 LocoHouse</footer>
       </div>
     );
   }

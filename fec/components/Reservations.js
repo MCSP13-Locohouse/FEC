@@ -26,14 +26,15 @@ const Reservations = ({ property, reviews, handleDates }) => {
     },
   ]);
 
-  const averageRating = 0;
+  let averageRating = 0;
 
   const reviewAverage = () => {
-    for (var i = 0; i < reviews.length; i++) {
+    for (let i = 0; i < reviews.length; i++) {
       const starNumbers = parseInt(reviews[i].stars);
-      averageRating += (starNumbers / reviews.length)
-      return averageRating;
-    }      
+      averageRating += starNumbers;
+    }
+    averageRating = averageRating / reviews.length;
+    return averageRating;
   };
 
   reviewAverage();
