@@ -72,7 +72,7 @@ const ReviewModal = ({ showModal, setShowModal, onClose, users, reviews }) => {
                 <>
                   <ul id="myList" key={i} className="commentList">
                     <li key={i}>
-                      <b>
+                      <b className={styles.bullet}>
                         {item.first_name} {item.last_name}
                       </b>
                     </li>
@@ -87,7 +87,7 @@ const ReviewModal = ({ showModal, setShowModal, onClose, users, reviews }) => {
             <>
               <ul id="myList" key={i} className="commentList">
                 <li key={i}>
-                  <b>
+                  <b className={styles.bullet}>
                     {item.first_name} {item.last_name}
                   </b>
                 </li>

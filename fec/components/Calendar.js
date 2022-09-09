@@ -2,18 +2,19 @@ import React, { useState } from "react";
 import "react-date-range/dist/styles.css"; // main style file
 import "react-date-range/dist/theme/default.css"; // theme css file
 import { DateRange } from "react-date-range";
-
+import { HomeIcon } from "@heroicons/react/24/solid";
+import styles from "../styles/Home.module.css"
 function Calendar({ date, setDate }) {
   return (
     <div className="search">
-      <h2 className="h2">Select check-in date</h2>
-      <h5 className="h5">Minimum stay: 2 nights</h5>
+      <h2 className={styles.h2}>Select check-in date</h2>
+      <h5 className={styles.h5}>Minimum stay: 2 nights</h5>
       {
         <DateRange
           onChange={(item) => setDate([item.selection])}
           moveRangeOnFirstSelection={false}
           ranges={date}
-          className="calendar"
+          className={styles.calendar}
           months={2}
           showSelectionPreview={true}
           direction={"horizontal"}
