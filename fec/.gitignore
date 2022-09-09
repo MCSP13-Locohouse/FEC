@@ -10,6 +10,7 @@ node_modules
 # next.js
 /.next/
 /out/
+
 fec/.next/*
 
 
@@ -40,4 +41,5 @@ yarn-error.log*
 next-env.d.ts
 
 ./server.js
+
 .env
