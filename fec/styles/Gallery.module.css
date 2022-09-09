@@ -23,6 +23,14 @@
     border-bottom-left-radius: 10px;
 }
 
+.imageDivThree {
+    border-top-right-radius: 10px;
+}
+
+.imageDivFour {
+    border-bottom-right-radius: 10px;
+}
+
 .header {
     position: relative;
     margin-bottom: -3px;
