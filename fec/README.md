@@ -24,7 +24,7 @@ The `pages/api` directory is mapped to `/api/*`. Files in this directory are tre
 
 ### Environmental Variables
 
-Some inormation will be uniqe to the environemnt in which this project is deployed or should not be shared publicly such as port numbers, api keys, etc.
+Some information will be unique to the environment in which this project is deployed or should not be shared publicly such as port numbers, api keys, etc.
 
 [Next.js](https://nextjs.org/) uses a file named `.env.local`
 
@@ -40,7 +40,7 @@ The map feature leverages [Google Maps](https://developers.google.com/maps) api 
 
 Follow the link to learn more about Google Map's [API Key](https://developers.google.com/maps/documentation/embed/get-api-key).
 
-Learn more about embeding google maps [here](https://developers.google.com/maps/documentation/embed/embedding-map)
+Learn more about embedding google maps [here](https://developers.google.com/maps/documentation/embed/embedding-map)
 
 <br>
 
