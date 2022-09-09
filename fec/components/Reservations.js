@@ -33,6 +33,9 @@ const Reservations = ({ property, stars, handleDates }) => {
   function resClick(event, date) {
     event.preventDefault();
     let formData = new FormData(document.getElementById("form"));
+    alert(
+      "Reservation entered. You will now be transferred to our third party payment site"
+    );
 
     axios
       .post("/api/reservations", {
@@ -71,7 +74,7 @@ const Reservations = ({ property, stars, handleDates }) => {
     <div className="container">
       <div className={styles.reservations_box}>
         <span className={styles.price}>${property.price} per night</span>
-        {/* <span className="stars">{stars} Stars!</span> */}
+        <span className="stars">{stars[0]} Stars!</span>
         <br></br>
         <div className={styles.spacer}></div>
 
