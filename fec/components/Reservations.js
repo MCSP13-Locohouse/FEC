@@ -16,11 +16,7 @@ function retNights(date1, date2) {
   return result;
 }
 
-const Reservations = ({ property, stars, handleDates }) => {
-  // function paymentSite() {
-  // alert("Please wait while you are transferred to our third-party payment site")
-  // }
-
+const Reservations = ({ property, reviews, handleDates }) => {
   const [openDate, setOpenDate] = useState(false);
   const [date, setDate] = useState([
     {
@@ -30,6 +26,18 @@ const Reservations = ({ property, stars, handleDates }) => {
     },
   ]);
 
+  const averageRating = 0;
+
+  const reviewAverage = () => {
+    for (var i = 0; i < reviews.length; i++) {
+      const starNumbers = parseInt(reviews[i].stars);
+      averageRating += (starNumbers / reviews.length)
+      return averageRating;
+    }      
+  };
+
+  reviewAverage();
+ 
   function resClick(event, date) {
     event.preventDefault();
     let formData = new FormData(document.getElementById("form"));
@@ -74,13 +82,12 @@ const Reservations = ({ property, stars, handleDates }) => {
     <div className="container">
       <div className={styles.reservations_box}>
         <span className={styles.price}>${property.price} per night</span>
-        <span className="stars">{stars[0]} Stars!</span>
+        <span className="stars">{averageRating} Stars!</span>
         <br></br>
         <div className={styles.spacer}></div>
 
         <form id="form" onSubmit={resClick} className={styles.form}>
           <hr size="1" width="90%" color="grey"></hr>
-
 
           <div id={"check_in"}>
             <div id="checkin">CHECK-IN</div>

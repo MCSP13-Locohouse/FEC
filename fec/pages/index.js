@@ -108,6 +108,7 @@ export default class App extends Component {
           property={this.state.property}
           stars={this.state.stars}
           reservations={this.state.reservations}
+          reviews={this.state.comment}
         />
 
         <Description property={this.state.property} host={this.state.host} />
