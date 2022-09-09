@@ -103,7 +103,7 @@ export default class App extends Component {
         <Header />
 
         <main className={styles.main}>
-          <Gallery />
+          <Gallery reviews={this.state.comment} users={this.state.users}/>
 
           <Reservations
             property={this.state.property}

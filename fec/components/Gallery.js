@@ -4,6 +4,19 @@ import styles from "../styles/Gallery.module.css";
 import GalleryModal from "./GalleryModal";
 
 const Gallery = (props) => {
+  console.log(props.reviews)
+  let averageRating = 0;
+
+  const reviewAverage = () => {
+    for (let i = 0; i < props.reviews.length; i++) {
+      const starNumbers = parseInt(props.reviews[i].stars);
+      averageRating += starNumbers;
+    }
+    averageRating = averageRating / props.reviews.length;
+    return averageRating;
+  };
+
+  reviewAverage();
   const [showModal, setShowModal] = useState(false);  //this will be a modal later 
   const openModal = () => {
     setShowModal((prev) => !prev);
@@ -12,10 +25,12 @@ const Gallery = (props) => {
 
   return (
     <div className={styles.body}>
-      <h1 className={styles.header}>Treehouse Casita</h1>
+      <div className={styles.header}><h1>Treehouse Casita</h1><br></br>
+      <p className={styles.paragraph}>{averageRating} · {props.reviews.length} Reviews · Not a Superhost · Colorado Springs, Colorado, United States</p>
+      </div>
       <br></br>
       <div className={styles.desc}>
-        5.0 · 1 reviews · Superhost · Colorado Springs, Colorado, United States
+        
         <button className={styles.shareButton}>
           <u>share</u>
         </button>
