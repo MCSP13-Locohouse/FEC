@@ -4,25 +4,26 @@ import styles from "../styles/ReviewModal.module.css";
 const ReviewModal = ({ showModal, setShowModal, onClose, users, reviews }) => {
   const [modal, setModal] = useState(false);
   const [input, setInput] = useState("");
-  const averageRating = 0;
+  let averageRating = 0;
 
   const reviewAverage = () => {
-    for (var i = 0; i < reviews.length; i++) {
+    for (let i = 0; i < reviews.length; i++) {
       const starNumbers = parseInt(reviews[i].stars);
-      averageRating += (starNumbers / reviews.length)
-      return averageRating;
-    }      
+      averageRating += starNumbers;
+    }
+    averageRating = averageRating / reviews.length;
+    return averageRating;
   };
 
   reviewAverage();
 
   const searchFunc = (event) => {
-    if (event.key === "Enter") {
-      var lowerCase = event.target.value.toLowerCase();
+    // if (event.key === "Enter") {
+      let lowerCase = event.target.value.toLowerCase();
       setInput({ input: lowerCase });
-    }
+    // }
   };
-
+  let matching = [];
   const testCommentSearch = () => {
     reviews.forEach((element) => {
       const isMatching =
@@ -30,15 +31,12 @@ const ReviewModal = ({ showModal, setShowModal, onClose, users, reviews }) => {
         element.first_name.toLowerCase().includes(input.input) ||
         element.last_name.toLowerCase().includes(input.input);
         if (isMatching) {
-         console.log(true)
-    } else {
-      console.log(false)
-    }
-    
-  });
-}
+          matching.push(element)
+        }
+    });
+  };
 
-  testCommentSearch()
+  testCommentSearch();
 
   return (
     <>
@@ -48,14 +46,16 @@ const ReviewModal = ({ showModal, setShowModal, onClose, users, reviews }) => {
 
           <div className={styles.reviewModal}>
             <div className={styles.header}>
-              
               {/* header div start point */}
               <input
                 className={styles.search}
                 placeholder="Search reviews"
                 id="searchBar"
-                onKeyDown={(e) => {
-                  searchFunc(e);
+                // onKeyDown={(e) => {
+                //   searchFunc(e);
+                // }}
+                onChange={(e) => {
+                  searchFunc(e)
                 }}
               ></input>
               <button onClick={onClose} className={styles.button}>
@@ -64,11 +64,11 @@ const ReviewModal = ({ showModal, setShowModal, onClose, users, reviews }) => {
             </div>
             {/* header div end point */}
             <div className={styles.ratings}>
-            
-              Overall Reviews Rating: {averageRating} Stars!                                                          
+              Overall Reviews Rating: {averageRating} Stars!
             </div>
             <div id="hide" className={styles.comments}>
-              {reviews.map((item, i) => (
+            {matching.length <= 0 ? (
+              reviews.map((item, i) => (
                 <>
                   <ul id="myList" key={i} className="commentList">
                     <li>
@@ -81,7 +81,25 @@ const ReviewModal = ({ showModal, setShowModal, onClose, users, reviews }) => {
                     {item.stars} Stars! {item.comment}
                   </div>
                 </>
-              ))}
+              ))
+            ) : (
+              matching.map((item, i) => (
+            <>
+              <ul id="myList" key={i} className="commentList">
+                <li>
+                  <b>
+                    {item.first_name} {item.last_name}
+                  </b>
+                </li>
+              </ul>
+              <div className={styles.paragraph}>
+                {item.stars} Stars! {item.comment}
+              </div>
+            </>
+          ))
+            )
+            }
+              
             </div>
           </div>
         </>
