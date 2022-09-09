@@ -36,6 +36,7 @@ const Reservations = ({ property, stars, handleDates }) => {
   function resClick(event, date) {
     event.preventDefault();
     let formData = new FormData(document.getElementById("form"));
+    alert("You will now be transferred to our third party payment site");
   
     axios.post("/api/reservations", {
       prop_id: "1",
