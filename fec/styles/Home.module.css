@@ -121,3 +121,9 @@
 }
 
 /* Above is for the reservations_box */
+
+.main {
+  display: block;
+  padding-left: 18vw;
+  padding-right: 18vw;
+}
