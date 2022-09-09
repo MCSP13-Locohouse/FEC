@@ -4,38 +4,29 @@ import { Loader } from "@googlemaps/js-api-loader";
 import axios from "axios";
 
 export default function Map(props) {
-  //SET UP VARIABLES
-  let coordinates = {};
-  const apiKey = process.env.NEXT_PUBLIC_API_KEY;
-  let address = "";
-  // if (props.location.prop_id === -1) {
-  //     //DO NOTHING IF PROPERTY'S INFORMATION HASN'T LOADED
-  //     console.log("map component: no property data");
-  // } else {
-  address = encodeURIComponent(
-    props.location.number_street +
-      ", " +
-      props.location.us_state +
-      " " +
-      props.location.zip
-  );
-  axios({
-    method: "get",
-    url: `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${apiKey}`,
-    responseType: "json",
-  })
-    .then((response) => {
-      return response.data.results[0]["geometry"]["location"];
-    })
-    .then((locData) => {
-      coordinates = locData;
-    })
-    .then(() => {
-      renderMap(coordinates, apiKey, googlemap);
-    })
-    .catch((err) => {
-      console.error(err);
-    });
+    //SET UP VARIABLES
+    let coordinates = {};
+    const apiKey = process.env.NEXT_PUBLIC_API_KEY;
+    let address = "";
+    if (props.location.prop_id === -1) {
+        //DO NOTHING IF PROPERTY'S INFORMATION HASN'T LOADED
+        // console.log("map component: no property data");
+    } else {
+        address = encodeURIComponent(props.location.number_street + ', ' + props.location.us_state + " " + props.location.zip);
+        axios({
+            method: 'get',
+            url: `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${apiKey}`,
+            responseType: 'json'
+        })
+            .then((response) => {
+                return response.data.results[0]['geometry']['location']
+            })
+            .then((locData) => {
+                coordinates = locData;
+            })
+            .then(() => {
+                renderMap(coordinates, apiKey, googlemap);
+            });
 
   const googlemap = useRef(null);
 
@@ -262,21 +253,22 @@ export async function renderMap(coordinates, apiKey, googlemap) {
   let locData = coordinates;
   let map;
 
-  loader
-    .load()
-    .then(() => {
-      const google = window.google;
-      map = new google.maps.Map(googlemap.current, {
-        center: locData, //look this up
-        zoom: 15,
-        styles: style,
-      });
-      // const marker = new google.maps.Marker({
-      //     position: locData,
-      //     map,
-      //     label: `Your AirBnB is Here`,
-      // })
-      setMarkers(map, locData);
+    loader
+        .load()
+        .then(() => {
+            const google = window.google;
+            map = new google.maps.Map(googlemap.current, {
+                center: locData, //look this up
+                zoom: 15,
+                styles: style,
+                disableDefaultUI: true,
+            });
+            // const marker = new google.maps.Marker({
+            //     position: locData,
+            //     map,
+            //     label: `Your AirBnB is Here`,
+            // })
+            setMarkers(map, locData);
 
       return locData;
     })
@@ -309,13 +301,13 @@ function setMarkers(map, locData) {
     type: "poly",
   };
 
-  new google.maps.Marker({
-    position: locData,
-    map,
-    icon: image,
-    shape: shape,
-    label: `Your AirBnB is Here`,
-  });
+    new google.maps.Marker({
+        position: locData,
+        map,
+        icon: image,
+        shape: shape,
+        label: `Exact location provided afrer booking`,
+    });
 }
 
 // import { useEffect, useRef } from "react";

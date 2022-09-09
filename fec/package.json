@@ -38,5 +38,10 @@
   },
   "jest": {
     "testEnvironment": "jsdom"
-  }
+  },
+  "builds": [
+    {
+      "src": "package.json"
+    }
+  ]
 }
