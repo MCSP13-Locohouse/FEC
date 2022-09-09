@@ -1,0 +1,69 @@
+.modalContainer {
+    display: flex;    
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: white;
+    z-index: 1000;
+    flex-direction: column;
+}
+
+.gallery {
+    margin-left: 33%;
+    margin-right: 33%;
+    overflow: auto;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+.gallery::-webkit-scrollbar {
+    display: none;
+  }
+
+.button {
+    float: left;
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    background-color: white;
+    border-radius: 15px;
+    border: none;
+    margin-left: 15px;
+    margin-top: 15px;
+    scale: 1.2;
+    width: 25px;
+    height: 25px;
+  }
+
+.button:hover {
+    cursor: pointer;
+    background-color: rgba(92, 92, 92, 0.15)
+}
+
+.shareButton {
+    text-align: center;
+    text-decoration: none;
+    background-color: white;
+    border-radius: 15px;
+    border: none;
+    scale: 1.2;
+    margin-left: 90%;
+  }
+
+.saveButton {
+    text-align: center;
+    text-decoration: none;
+    background-color: white;
+    border-radius: 15px;
+    border: none;
+    scale: 1.2;
+    margin-left: 2%;
+    margin-top: 1%;
+}
+.header {
+    display: inline;
+    width: 100%;
+    height: 50px;
+}
