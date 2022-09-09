@@ -3,7 +3,8 @@
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
   "/api/properties": "pages/api/properties.js",
-  "/api/comments": "pages/api/comments.js",
+  "/api/users": "pages/api/users.js",
+  "/": "pages/index.js",
   "/api/reservations": "pages/api/reservations.js",
-  "/api/users": "pages/api/users.js"
+  "/api/comments": "pages/api/comments.js"
 }
