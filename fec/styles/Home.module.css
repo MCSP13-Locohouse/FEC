@@ -127,19 +127,3 @@
   padding-left: 18vw;
   padding-right: 18vw;
 }
-
-.leftSidebar {
-  left: 0;
-  position: fixed;
-  height: 100vh;
-  padding: 200px;
-  background-color: #0070f3;
-}
-
-.rightSidebar {
-  right: 0;
-  position: fixed;
-  height: 100vh;
-  padding: 200px;
-  background-color: #0070f3;
-}
