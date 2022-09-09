@@ -9,9 +9,11 @@ export default function Map(props) {
     let coordinates = {};
     const apiKey = process.env.NEXT_PUBLIC_API_KEY;
     let address = "";
+    const googlemap = useRef(null);
+
     if (props.location.prop_id === -1) {
         //DO NOTHING IF PROPERTY'S INFORMATION HASN'T LOADED
-        console.log("map component: no property data");
+        //console.log("fec map component: no property data");
     } else {
         address = encodeURIComponent(props.location.number_street + ', ' + props.location.us_state + " " + props.location.zip);
         axios({
@@ -27,14 +29,15 @@ export default function Map(props) {
             })
             .then(() => {
                 renderMap(coordinates, apiKey, googlemap);
+            }).catch((err) => {
+                console.err(err);
             });
 
-        const googlemap = useRef(null);
-
-        return (
-            <div id="map" ref={googlemap} />
-        )
     }
+
+    return (
+        <div id="map" ref={googlemap} />
+    )
 };
 
 const style = [
@@ -344,4 +347,3 @@ function setMarkers(map, locData) {
 // };
 
 // export default Map;
-
