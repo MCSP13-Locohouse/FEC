@@ -13,7 +13,6 @@ export default function Map(props) {
 
     if (props.location.prop_id === -1) {
         //DO NOTHING IF PROPERTY'S INFORMATION HASN'T LOADED
-        //console.log("fec map component: no property data");
     } else {
         address = encodeURIComponent(props.location.number_street + ', ' + props.location.us_state + " " + props.location.zip);
         axios({

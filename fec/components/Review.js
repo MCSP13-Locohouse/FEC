@@ -3,6 +3,7 @@ import styles from "../styles/Review.module.css";
 import ReviewModal from "./ReviewModal";
 const Reviews = (props) => {
   const [showModal, setShowModal] = useState(false);
+  const numOfReviews = props.reviews.length
   const openModal = () => {
     setShowModal((prev) => !prev);
   };
@@ -18,21 +19,22 @@ const Reviews = (props) => {
       }}
     >
       <div className={styles.reviews}>
-        <div>
+        <div className={styles.comments}>
           {props.reviews.map((users, i) => (
-            <div key={i}>
-              <ul>
+            
+              <ul key={i}>
                 <li>
-                  {users.first_name} {users.last_name}
+                  {users.first_name}
                 </li>
                 {users.stars} Stars! - {users.comment}
               </ul>
-            </div>
+
           ))}
-          <button className={styles.button} onClick={openModal}>
-            Show all reviews
-          </button>
+          
         </div>
+        <button className={styles.button} onClick={openModal}>
+            Show all {numOfReviews} reviews
+          </button>
       </div>
       {/* //{" "} */}
       <ReviewModal

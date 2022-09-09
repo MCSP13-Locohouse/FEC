@@ -19,7 +19,6 @@ export default async function reservationsHandler(req, res) {
     }
   } else if (req.method === "POST") {
     try {
-      console.log(req.body, "in try post");
       const { prop_id, first_name, last_name, guest_num, startdate, enddate } =
         req.body;
       const reservationMaker = await sql`
