@@ -6,8 +6,8 @@ import { DateRange } from "react-date-range";
 function Calendar({ date, setDate }) {
   return (
     <div className="search">
-      <h2>Select checkout date</h2>
-      <h5>Minimum stay: 2 nights</h5>
+      <h2 className="h2">Select check-in date</h2>
+      <h5 className="h5">Minimum stay: 2 nights</h5>
       {
         <DateRange
           onChange={(item) => setDate([item.selection])}
