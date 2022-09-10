@@ -16,7 +16,7 @@ function retNights(date1, date2) {
   return result;
 }
 
-const Reservations = ({ property, reviews, handleDates }) => {
+const Reservations = ({ property, reviews }) => {
   const [openDate, setOpenDate] = useState(false);
   const [date, setDate] = useState([
     {
@@ -38,7 +38,7 @@ const Reservations = ({ property, reviews, handleDates }) => {
   };
 
   reviewAverage();
- 
+
   function resClick(event, date) {
     event.preventDefault();
     let formData = new FormData(document.getElementById("form"));
@@ -60,16 +60,6 @@ const Reservations = ({ property, reviews, handleDates }) => {
         console.log(error);
       });
   }
-  const handleChange = (e) => {
-    e.preventDefault();
-    setDate({
-      ...date,
-      startDate: e.currentTarget.value,
-      endDate: e.currentTarget.value,
-    });
-    // console.log(date[0].startDate);
-    // console.log(e.currentTarget.value);
-  };
 
   const resTotal =
     parseInt(
@@ -173,12 +163,16 @@ const Reservations = ({ property, reviews, handleDates }) => {
         <div className={styles.spacer}></div>
         <br></br>
         <div className={styles.spacer}></div>
-        <span className={styles.leftrespan}><u>Cleaning Fee</u></span>
+        <span className={styles.leftrespan}>
+          <u>Cleaning Fee</u>
+        </span>
         <span className={styles.rightrespan}>${cleaningFee}</span>
         <div className={styles.spacer}></div>
         <br></br>
         <div className={styles.spacer}></div>
-        <span className={styles.leftrespan}><u>Service Fee</u></span>
+        <span className={styles.leftrespan}>
+          <u>Service Fee</u>
+        </span>
         <span className={styles.rightrespan}>${serviceFee}</span>
         <div className={styles.spacer}></div>
         <br></br>
