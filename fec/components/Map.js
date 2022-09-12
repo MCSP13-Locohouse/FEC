@@ -50,11 +50,6 @@ const style = [
     {
         featureType: "landscape",
         elementType: "geometry.fill",
-        stylers: [
-            {
-                //color: "#f8f4f1",
-            },
-        ],
     },
     {
         featureType: "landscape.man_made",
@@ -157,9 +152,6 @@ const style = [
             {
                 color: "#fffefa",
             },
-            {
-                //weight: 0.5,
-            },
         ],
     },
     {
@@ -186,9 +178,6 @@ const style = [
             {
                 visibility: "simplified",
             },
-            {
-                //weight: 1.5,
-            },
         ],
     },
     {
@@ -211,11 +200,6 @@ const style = [
     {
         featureType: "road.local",
         elementType: "geometry.fill",
-        stylers: [
-            {
-                //weight: 2,
-            },
-        ],
     },
     {
         featureType: "road.local",
@@ -266,11 +250,6 @@ async function renderMap(coordinates, apiKey, googlemap) {
                 styles: style,
                 disableDefaultUI: true,
             });
-            // const marker = new google.maps.Marker({
-            //     position: locData,
-            //     map,
-            //     label: `Your AirBnB is Here`,
-            // })
             setMarkers(map, locData);
 
             return locData;
@@ -288,17 +267,15 @@ function setMarkers(map, locData) {
     // Origins, anchor positions and coordinates of the marker increase in the X
     // direction to the right and in the Y direction down.
     const image = {
-        //Pulled the below url from their website:
+        //Example icons at the commented urls:
         //url: 'https://a0.muscache.com/airbnb/static/icons/android-icon-192x192-c0465f9f0380893768972a31a614b670.png',
         url: 'https://a0.muscache.com/airbnb/static/logotype_favicon-21cc8e6c6a2cca43f061d2dcabdf6e58.ico',
         //url: 'https://a0.muscache.com/airbnb/static/icons/apple-touch-icon-76x76-3b313d93b1b5823293524b9764352ac9.png',
         //url: "https://css.gg/home-alt.svg",
         //url: "https://upload.wikimedia.org/wikipedia/commons/6/69/Airbnb_Logo_B%C3%A9lo.svg",
-        // This marker is 20 pixels wide by 32 pixels high.
         size: new google.maps.Size(50, 140),
         // The origin for this image is (0, 0).
         origin: new google.maps.Point(0, 0),
-        // The anchor for this image is the base of the flagpole at (0, 32).
         anchor: new google.maps.Point(15, 15),
     };
 
@@ -315,14 +292,14 @@ function setMarkers(map, locData) {
         anchor: new google.maps.Point(12, 15),
     };
 
-
+    //Future development:
     // Shapes define the clickable region of the icon. The type defines an HTML
     // <area> element 'poly' which traces out a polygon as a series of X,Y points.
     // The final coordinate closes the poly by connecting to the first coordinate.
-    const shape = {
-        coords: [1, 1, 1, 20, 18, 20, 18, 1],
-        type: "poly",
-    };
+    // const shape = {
+    //     coords: [1, 1, 1, 20, 18, 20, 18, 1],
+    //     type: "poly",
+    // };
 
     new google.maps.Marker({
         position: locData,
