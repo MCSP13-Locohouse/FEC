@@ -19,8 +19,8 @@ const ReviewModal = ({ showModal, setShowModal, onClose, users, reviews }) => {
 
   const searchFunc = (event) => {
     // if (event.key === "Enter") {
-      let lowerCase = event.target.value.toLowerCase();
-      setInput({ input: lowerCase });
+    let lowerCase = event.target.value.toLowerCase();
+    setInput({ input: lowerCase });
     // }
   };
   let matching = [];
@@ -30,9 +30,9 @@ const ReviewModal = ({ showModal, setShowModal, onClose, users, reviews }) => {
         element.comment.toLowerCase().includes(input.input) ||
         element.first_name.toLowerCase().includes(input.input) ||
         element.last_name.toLowerCase().includes(input.input);
-        if (isMatching) {
-          matching.push(element)
-        }
+      if (isMatching) {
+        matching.push(element);
+      }
     });
   };
 
@@ -55,7 +55,7 @@ const ReviewModal = ({ showModal, setShowModal, onClose, users, reviews }) => {
                 //   searchFunc(e);
                 // }}
                 onChange={(e) => {
-                  searchFunc(e)
+                  searchFunc(e);
                 }}
               ></input>
               <button onClick={onClose} className={styles.button}>
@@ -67,39 +67,37 @@ const ReviewModal = ({ showModal, setShowModal, onClose, users, reviews }) => {
               Overall Reviews Rating: {averageRating} Stars!
             </div>
             <div id="hide" className={styles.comments}>
-            {matching.length <= 0 ? (
-              reviews.map((item, i) => (
-                <>
-                  <ul id="myList" key={i} className="commentList">
-                    <li key={i}>
-                      <b>
-                        {item.first_name} {item.last_name}
-                      </b>
-                    </li>
-                  </ul>
-                  <div className={styles.paragraph} key={i}>
-                    {item.stars} Stars! {item.comment}
-                  </div>
-                </>
-              ))
-            ) : (
-              matching.map((item, i) => (
-            <>
-              <ul id="myList" key={i} className="commentList">
-                <li key={i}>
-                  <b>
-                    {item.first_name} {item.last_name}
-                  </b>
-                </li>
-              </ul>
-              <div key={i} className={styles.paragraph}>
-                {item.stars} Stars! {item.comment}
-              </div>
-            </>
-          ))
-            )
-            }
-              
+              {matching.length <= 0
+                ? reviews.map((item, i) => (
+                    <>
+                      <ul key={i} id="myList" className={styles.commentList}>
+                        <li>
+                          <b>
+
+                            {item.first_name} {item.last_name}
+                          </b>
+                        </li>
+                      </ul>
+                      <div className={styles.paragraph}>
+                        {item.stars} Stars! {item.comment}
+                      </div>
+                    </>
+                  ))
+                : matching.map((item, i) => (
+                    <>
+                      <ul key={i} id="myList" className={styles.commentList}>
+                        <li>
+                          <b>
+
+                            {item.first_name} {item.last_name}
+                          </b>
+                        </li>
+                      </ul>
+                      <div className={styles.paragraph}>
+                        {item.stars} Stars! {item.comment}
+                      </div>
+                    </>
+                  ))}
             </div>
           </div>
         </>

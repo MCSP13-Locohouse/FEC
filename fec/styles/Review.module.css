@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap');
+
 .reviews {
     width: 70vw;
     height: 500px;
@@ -6,7 +8,7 @@
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
-    font-family:Verdana, Geneva, Tahoma, sans-serif
+    font-family: 'Roboto Condensed', sans-serif;
 }
 
 

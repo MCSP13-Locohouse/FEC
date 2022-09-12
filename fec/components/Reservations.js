@@ -16,7 +16,7 @@ function retNights(date1, date2) {
   return result;
 }
 
-const Reservations = ({ property, reviews, handleDates }) => {
+const Reservations = ({ property, reviews }) => {
   const [openDate, setOpenDate] = useState(false);
   const [date, setDate] = useState([
     {
@@ -26,18 +26,19 @@ const Reservations = ({ property, reviews, handleDates }) => {
     },
   ]);
 
-  const averageRating = 0;
+  let averageRating = 0;
 
   const reviewAverage = () => {
-    for (var i = 0; i < reviews.length; i++) {
+    for (let i = 0; i < reviews.length; i++) {
       const starNumbers = parseInt(reviews[i].stars);
-      averageRating += (starNumbers / reviews.length)
-      return averageRating;
-    }      
+      averageRating += starNumbers;
+    }
+    averageRating = averageRating / reviews.length;
+    return averageRating;
   };
 
   reviewAverage();
- 
+
   function resClick(event, date) {
     event.preventDefault();
     let formData = new FormData(document.getElementById("form"));
@@ -59,16 +60,6 @@ const Reservations = ({ property, reviews, handleDates }) => {
         console.log(error);
       });
   }
-  const handleChange = (e) => {
-    e.preventDefault();
-    setDate({
-      ...date,
-      startDate: e.currentTarget.value,
-      endDate: e.currentTarget.value,
-    });
-    // console.log(date[0].startDate);
-    // console.log(e.currentTarget.value);
-  };
 
   const resTotal =
     parseInt(
@@ -154,13 +145,13 @@ const Reservations = ({ property, reviews, handleDates }) => {
           <hr size="1" width="90%" color="grey"></hr>
           <br></br>
           <button type="submit" className={styles.reserve_button}>
-            Reserve
+            <b>Reserve</b>
           </button>
           <p>You won`t be charged yet</p>
         </form>
         <div className={styles.spacer}></div>
         <span className={styles.leftrespan}>
-          price X {retNights(date[0].startDate, date[0].endDate)} nights
+          <u>price X {retNights(date[0].startDate, date[0].endDate)} nights</u>
         </span>
         <span className={styles.rightrespan}>
           $
@@ -172,12 +163,16 @@ const Reservations = ({ property, reviews, handleDates }) => {
         <div className={styles.spacer}></div>
         <br></br>
         <div className={styles.spacer}></div>
-        <span className={styles.leftrespan}>Cleaning Fee</span>
+        <span className={styles.leftrespan}>
+          <u>Cleaning Fee</u>
+        </span>
         <span className={styles.rightrespan}>${cleaningFee}</span>
         <div className={styles.spacer}></div>
         <br></br>
         <div className={styles.spacer}></div>
-        <span className={styles.leftrespan}>Service Fee</span>
+        <span className={styles.leftrespan}>
+          <u>Service Fee</u>
+        </span>
         <span className={styles.rightrespan}>${serviceFee}</span>
         <div className={styles.spacer}></div>
         <br></br>

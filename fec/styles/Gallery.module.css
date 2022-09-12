@@ -1,20 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap');
+
 .body {
-    display: inline-flex;
+    display: flex;
     flex-direction: column;
-    width: 90vw;
-    justify-content: center;
-    align-content: center;
+    width: 100%;
+    justify-items: center;
+    align-items: center;
+    font-family: 'Roboto Condensed', sans-serif;
 }
 
 
 .container {
-    display: inline-flex;
-    height: 500px;
-    width: 1150px;
+    display: flex;
+    height: 35em;
+    min-width: 10%;
+    width: 50%;
     flex-direction: column;
     flex-wrap: wrap;
-    padding: 5px;
+    /* padding: 5px; */
     top: 2%;
+    margin-top: 1%;
+    margin-right: 19%;
 
 }
 
@@ -23,18 +29,49 @@
     border-bottom-left-radius: 10px;
 }
 
-.header {
-    position: relative;
-    margin-bottom: -3px;
+.imageDivOne {
+    padding-left: 2px;
+    padding-right: 2px;
 }
 
+.imageDivTwo {
+    padding-left: 2px;
+    padding-right: 2px;
+}
+
+.imageDivThree {
+    border-top-right-radius: 10px;
+    padding-left: 2px;
+    padding-right: 2px;
+}
+
+.imageDivFour {
+    border-bottom-right-radius: 10px;
+    padding-left: 2px;
+    padding-right: 2px;
+}
+
+.header {
+    display: flexbox;
+    align-items: flex-start;
+    justify-items: left;
+    margin-right: -12%;
+    margin-bottom: 0px;
+    width: 80%;
+    margin-bottom: -1%;
+}
+
+
 .desc {
-    position: relative;
+    display: flex;
+    margin-right: 54%;
+    width: 100%;
+
 }
 
 .shareButton {
     position: absolute;
-    margin-left: 560px;
+    margin-left: 40%;
     background-color: white;
     border: 0px;
     cursor: pointer;
@@ -42,8 +79,12 @@
 
 .saveButton {
     position: absolute;
-    margin-left: 620px;
+    margin-left: 43%;
     background-color: white;
     border: 0px;
     cursor: pointer;
+}
+
+.paragraph {
+    width: 100%;
 }
