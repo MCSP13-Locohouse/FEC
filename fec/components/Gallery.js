@@ -42,6 +42,7 @@ const Gallery = (props) => {
       <div className={styles.container}>
         <div className={styles.mainImage}>
           <Image
+            loading="lazy"
             src="/1.PNG"
             alt="Landscape picture"
             width="500%"
@@ -53,6 +54,7 @@ const Gallery = (props) => {
         </div>
         <div className={styles.imageDivOne}>
           <Image
+            loading="lazy"
             alt="Landscape picture"
             width={300}
             height={200}
@@ -63,6 +65,7 @@ const Gallery = (props) => {
         </div>
         <div className={styles.imageDivTwo}>
           <Image
+            loading="lazy"
             alt="Landscape picture"
             width={300}
             height={200}
@@ -73,6 +76,7 @@ const Gallery = (props) => {
         </div>
         <div className={styles.imageDivThree}>
           <Image
+            loading="lazy"
             alt="Landscape picture"
             width={300}
             height={200}
@@ -84,6 +88,7 @@ const Gallery = (props) => {
         </div>
         <div className={styles.imageDivFour}>
           <Image
+            loading="lazy"
             alt="Landscape picture"
             width={300}
             height={200}
