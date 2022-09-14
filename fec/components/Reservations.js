@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import styles from "../styles/Home.module.css";
 import axios from "axios";
 import Calendar from "./Calendar.js";
-import Search from "./Search";
 import { format } from "date-fns";
 import "react-date-range/dist/styles.css"; // main style file
 import "react-date-range/dist/theme/default.css"; // theme css file

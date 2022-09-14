@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import styles from "../styles/Description.module.css";
-import Amenities from "./Amenities";
 import AmenitiesModal from "./AmenitiesModal";
 import AboutModal from "./AboutModal";
 

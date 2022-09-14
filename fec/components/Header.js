@@ -1,11 +1,9 @@
 import React from "react";
-import Image from "next/image";
 import {
   MagnifyingGlassCircleIcon,
   GlobeAltIcon,
   Bars3Icon,
   UserCircleIcon,
-  UserIcon,
 } from "@heroicons/react/24/solid";
 
 function Header() {
