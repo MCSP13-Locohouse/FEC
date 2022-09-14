@@ -4,7 +4,7 @@ import styles from "../styles/Gallery.module.css";
 import GalleryModal from "./GalleryModal";
 
 const Gallery = (props) => {
-  console.log(props.reviews)
+  console.log(props.reviews);
   let averageRating = 0;
 
   const reviewAverage = () => {
@@ -17,27 +17,27 @@ const Gallery = (props) => {
   };
 
   reviewAverage();
-  const [showModal, setShowModal] = useState(false);  //this will be a modal later 
+  const [showModal, setShowModal] = useState(false); //this will be a modal later
   const openModal = () => {
     setShowModal((prev) => !prev);
   };
 
-
   return (
     <div className={styles.body}>
-      <div className={styles.header}><h1>Treehouse Casita</h1><br></br>
-      <p className={styles.paragraph}>{averageRating} · {props.reviews.length} Reviews · Not a Superhost · Colorado Springs, Colorado, United States</p>
+      <div className={styles.header}>
+        <h1 className={styles.h1}>Treehouse Casita</h1>
+        <div className={styles.desc}>
+          {averageRating} · {props.reviews.length} Reviews · Not a Superhost ·
+          Colorado Springs, Colorado, United States
+          <button className={styles.shareButton}>
+            <u>share</u>
+          </button>
+          <button className={styles.saveButton}>
+            <u>save</u>
+          </button>
+        </div>
       </div>
       <br></br>
-      <div className={styles.desc}>
-        
-        <button className={styles.shareButton}>
-          <u>share</u>
-        </button>
-        <button className={styles.saveButton}>
-          <u>save</u>
-        </button>
-      </div>
 
       <div className={styles.container}>
         <div className={styles.mainImage}>
@@ -52,22 +52,52 @@ const Gallery = (props) => {
           />
         </div>
         <div className={styles.imageDivOne}>
-          <Image alt="Landscape picture" width={300} height={200} objectFit="cover" src="/2.PNG" onClick={openModal}/>
+          <Image
+            alt="Landscape picture"
+            width={300}
+            height={200}
+            objectFit="cover"
+            src="/2.PNG"
+            onClick={openModal}
+          />
         </div>
         <div className={styles.imageDivTwo}>
-          <Image alt="Landscape picture" width={300} height={200} objectFit="cover" src="/3.PNG" onClick={openModal}/>
+          <Image
+            alt="Landscape picture"
+            width={300}
+            height={200}
+            objectFit="cover"
+            src="/3.PNG"
+            onClick={openModal}
+          />
         </div>
         <div className={styles.imageDivThree}>
-          <Image alt="Landscape picture" width={300} height={200} objectFit="cover" src="/4.PNG" onClick={openModal} className={styles.imageDivThree}/>
+          <Image
+            alt="Landscape picture"
+            width={300}
+            height={200}
+            objectFit="cover"
+            src="/4.PNG"
+            onClick={openModal}
+            className={styles.imageDivThree}
+          />
         </div>
         <div className={styles.imageDivFour}>
-          <Image alt="Landscape picture" width={300} height={200} objectFit="cover" src="/5.PNG" onClick={openModal} className={styles.imageDivFour}/>
+          <Image
+            alt="Landscape picture"
+            width={300}
+            height={200}
+            objectFit="cover"
+            src="/5.PNG"
+            onClick={openModal}
+            className={styles.imageDivFour}
+          />
         </div>
       </div>
-      <GalleryModal 
-         showModal={showModal}
-         setShowModal={setShowModal}
-         onClose={openModal}
+      <GalleryModal
+        showModal={showModal}
+        setShowModal={setShowModal}
+        onClose={openModal}
       />
     </div>
   );

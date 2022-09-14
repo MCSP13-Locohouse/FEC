@@ -70,28 +70,30 @@ const ReviewModal = ({ showModal, setShowModal, onClose, users, reviews }) => {
               {matching.length <= 0
                 ? reviews.map((item, i) => (
                     <>
-                      <ul id="myList" key={i} className="commentList">
-                        <li key={i}>
-                          <b className={styles.bullet}>
+                      <ul key={i} id="myList" className={styles.commentList}>
+                        <li>
+                          <b>
+
                             {item.first_name} {item.last_name}
                           </b>
                         </li>
                       </ul>
-                      <div className={styles.paragraph} key={i}>
+                      <div className={styles.paragraph}>
                         {item.stars} Stars! {item.comment}
                       </div>
                     </>
                   ))
                 : matching.map((item, i) => (
                     <>
-                      <ul id="myList" key={i} className="commentList">
-                        <li key={i}>
-                          <b className={styles.bullet}>
+                      <ul key={i} id="myList" className={styles.commentList}>
+                        <li>
+                          <b>
+
                             {item.first_name} {item.last_name}
                           </b>
                         </li>
                       </ul>
-                      <div key={i} className={styles.paragraph}>
+                      <div className={styles.paragraph}>
                         {item.stars} Stars! {item.comment}
                       </div>
                     </>

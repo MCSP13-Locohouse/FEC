@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap');
+
 .container {
   padding: 0 2rem;
   font-family: 'Roboto Condensed', sans-serif;
@@ -58,12 +59,12 @@
   justify-content: center;
   flex-direction: column;
   border-radius: 12px;
-  width: 14%;
-  min-width: 14%;
+  width: 20%;
+  min-width: 15%;
   min-height: 30%;
   border: 1px solid rgb(214, 214, 214);
   margin: 0px;
-  margin-left: 35%;
+  margin-left: 50%;
   text-align: center;
   font-size: small;
   box-shadow: -1px 1px 1px 1px rgb(226, 226, 226);
@@ -97,7 +98,7 @@
 
 .form {
   float: center;
-  padding-right: 30px; 
+  padding-right: 30px;
 }
 
 .reserve_button {
@@ -110,7 +111,7 @@
   background-image: radial-gradient(circle, rgb(255, 56, 92) 0%, rgb(230, 30, 77) 27.5%, rgb(227, 28, 95) 40%, rgb(215, 4, 102) 57.5%, rgb(189, 30, 89) 75%, rgb(189, 30, 89) 100%);
   color: white;
   border: none;
-  cursor: pointer;  
+  cursor: pointer;
 }
 
 .leftrespan {
@@ -161,6 +162,6 @@
 
 .main {
   display: block;
-  padding-left: 19vw;
-  padding-right: 19vw;
+  padding-left: 5vw;
+  padding-right: 5vw;
 }
