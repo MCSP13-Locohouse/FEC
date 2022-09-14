@@ -19,7 +19,7 @@ export default async function reservationsHandler(req, res) {
   if (req.method === "GET") {
     try {
       const reservations = await sql`
-      SELECT * FROM customers`;
+      SELECT name_firstlast FROM customers`;
       res.status(200).json({ reservations });
     } catch (err) {
       console.error(err);

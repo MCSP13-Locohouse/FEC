@@ -19,7 +19,7 @@ export default async function usersHandler(req, res) {
   if (req.method === "GET") {
     try {
       const users = await sql`
-      SELECT * FROM customers`;
+      SELECT name_firstlast FROM customers`;
       res.status(200).json({ users });
     } catch (err) {
       console.error(err);

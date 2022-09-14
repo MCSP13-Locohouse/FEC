@@ -20,7 +20,7 @@ export default async function propertiesHandler(req, res) {
   if (req.method === "GET") {
     try {
       const properties = await sql`
-      SELECT * FROM properties`;
+      SELECT title, price, specs, about, prop_space, guest, other, number_street, us_state, zip, amenities FROM properties`;
       res.status(200).json({ properties });
     } catch (err) {
       console.error(err);

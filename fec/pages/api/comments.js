@@ -19,7 +19,7 @@ export default async function commentsHandler(req, res) {
   if (req.method === "GET") {
     try {
       const comments = await sql`
-      SELECT * FROM comments`;
+      SELECT first_name, last_name, stars, comment FROM comments`;
       res.status(200).json({ comments });
     } catch (err) {
       console.error(err);
