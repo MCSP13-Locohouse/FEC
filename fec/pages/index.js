@@ -9,6 +9,9 @@ import axios from "axios";
 import Header from "../components/Header";
 import Map, { StaticGoogleMap, Marker, Path } from "../components/Map";
 import Gallery from "../components/Gallery";
+// import useSWR from "swr";
+
+// const fetcher = (url) => axios.get(url).then((res) => res.data);
 
 export default class App extends Component {
   constructor(props) {
@@ -45,42 +48,61 @@ export default class App extends Component {
   }
 
   componentDidMount() {
-    axios.get("/api/properties").then((res) => {
-      this.setState((prevState) => ({
-        property: res.data.properties[0],
-      }));
-    });
+    // axios.get("/api/properties").then((res) => {
+    //   this.setState((prevState) => ({
+    //     property: res.data.properties[0],
+    //   }));
+    // });
 
-    axios.get("/api/users").then((res) => {
+    // axios.get("/api/users").then((res) => {
+    //   this.setState({
+    //     users: res.data.users,
+    //     host: res.data.users[0].name_firstlast,
+    //   });
+    // });
+
+    // axios.get("/api/comments").then((res) => {
+    //   this.setState({
+    //     comment: res.data.comments,
+    //     stars: res.data.comments[0].stars,
+    //   });
+    // });
+
+    // axios.get("/api/reservations").then((res) => {
+    //   this.setState({
+    //     startDate: res.data.startDate,
+    //     endDate: res.data.endDate,
+    //   });
+    // });
+    axios.get("/api/").then((res) => {
       this.setState({
+        comment: res.data.comments,
+        stars: res.data.comments[0].stars,
+        property: res.data.properties[0],
+        startData: res.data.reservations.startDate,
+        endDate: res.data.reservations.endDate,
         users: res.data.users,
         host: res.data.users[0].name_firstlast,
       });
     });
-
-    axios.get("/api/comments").then((res) => {
-      this.setState({
-        comment: res.data.comments,
-        stars: res.data.comments[0].stars,
-      });
-    });
-
-    axios.get("/api/reservations").then((res) => {
-      this.setState({
-        startDate: res.data.startDate,
-        endDate: res.data.endDate,
-      });
-    });
-
-    // const apiKey = process.env.NEXT_PUBLIC_API_KEY;
-    // let address = encodeURIComponent(
-    //   this.state.property.number_street + ", " + this.state.property.us_state + " " + this.state.property.zip
-    // );
-    // const mapGet = await axios.get(
-    //   `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${apiKey}`
-    // );
-    // this.setState({ mapLocation: mapGet.results[0]["geometry"]["location"] });
   }
+
+  // const { commentsData, commentsError } = useSWR("api/comments", fetcher);
+  // const { propsData, propsError } = useSWR("api/properties", fetcher);
+  // const { reservsData, reservsError } = useSWR("api/reservations", fetcher);
+  // const { usersData, usersError } = useSWR("api/users", fetcher);
+
+  // if (commentsError) return <p>No comments found</p>;
+  // if (!commentsData) return <p>Loading comments...</p>;
+
+  // if (propsError) return <p>No property data found</p>;
+  // if (!propsData) return <p>Loading props...</p>;
+
+  // if (reservsError) return <p>No reservations data found</p>;
+  // if (reservsData) return <p>Loading reservs...</p>;
+
+  // if (usersError) return <p>No users data found</p>;
+  // if (usersData) return <p>Loading users...</p>;
 
   render() {
     return (
@@ -103,7 +125,7 @@ export default class App extends Component {
         <Header />
 
         <main className={styles.main}>
-          <Gallery reviews={this.state.comment} users={this.state.users}/>
+          <Gallery reviews={this.state.comment} users={this.state.users} />
 
           <Reservations
             property={this.state.property}
@@ -115,6 +137,26 @@ export default class App extends Component {
           <Description property={this.state.property} host={this.state.host} />
 
           <Reviews reviews={this.state.comment} users={this.state.users} />
+
+          {/* <div>
+            <h2>The comments data is:</h2>
+            <p>{commentsData.comments}</p>
+          </div>
+
+          <div>
+            <h2>The properties data is:</h2>
+            <p>{propsData.properties}</p>
+          </div>
+
+          <div>
+            <h2>The reservations data is:</h2>
+            <p>{reservsData.reservations}</p>
+          </div>
+
+          <div>
+            <h2>The users data is:</h2>
+            <p>{usersData.users}</p>
+          </div> */}
 
           <Map location={this.state.property} />
         </main>
