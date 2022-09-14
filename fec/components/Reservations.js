@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import styles from "../styles/Home.module.css";
 import axios from "axios";
 import Calendar from "./Calendar.js";
@@ -9,7 +9,7 @@ import { DateRange } from "react-date-range";
 
 const cleaningFee = 60;
 const serviceFee = 41;
-const guest_numbers = 0;
+
 function retNights(date1, date2) {
   let result = Math.floor((date2 - date1) / 1000 / 60 / 60 / 24);
   return result;
