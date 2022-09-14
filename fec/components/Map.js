@@ -1,5 +1,4 @@
 import { useEffect, useRef } from "react";
-import { Wrapper, Status } from "@googlemaps/react-wrapper";
 import { Loader } from "@googlemaps/js-api-loader";
 import axios from "axios";
 
@@ -267,11 +266,7 @@ async function renderMap(coordinates, apiKey, googlemap) {
                 styles: style,
                 disableDefaultUI: true,
             });
-            // const marker = new google.maps.Marker({
-            //     position: locData,
-            //     map,
-            //     label: `Your AirBnB is Here`,
-            // })
+
             setMarkers(map, locData);
 
             return locData;
@@ -281,6 +276,7 @@ async function renderMap(coordinates, apiKey, googlemap) {
         });
     return locData;
 }
+
 
 function setMarkers(map, locData) {
     // Adds markers to the map.
@@ -313,34 +309,3 @@ function setMarkers(map, locData) {
         label: `Exact location provided afrer booking`,
     });
 }
-
-// import { useEffect, useRef } from "react";
-// import { Wrapper, Status } from "@googlemaps/react-wrapper";
-// import { Loader } from "@googlemaps/js-api-loader";
-
-// const Map = (props) => {
-//   const googlemap = useRef(null);
-//   const apiKey = process.env.NEXT_PUBLIC_API_KEY;
-//   const lat = props.property.locData.lat;
-//   const long = props.property.locData.lng;
-//   //Will need to get location lat long props
-
-//   useEffect(() => {
-//     const loader = new Loader({
-//       apiKey: apiKey,
-//       version: "weekly",
-//     });
-//     let map;
-//     loader.load().then(() => {
-//       const google = window.google;
-//       map = new google.maps.Map(googlemap.current, {
-//         center: { lat: lat, lng: long },
-//         zoom: 15,
-//       });
-//     });
-//   });
-
-//   return <div id="map" ref={googlemap} />;
-// };
-
-// export default Map;

@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap');
-
 .body {
     display: flex;
     flex-direction: column;
@@ -17,7 +15,6 @@
     width: 50%;
     flex-direction: column;
     flex-wrap: wrap;
-    /* padding: 5px; */
     top: 2%;
     margin-top: 1%;
     margin-right: 19%;
@@ -25,21 +22,25 @@
 }
 
 .bigImage {
+    display: block;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
 }
 
 .imageDivOne {
+    display: block;
     padding-left: 2px;
     padding-right: 2px;
 }
 
 .imageDivTwo {
+    display: block;
     padding-left: 2px;
     padding-right: 2px;
 }
 
 .imageDivThree {
+    display: block;
     border-top-right-radius: 10px;
     padding-left: 2px;
     padding-right: 2px;

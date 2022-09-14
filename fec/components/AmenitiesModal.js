@@ -2,9 +2,7 @@ import React, { useState } from "react";
 import styles from "../styles/AmenitiesModal.module.css";
 import Amenities from "./Amenities";
 
-const AmenitiesModal = ({ showDModal, setShowDModal, onClose, amenities }) => {
-  const [modal, setModal] = useState(false);
-
+const AmenitiesModal = ({ showDModal, onClose, amenities }) => {
   return (
     <>
       {showDModal ? (

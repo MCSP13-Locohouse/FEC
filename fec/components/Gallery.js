@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import styles from "../styles/Gallery.module.css";
 import GalleryModal from "./GalleryModal";
 
 const Gallery = (props) => {
-  console.log(props.reviews);
   let averageRating = 0;
 
   const reviewAverage = () => {
@@ -17,8 +16,8 @@ const Gallery = (props) => {
   };
 
   reviewAverage();
-  const [showModal, setShowModal] = useState(false); //this will be a modal later
-  const openModal = () => {
+  const [showModal, setShowModal] = useState(false); 
+    const openModal = () => {
     setShowModal((prev) => !prev);
   };
 
@@ -44,9 +43,11 @@ const Gallery = (props) => {
           <Image
             src="/1.PNG"
             alt="Landscape picture"
-            width="500%"
-            height="405%"
-            objectFit="cover"
+            width={500}
+            height={405}
+            layout="intrinsic"
+            objectFit="fill"
+            quality={60}
             className={styles.bigImage}
             onClick={openModal}
           />
@@ -56,8 +57,9 @@ const Gallery = (props) => {
             alt="Landscape picture"
             width={300}
             height={200}
-            objectFit="cover"
+            objectFit="fill"
             src="/2.PNG"
+            quality={60}
             onClick={openModal}
           />
         </div>
@@ -66,8 +68,9 @@ const Gallery = (props) => {
             alt="Landscape picture"
             width={300}
             height={200}
-            objectFit="cover"
+            objectFit="fill"
             src="/3.PNG"
+            quality={60}
             onClick={openModal}
           />
         </div>
@@ -76,9 +79,10 @@ const Gallery = (props) => {
             alt="Landscape picture"
             width={300}
             height={200}
-            objectFit="cover"
+            objectFit="fill"
             src="/4.PNG"
             onClick={openModal}
+            quality={60}
             className={styles.imageDivThree}
           />
         </div>
@@ -87,9 +91,10 @@ const Gallery = (props) => {
             alt="Landscape picture"
             width={300}
             height={200}
-            objectFit="cover"
+            objectFit="fill"
             src="/5.PNG"
             onClick={openModal}
+            quality={60}
             className={styles.imageDivFour}
           />
         </div>

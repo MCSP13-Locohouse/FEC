@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState} from "react";
 import styles from "../styles/Home.module.css";
 import axios from "axios";
 import Calendar from "./Calendar.js";
-import Search from "./Search";
 import { format } from "date-fns";
 import "react-date-range/dist/styles.css"; // main style file
 import "react-date-range/dist/theme/default.css"; // theme css file
@@ -10,7 +9,6 @@ import { DateRange } from "react-date-range";
 
 const cleaningFee = 60;
 const serviceFee = 41;
-const guest_numbers = 0;
 function retNights(date1, date2) {
   let result = Math.floor((date2 - date1) / 1000 / 60 / 60 / 24);
   return result;
@@ -39,7 +37,7 @@ const Reservations = ({ property, reviews }) => {
 
   reviewAverage();
 
-  function resClick(event, date) {
+  function resClick(event) {
     event.preventDefault();
     let formData = new FormData(document.getElementById("form"));
     alert(
@@ -84,8 +82,6 @@ const Reservations = ({ property, reviews }) => {
             <div id="checkin">CHECK-IN</div>
             <input
               name="checkin"
-              // type="button"
-
               className="visitDates"
               onClick={() => {
                 setOpenDate(!openDate);
@@ -95,7 +91,6 @@ const Reservations = ({ property, reviews }) => {
             <div id="checkout">CHECKOUT</div>
             <input
               name="checkout"
-              // type="button"
               className="visitDates"
               onClick={() => {
                 setOpenDate(!openDate);
@@ -106,7 +101,6 @@ const Reservations = ({ property, reviews }) => {
               <DateRange
                 editableDateInputs={true}
                 onChange={(item) => setDate([item.selection])}
-                // onchange={handleChange}
                 moveRangeOnFirstSelection={false}
                 ranges={date}
                 className="date"

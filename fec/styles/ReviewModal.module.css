@@ -76,11 +76,9 @@
 .header {
     width: 100%;
     height: fit-content;
-    /* position: fixed; */
     top: 0;
     left: 15px;
     padding: 10px;
-    /* overflow: hidden; */
 }
 
 .ratings {
@@ -94,7 +92,7 @@
 }
 
 .comments {
-    /* margin-top: 15px; */
+
     display: flex;
     max-height: 95%;
     width: 50%;
@@ -105,19 +103,4 @@
     height: fit-content;
     overflow: auto;
     z-index: 1000;
-    /* -ms-overflow-style: none;  IE and Edge */
-    /* scrollbar-width: none;  Firefox */
 }
-
-/* .bullet {
-    display: flex;
-} */
-
-/* .comments::-webkit-scrollbar {
-    display: none;
-  } */
-
-/* .paragraph {
-    margin-left: 40px;
-    position: static;
-} */

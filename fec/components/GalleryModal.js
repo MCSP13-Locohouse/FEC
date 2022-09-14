@@ -1,15 +1,11 @@
-import React, {useState} from "react";
+import React from "react";
 import styles from "../styles/GalleryModal.module.css";
 import Image from "next/image";
-const GalleryModal = ({ showModal, setShowModal, onClose }) => {
-    const [modal, setModal] = useState(false);
-
+const GalleryModal = ({ showModal, onClose }) => {
     return (
       <>
         {showModal ? (
           <>
-            {/* <div className={styles.modalOverlay} onClick={onClose} /> */}
-
             <div className={styles.modalContainer}>
               <div className={styles.header}>
                 <button className={styles.button} onClick={onClose}>
@@ -82,7 +78,6 @@ const GalleryModal = ({ showModal, setShowModal, onClose }) => {
                   alt="Landscape picture"
                   width={300}
                   height={200}
-                  //   objectFit=""
                   src="/9.PNG"
                 />
                 <Image

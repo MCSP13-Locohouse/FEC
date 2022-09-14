@@ -1,10 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap');
-
 .reviews {
     width: 70vw;
     height: 500px;
     background: rgba(255, 255, 255, 0.8);
-    /* position: relative; */
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;

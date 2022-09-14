@@ -5,7 +5,6 @@ import {
   GlobeAltIcon,
   Bars3Icon,
   UserCircleIcon,
-  UserIcon,
 } from "@heroicons/react/24/solid";
 
 function Header() {
@@ -14,7 +13,7 @@ function Header() {
       <h1></h1>
 
       <div className="logo">
-        <img src={"/Airbnb-Logo.png"} />
+        <Image alt="" width={100} height={100} src="/Airbnb-Logo.png" />
       </div>
 
       <div className="middle">

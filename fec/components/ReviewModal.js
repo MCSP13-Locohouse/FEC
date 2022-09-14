@@ -1,8 +1,7 @@
-import react, { useState } from "react";
+import  { useState } from "react";
 import styles from "../styles/ReviewModal.module.css";
 
-const ReviewModal = ({ showModal, setShowModal, onClose, users, reviews }) => {
-  const [modal, setModal] = useState(false);
+const ReviewModal = ({ showModal, onClose, reviews }) => {
   const [input, setInput] = useState("");
   let averageRating = 0;
 
@@ -18,12 +17,12 @@ const ReviewModal = ({ showModal, setShowModal, onClose, users, reviews }) => {
   reviewAverage();
 
   const searchFunc = (event) => {
-    // if (event.key === "Enter") {
     let lowerCase = event.target.value.toLowerCase();
     setInput({ input: lowerCase });
-    // }
   };
+
   let matching = [];
+
   const testCommentSearch = () => {
     reviews.forEach((element) => {
       const isMatching =
@@ -51,9 +50,6 @@ const ReviewModal = ({ showModal, setShowModal, onClose, users, reviews }) => {
                 className={styles.search}
                 placeholder="Search reviews"
                 id="searchBar"
-                // onKeyDown={(e) => {
-                //   searchFunc(e);
-                // }}
                 onChange={(e) => {
                   searchFunc(e);
                 }}
