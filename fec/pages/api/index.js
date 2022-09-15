@@ -10,14 +10,20 @@ const sql = postgres(
     : {}
 );
 
-export default async function usersHandler(req, res) {
+export default async function initialHandler(req, res) {
   if (req.method === "GET") {
     try {
+      const comments = await sql`
+      SELECT * FROM comments`;
+      const properties = await sql`
+      SELECT * FROM properties`;
+      const reservations = await sql`
+      SELECT * FROM reservations`;
       const users = await sql`
-      SELECT name_firstlast FROM customers`;
-      res.status(200).json({ users });
+      SELECT * FROM customers`;
+      res.status(200).json({ comments, properties, reservations, users });
     } catch (err) {
-      console.error(err);
+      console.error("Bad news in index api: ", err);
       return res.status(500).json({ msg: "Messed up on our end" });
     }
   } else {
