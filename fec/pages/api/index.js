@@ -12,7 +12,6 @@ const sql = postgres(
 
 export default async function initialHandler(req, res) {
   if (req.method === "GET") {
-    console.log("What is ENV?", process.env.NODE_ENV);
     try {
       const comments = await sql`
       SELECT * FROM comments`;
