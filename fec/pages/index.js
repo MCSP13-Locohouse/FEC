@@ -9,6 +9,8 @@ import Header from "../components/Header";
 import Map from "../components/Map";
 import Gallery from "../components/Gallery";
 
+var r = require('rethinkdb');
+
 export default class App extends Component {
   constructor(props) {
     super(props);
