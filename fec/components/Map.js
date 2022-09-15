@@ -310,7 +310,7 @@ function setMarkers(map, locData) {
     map,
     icon: image,
     //shape: shape,
-    label: `Exact location provided afrer booking`,
+    label: `Exact location provided after booking`,
   });
 
   const areaCircle = new google.maps.Circle({
