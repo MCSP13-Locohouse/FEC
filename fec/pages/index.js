@@ -11,53 +11,6 @@ import Map, { StaticGoogleMap, Marker, Path } from "../components/Map";
 import Gallery from "../components/Gallery";
 
 export default function App() {
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
-  //     host: "",
-  //     property: {
-  //       prop_id: -1,
-  //       title: "",
-  //       price: "",
-  //       specs: "",
-  //       about: "",
-  //       prop_space: "",
-  //       guest: "",
-  //       other: "",
-  //       number_street: "",
-  //       us_state: "",
-  //       zip: "",
-  //       host: "",
-  //       amenities: { ameniGroups: [] },
-  //     },
-
-  //     prop_id: [],
-  //     stars: [],
-  //     comment: [],
-
-  //     users: [],
-  //     reservations: {
-  //       startDate: [],
-  //       endDate: [],
-  //     },
-  //     mapLocation: "",
-  //   };
-  // }
-
-  // componentDidMount() {
-  //   axios.get("/api/").then((res) => {
-  //     this.setState({
-  //       comment: res.data.comments,
-  //       stars: res.data.comments[0].stars,
-  //       property: res.data.properties[0],
-  //       startData: res.data.reservations.startDate,
-  //       endDate: res.data.reservations.endDate,
-  //       users: res.data.users,
-  //       host: res.data.users[0].name_firstlast,
-  //     });
-  //   });
-  // }
-
   const [comments, setComments] = useState([]);
   const [properties, setProperties] = useState({
     amenities: { ameniGroups: [] },
@@ -77,23 +30,11 @@ export default function App() {
     getListingData();
   }, []);
 
-  // render() {
   return (
     <div className={styles.container}>
       <Head>
         <title>chairbnb</title>
       </Head>
-
-      {/* 
-        Formatting:
-        Header
-        Photos
-        Reservations
-        Description
-        Calendar
-        Reviews
-        Map
-         */}
 
       <Header />
 
@@ -115,5 +56,4 @@ export default function App() {
       <footer className={styles.footer}>2022 LocoHouse</footer>
     </div>
   );
-  // }
 }
