@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styles from "../styles/Review.module.css";
 import ReviewModal from "./ReviewModal";
+
 const Reviews = (props) => {
   const [showModal, setShowModal] = useState(false);
   const numOfReviews = props.reviews.length;
@@ -47,3 +48,5 @@ const Reviews = (props) => {
 };
 
 export default Reviews;
+
+

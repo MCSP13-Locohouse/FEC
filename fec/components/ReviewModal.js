@@ -11,6 +11,7 @@ const ReviewModal = ({ showModal, onClose, reviews }) => {
       averageRating += starNumbers;
     }
     averageRating = averageRating / reviews.length;
+    averageRating = averageRating.toFixed(1)
     return averageRating;
   };
 

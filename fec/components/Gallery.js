@@ -11,7 +11,8 @@ const Gallery = (props) => {
       const starNumbers = parseInt(props.reviews[i].stars);
       averageRating += starNumbers;
     }
-    averageRating = averageRating / props.reviews.length;
+    averageRating = (averageRating / props.reviews.length)
+    averageRating = averageRating.toFixed(1)
     return averageRating;
   };
 
@@ -43,58 +44,56 @@ const Gallery = (props) => {
           <Image
             src="/1.PNG"
             alt="Landscape picture"
-            width={500}
-            height={405}
-            layout="intrinsic"
-            objectFit="fill"
-            quality={60}
-            className={styles.bigImage}
+            objectFit="cover"
+            objectPosition="center"
+            layout="fill"
             onClick={openModal}
+            quality={70}
           />
         </div>
         <div className={styles.imageDivOne}>
           <Image
             alt="Landscape picture"
-            width={300}
-            height={200}
-            objectFit="fill"
+            objectFit="cover"
+            objectPosition="center"
+            layout="fill"
             src="/2.PNG"
-            quality={60}
+            quality={70}
             onClick={openModal}
           />
         </div>
         <div className={styles.imageDivTwo}>
           <Image
             alt="Landscape picture"
-            width={300}
-            height={200}
-            objectFit="fill"
+            objectFit="cover"
+            objectPosition="center"
+            layout="fill"
             src="/3.PNG"
-            quality={60}
+            quality={70}
             onClick={openModal}
           />
         </div>
         <div className={styles.imageDivThree}>
           <Image
             alt="Landscape picture"
-            width={300}
-            height={200}
-            objectFit="fill"
+            objectFit="cover"
+            objectPosition="center"
+            layout="fill"
             src="/4.PNG"
             onClick={openModal}
-            quality={60}
+            quality={70}
             className={styles.imageDivThree}
           />
         </div>
         <div className={styles.imageDivFour}>
           <Image
             alt="Landscape picture"
-            width={300}
-            height={200}
-            objectFit="fill"
+            objectFit="cover"
+            objectPosition="center"
+            layout="fill"
             src="/5.PNG"
             onClick={openModal}
-            quality={60}
+            quality={70}
             className={styles.imageDivFour}
           />
         </div>

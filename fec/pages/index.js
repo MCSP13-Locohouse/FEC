@@ -70,7 +70,7 @@ export default class App extends Component {
         endDate: res.data.endDate,
       });
     });
-  }
+  }  
 
   render() {
     return (

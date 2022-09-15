@@ -32,6 +32,7 @@ const Reservations = ({ property, reviews }) => {
       averageRating += starNumbers;
     }
     averageRating = averageRating / reviews.length;
+    averageRating = averageRating.toFixed(1)
     return averageRating;
   };
 
@@ -53,7 +54,7 @@ const Reservations = ({ property, reviews }) => {
         startdate: formData.get("checkin"),
         enddate: formData.get("checkout"),
       })
-      .then((response) => console.log(response))
+      
       .catch(function (error) {
         console.log(error);
       });

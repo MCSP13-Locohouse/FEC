@@ -10,11 +10,16 @@
 
 
 .comments {
-    display: flex;
+    display: flexbox;
     position: relative;
-    flex-direction: column;
+    flex-direction: row;
+    flex-grow: 1;
+    align-items: flex-end;
+    justify-items: right; 
     flex-wrap: wrap;
-    height: 400px;
+    height: 65%;
+    overflow: hidden;
+    -ms-flex-direction: row;
 }
 
 .button {
