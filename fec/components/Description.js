@@ -19,7 +19,8 @@ const Description = ({ property, host }) => {
   return (
     <div className={styles.Description}>
       <h2 className={styles.titleLine}>
-        {property.title} hosted by {host || "one of our most trusted hosts"}
+        {property.title} hosted by{" "}
+        {host.name_firstlast || "one of our most trusted hosts"}
       </h2>
       <p className={styles.propSpecs}>{property.specs}</p>
       <div id="about" className={styles.readout}>

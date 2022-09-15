@@ -59,9 +59,11 @@ export default function App() {
   // }
 
   const [comments, setComments] = useState([]);
-  const [properties, setProperties] = useState({});
+  const [properties, setProperties] = useState({
+    amenities: { ameniGroups: [] },
+  });
   const [reservations, setReservations] = useState([]);
-  const [users, setUsers] = useState([]);
+  const [users, setUsers] = useState({ name_firstlast: "" });
 
   useEffect(() => {
     async function getListingData() {
@@ -69,7 +71,7 @@ export default function App() {
       setComments(await res.data.comments);
       setProperties(await res.data.properties[0]);
       setReservations(await res.data.reservations);
-      setUsers(await res.data.users);
+      setUsers(await res.data.users[0]);
       console.log(res.data);
     }
     getListingData();
@@ -104,7 +106,7 @@ export default function App() {
           reviews={comments}
         />
 
-        <Description property={properties} host={users[0].name_firstlast} />
+        <Description property={properties} host={users} />
 
         <Reviews reviews={comments} users={users} />
 
