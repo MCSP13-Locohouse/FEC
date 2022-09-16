@@ -31,7 +31,9 @@
     "react_ujs": "2.6.2",
     "react-date-range": "^1.4.0",
     "react-dom": "^18.2.0",
-    "react-static-google-map": "^0.9.0"
+    "react-rethinkdb": "^0.1.1",
+    "react-static-google-map": "^0.9.0",
+    "rethinkdb-websocket-client": "^0.1.1"
   },
   "devDependencies": {
     "eslint": "8.23.0",
