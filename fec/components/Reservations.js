@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import styles from "../styles/Home.module.css";
 import axios from "axios";
 import Calendar from "./Calendar.js";
-import Search from "./Search";
 import { format } from "date-fns";
-import "react-date-range/dist/styles.css"; // main style file
-import "react-date-range/dist/theme/default.css"; // theme css file
+import "react-date-range/dist/styles.css";
+import "react-date-range/dist/theme/default.css";
 import { DateRange } from "react-date-range";
 
 const cleaningFee = 60;
@@ -76,17 +75,14 @@ const Reservations = ({ property, reviews }) => {
         <span className="stars">{averageRating} Stars!</span>
         <br></br>
         <div className={styles.spacer}></div>
-
         <form id="form" onSubmit={resClick} className={styles.form}>
           <hr size="1" width="90%" color="grey"></hr>
-
           <div id={"check_in"}>
             <div id="checkin">CHECK-IN</div>
             <input
               name="checkin"
-              // type="button"
-
               className="visitDates"
+              htmlFor="checkin"
               onClick={() => {
                 setOpenDate(!openDate);
               }}
@@ -95,8 +91,8 @@ const Reservations = ({ property, reviews }) => {
             <div id="checkout">CHECKOUT</div>
             <input
               name="checkout"
-              // type="button"
               className="visitDates"
+              htmlFor="checkout"
               onClick={() => {
                 setOpenDate(!openDate);
               }}
@@ -106,7 +102,6 @@ const Reservations = ({ property, reviews }) => {
               <DateRange
                 editableDateInputs={true}
                 onChange={(item) => setDate([item.selection])}
-                // onchange={handleChange}
                 moveRangeOnFirstSelection={false}
                 ranges={date}
                 className="date"
@@ -144,7 +139,11 @@ const Reservations = ({ property, reviews }) => {
           </select>
           <hr size="1" width="90%" color="grey"></hr>
           <br></br>
-          <button type="submit" className={styles.reserve_button}>
+          <button
+            type="submit"
+            className={styles.reserve_button}
+            aria-label="reservation button"
+          >
             <b>Reserve</b>
           </button>
           <p>You won`t be charged yet</p>

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import styles from "../styles/Description.module.css";
-import Amenities from "./Amenities";
 import AmenitiesModal from "./AmenitiesModal";
 import AboutModal from "./AboutModal";
 
@@ -55,7 +54,11 @@ const Description = ({ property, host }) => {
         </div>
       </div>
       <div className={styles.expander}>
-        <button className={styles.button} onClick={openDModal}>
+        <button
+          className={styles.button}
+          onClick={openDModal}
+          aria-label="Show Amenities Button"
+        >
           Show All Amenities
         </button>
       </div>

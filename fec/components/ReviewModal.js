@@ -51,6 +51,7 @@ const ReviewModal = ({ showModal, setShowModal, onClose, users, reviews }) => {
                 className={styles.search}
                 placeholder="Search reviews"
                 id="searchBar"
+                htmlFor="searchBar"
                 // onKeyDown={(e) => {
                 //   searchFunc(e);
                 // }}
@@ -72,10 +73,7 @@ const ReviewModal = ({ showModal, setShowModal, onClose, users, reviews }) => {
                     <>
                       <ul key={i} id="myList" className={styles.commentList}>
                         <li>
-                          <b>
-
-                            {item.first_name} {item.last_name}
-                          </b>
+                          {item.first_name} {item.last_name}
                         </li>
                       </ul>
                       <div className={styles.paragraph}>
@@ -87,10 +85,7 @@ const ReviewModal = ({ showModal, setShowModal, onClose, users, reviews }) => {
                     <>
                       <ul key={i} id="myList" className={styles.commentList}>
                         <li>
-                          <b>
-
-                            {item.first_name} {item.last_name}
-                          </b>
+                          {item.first_name} {item.last_name}
                         </li>
                       </ul>
                       <div className={styles.paragraph}>

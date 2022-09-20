@@ -2,7 +2,6 @@ import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import Description from "../components/Description";
 import Reservations from "../components/Reservations";
-import { Loader } from "@googlemaps/js-api-loader";
 import React, { Component } from "react";
 import Reviews from "../components/Review";
 import axios from "axios";
@@ -71,15 +70,6 @@ export default class App extends Component {
         endDate: res.data.endDate,
       });
     });
-
-    // const apiKey = process.env.NEXT_PUBLIC_API_KEY;
-    // let address = encodeURIComponent(
-    //   this.state.property.number_street + ", " + this.state.property.us_state + " " + this.state.property.zip
-    // );
-    // const mapGet = await axios.get(
-    //   `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${apiKey}`
-    // );
-    // this.setState({ mapLocation: mapGet.results[0]["geometry"]["location"] });
   }
 
   render() {
@@ -103,7 +93,7 @@ export default class App extends Component {
         <Header />
 
         <main className={styles.main}>
-          <Gallery reviews={this.state.comment} users={this.state.users}/>
+          <Gallery reviews={this.state.comment} users={this.state.users} />
 
           <Reservations
             property={this.state.property}

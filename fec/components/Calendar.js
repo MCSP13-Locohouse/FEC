@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import "react-date-range/dist/styles.css"; // main style file
-import "react-date-range/dist/theme/default.css"; // theme css file
+import "react-date-range/dist/styles.css";
+import "react-date-range/dist/theme/default.css";
 import { DateRange } from "react-date-range";
-import { HomeIcon } from "@heroicons/react/24/solid";
 import styles from "../styles/Home.module.css";
 function Calendar({ date, setDate }) {
   console.log(date[0].startDate);
@@ -31,7 +30,5 @@ function Calendar({ date, setDate }) {
       }
     </div>
   );
-  console.log(value);
 }
-
 export default Calendar;

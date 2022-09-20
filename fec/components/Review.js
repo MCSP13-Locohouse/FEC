@@ -29,7 +29,11 @@ const Reviews = (props) => {
             </ul>
           ))}
         </div>
-        <button className={styles.button} onClick={openModal}>
+        <button
+          className={styles.button}
+          onClick={openModal}
+          aria-label="Show Reviews Button"
+        >
           Show all {numOfReviews} reviews
         </button>
       </div>

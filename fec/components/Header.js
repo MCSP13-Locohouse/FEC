@@ -5,18 +5,21 @@ import {
   GlobeAltIcon,
   Bars3Icon,
   UserCircleIcon,
-  UserIcon,
 } from "@heroicons/react/24/solid";
 
 function Header() {
   return (
     <header>
       <h1></h1>
-
       <div className="logo">
-        <img src={"/Airbnb-Logo.png"} />
+        <Image
+          width={"150px"}
+          height={"100px"}
+          src={"/Airbnb-Logo.png"}
+          alt={"airbnb logo..."}
+          className="Image"
+        />
       </div>
-
       <div className="middle">
         <input
           type={"text"}
@@ -25,7 +28,6 @@ function Header() {
         />
         <MagnifyingGlassCircleIcon className="magnify" />
       </div>
-
       <div className="rightSide">
         <p>Become a host</p>
         <GlobeAltIcon className="globe" />

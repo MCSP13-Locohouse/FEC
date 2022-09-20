@@ -1,90 +1,86 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap");
 
 .body {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    justify-items: center;
-    align-items: center;
-    font-family: 'Roboto Condensed', sans-serif;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-items: center;
+  align-items: center;
+  font-family: "Roboto Condensed", sans-serif;
 }
 
-
 .container {
-    display: flex;
-    height: 35em;
-    min-width: 10%;
-    width: 50%;
-    flex-direction: column;
-    flex-wrap: wrap;
-    /* padding: 5px; */
-    top: 2%;
-    margin-top: 1%;
-    margin-right: 19%;
-
+  display: flex;
+  height: 35em;
+  min-width: 10%;
+  width: 50%;
+  flex-direction: column;
+  flex-wrap: wrap;
+  /* padding: 5px; */
+  top: 2%;
+  margin-top: 1%;
+  margin-right: 40%;
 }
 
 .bigImage {
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
 }
 
 .imageDivOne {
-    padding-left: 2px;
-    padding-right: 2px;
+  padding-left: 2px;
+  padding-right: 2px;
 }
 
 .imageDivTwo {
-    padding-left: 2px;
-    padding-right: 2px;
+  padding-left: 2px;
+  padding-right: 2px;
 }
 
 .imageDivThree {
-    border-top-right-radius: 10px;
-    padding-left: 2px;
-    padding-right: 2px;
+  border-top-right-radius: 10px;
+  padding-left: 2px;
+  padding-right: 2px;
 }
 
 .imageDivFour {
-    border-bottom-right-radius: 10px;
-    padding-left: 2px;
-    padding-right: 2px;
+  border-bottom-right-radius: 10px;
+  padding-left: 2px;
+  padding-right: 2px;
 }
 
 .header {
-    display: flexbox;
-    align-items: flex-start;
-    justify-items: left;
-    margin-right: -12%;
-    margin-bottom: 0px;
-    width: 80%;
-    margin-bottom: -1%;
+  display: flexbox;
+  align-items: flex-start;
+  justify-items: left;
+  margin-right: -12%;
+  margin-bottom: 0px;
+  width: 80%;
+  margin-bottom: -1%;
 }
 
-
 .desc {
-    display: flex;
-    margin-right: 54%;
-    width: 100%;
-
+  display: flex;
+  margin-right: 54%;
+  width: 100%;
 }
 
 .shareButton {
-    position: absolute;
-    margin-left: 40%;
-    background-color: white;
-    border: 0px;
-    cursor: pointer;
+  position: absolute;
+  margin-left: 40%;
+  background-color: white;
+  border: 0px;
+  cursor: pointer;
 }
 
 .saveButton {
-    position: absolute;
-    margin-left: 43%;
-    background-color: white;
-    border: 0px;
-    cursor: pointer;
+  position: absolute;
+  margin-left: 43%;
+  background-color: white;
+  border: 0px;
+  cursor: pointer;
 }
 
 .paragraph {
-    width: 100%;
+  width: 100%;
 }
