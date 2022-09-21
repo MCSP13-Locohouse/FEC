@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import styles from "../styles/Description.module.css";
-import Amenities from "./Amenities";
-import AmenitiesModal from "./AmenitiesModal";
-import AboutModal from "./AboutModal";
+// import Amenities from "./Amenities";
+// import AmenitiesModal from "./AmenitiesModal";
+// import AboutModal from "./AboutModal";
+import dynamic from "next/dynamic";
 
 const Description = ({ property, host }) => {
   const [showDModal, setShowDModal] = useState(false);
@@ -15,6 +16,16 @@ const Description = ({ property, host }) => {
   const openAModal = () => {
     setShowAModal((prev) => !prev);
   };
+
+  const AmenitiesModal = dynamic(() => import("./AmenitiesModal"), {
+    loading: () => <p>Loading...</p>,
+    ssr: false,
+  });
+
+  const AboutModal = dynamic(() => import("./AboutModal"), {
+    loading: () => <p>Loading...</p>,
+    ssr: false,
+  });
 
   return (
     <div className={styles.Description}>

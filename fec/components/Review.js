@@ -1,6 +1,13 @@
 import React, { useEffect, useState } from "react";
 import styles from "../styles/Review.module.css";
-import ReviewModal from "./ReviewModal";
+import dynamic from "next/dynamic";
+// import ReviewModal from "./ReviewModal";
+
+const ReviewModal = dynamic(() => import("./ReviewModal"), {
+  loading: () => <p>Loading...</p>,
+  ssr: false,
+});
+
 const Reviews = (props) => {
   const [showModal, setShowModal] = useState(false);
   const numOfReviews = props.reviews.length;
