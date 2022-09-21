@@ -7,15 +7,19 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "analyze": "cross-env ANALYZE=true next build",
+    "analyze:server": "cross-env BUNDLE_ANALYZE=server next build",
+    "analyze:browser": "cross-env BUNDLE_ANALYZE=browser next build"
   },
   "dependencies": {
     "@googlemaps/js-api-loader": "^1.14.3",
     "@googlemaps/react-wrapper": "^1.1.35",
     "@heroicons/react": "^2.0.10",
-    "@next/bundle-analyzer": "^12.3.0",
+    "@next/bundle-analyzer": "^12.3.1",
     "axios": "^0.27.2",
     "cors": "^2.8.5",
+    "cross-env": "^7.0.3",
     "date-fns": "^2.29.2",
     "dotenv": "^16.0.2",
     "express": "^4.18.1",
