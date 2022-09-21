@@ -19,11 +19,9 @@
   border: 1px solid grey;
   display: flex;
   text-align: center;
-  /* align-items: center; */
   justify-content: space-around;
   padding: 3px 0px;
   border-radius: 5px;
-  /* position: absolute; */
   order: 3;
 }
 
@@ -93,7 +91,7 @@ header {
 
 .middle {
   margin-top: 22px;
-  margin-right: 200px;
+  margin-right: 170px;
   margin-left: 350px;
   height: 30px;
   width: 300px;
@@ -107,7 +105,6 @@ header {
   min-height: 30px;
   min-width: 260px;
   border: none;
-  /* border-radius: 9999px; */
   margin-top: 0px;
   background: transparent;
   outline: none;
