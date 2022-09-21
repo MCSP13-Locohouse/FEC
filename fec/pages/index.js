@@ -109,7 +109,7 @@ export default class App extends Component {
           <Map location={this.state.property} />
         </main>
 
-        <footer className={styles.footer}>2022 LocoHouse</footer>
+        <footer className={styles.footer}>&copy; 2022 LocoHouse</footer>
       </div>
     );
   }
