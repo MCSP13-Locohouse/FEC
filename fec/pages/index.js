@@ -9,6 +9,9 @@ import axios from "axios";
 import Header from "../components/Header";
 import Map, { StaticGoogleMap, Marker, Path } from "../components/Map";
 import Gallery from "../components/Gallery";
+import postgres from "postgres";
+import { el } from "date-fns/locale";
+
 
 export default class App extends Component {
   constructor(props) {
@@ -103,7 +106,7 @@ export default class App extends Component {
         <Header />
 
         <main className={styles.main}>
-          <Gallery reviews={this.state.comment} users={this.state.users}/>
+          <Gallery reviews={this.state.comment} users={this.state.users} />
 
           <Reservations
             property={this.state.property}
@@ -111,16 +114,64 @@ export default class App extends Component {
             reservations={this.state.reservations}
             reviews={this.state.comment}
           />
-
+          x
           <Description property={this.state.property} host={this.state.host} />
 
           <Reviews reviews={this.state.comment} users={this.state.users} />
 
-          <Map location={this.state.property} />
+          <Map property={this.state.property} location={this.props} />
         </main>
 
         <footer className={styles.footer}>2022 LocoHouse</footer>
       </div>
     );
   }
+}
+
+export async function getServerSideProps() {
+  const { DB_CONNECTION_URL, PORT, NODE_ENV } = process.env;
+  let location;
+
+  const sql = postgres(
+    process.env.DB_CONNECTION_URL,
+    process.env.NODE_ENV === "production"
+      ? {
+        ssl: { rejectUnauthorized: false },
+        max_lifetime: 60 * 30,
+      }
+      : {}
+  );
+
+  // postgres("postgres://user:password@host:port/database");
+
+
+  //console.log('index.js location: ', location);
+  const locQuery = await sql`
+  SELECT coord FROM properties WHERE prop_id = 1`;
+  location = locQuery[0]['coord'];
+  location.lat = parseFloat(location.lat)
+  location.lng = parseFloat(location.lng);
+  //console.log('index.js location: ', locQuery[0]['coord']);
+
+
+  // Fetch Lat/Long for given address
+  const apiKey = process.env.NEXT_PUBLIC_API_KEY;
+  // let address = '';
+  // 
+
+
+  let address = encodeURIComponent(`1600 pennsylvania ave, washington dc`);
+
+  const res = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=1${address}&key=${apiKey}`, {
+    mode: 'cors',
+    method: 'get'
+  });
+  let data = await res.json()
+  data = data.results[0];
+  //Lat/long for given address:
+  let locData = data.geometry.location;
+  //console.log('index.js: ', process.env.DB_CONNECTION_URL)
+  // Pass data to the page via props
+
+  return { props: { location } }
 }

@@ -1,37 +1,21 @@
 import { useRef } from "react";
 import { Loader } from "@googlemaps/js-api-loader";
-import axios from "axios";
+import icon from '../public/icon_40x40.png'
 
-export default function Map(props) {
-    //SET UP VARIABLES
-    let coordinates = {};
+export default function Map({ property, mapProps }) {
+    //SET UP VARIABLES          
+    console.log('map.js property: ', property)
+    let coordinates = mapProps.location;
     const apiKey = process.env.NEXT_PUBLIC_API_KEY;
-    let address = "";
     const googlemap = useRef(null);
 
-    if (props.location.prop_id === -1) {
+    if (property.prop_id === -1) {
         //DO NOTHING IF PROPERTY'S INFORMATION HASN'T LOADED
     } else {
-        address = encodeURIComponent(props.location.number_street + ', ' + props.location.us_state + " " + props.location.zip);
-        axios({
-            method: 'get',
-            url: `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${apiKey}`,
-            responseType: 'json'
-        })
-            .then((response) => {
-                return response.data.results[0]['geometry']['location']
-            })
-            .then((locData) => {
-                coordinates = locData;
-            })
-            .then(() => {
-                renderMap(coordinates, apiKey, googlemap);
-            }).catch((err) => {
-                console.err(err);
-            });
-
+        console.log('map.js coordinates; ', coordinates);
+        //see if this can run in getServerSideProps
+        renderMap(coordinates, apiKey, googlemap);
     }
-
     return (
         <div id="map" ref={googlemap} />
     )
@@ -232,6 +216,7 @@ const style = [
     },
 ];
 
+//see if this function can run in getServerSideProps
 async function renderMap(coordinates, apiKey, googlemap) {
     const loader = new Loader({
         apiKey,
@@ -251,7 +236,6 @@ async function renderMap(coordinates, apiKey, googlemap) {
                 disableDefaultUI: true,
             });
             setMarkers(map, locData);
-
             return locData;
         })
         .catch((err) => {

@@ -20,7 +20,8 @@ CREATE TABLE properties (
     number_street TEXT,
     us_state TEXT,
     zip TEXT,
-    amenities JSON NOT NULL
+    amenities JSON NOT NULL,
+    coord JSON NOT NULL
 );
 
 
@@ -42,7 +43,7 @@ CREATE TABLE comments (
     comment TEXT
 );
 
-INSERT INTO properties (title, price, specs, about, prop_space, guest, other, number_street, us_state, zip, amenities) 
+INSERT INTO properties (title, price, specs, about, prop_space, guest, other, number_street, us_state, zip, amenities, coord) 
                 VALUES ('Treehouse',
                 '325', 
                 '2 guests - 1 bedroom - 1 bed - 1 bath', 
@@ -68,7 +69,7 @@ INSERT INTO properties (title, price, specs, about, prop_space, guest, other, nu
                     {"title": "Parking and Facilities", "values": ["Free parking on premises", "Free street parking", "Single level home"]},
                     {"title": "Services", "values": ["Breakfast", "Self check-in", "Lockbox"]}
                   ]
-                }');
+                }', '{ "lat": "40.737102", "lng": "-73.990318" }');
 INSERT INTO customers (name_firstlast) VALUES ('Jane Doe');
 INSERT INTO reservations (prop_id, first_name, last_name, guest_num, startdate, enddate) VALUES ('1', 'Bob', 'Testor', '3','12/30/2022', '20221231');
 INSERT INTO comments (first_name, last_name, prop_id, stars, comment) VALUES ('Erin', 'Smith', '1', '5','This place is great!');
